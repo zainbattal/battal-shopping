@@ -1,0 +1,222 @@
+/* =========================
+   GLOBAL RESET & THEME
+   ========================= */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Inter", "Segoe UI", system-ui, sans-serif;
+  background: #f0f4fa;
+  color: #1e293b;
+  line-height: 1.6;
+}
+
+/* =========================
+   NAVBAR (app.jsx)
+   ========================= */
+.siteNav {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(37, 99, 235, 0.8);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.siteLink {
+  color: white;
+  font-weight: 600;
+  font-size: 1.05rem;
+  padding: 0.6rem 1.2rem;
+  border-radius: 999px;
+  transition: all 0.3s ease;
+}
+
+.siteLink:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: #f0f9ff;
+  transform: translateY(-2px);
+}
+
+/* =========================
+   UPLOAD FORM (uploud.jsx)
+   ========================= */
+.form {
+  background: white;
+  max-width: 600px;
+  margin: 3rem auto;
+  padding: 2rem;
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease;
+}
+
+.form:hover {
+  transform: translateY(-4px);
+}
+
+.sell {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #1e40af;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.discribe,
+.type,
+.price {
+  font-weight: 600;
+  color: #2563eb;
+  margin: 1rem 0 0.5rem;
+}
+
+.name-input,
+.disc-inp,
+.type-select,
+.image-input,
+.price-input {
+  width: 100%;
+  padding: 0.9rem 1rem;
+  margin-bottom: 1rem;
+  border: none;
+  border-radius: 12px;
+  background: #f8fafc;
+  font-size: 1rem;
+  transition: all 0.25s ease;
+}
+
+.name-input:focus,
+.disc-inp:focus,
+.type-select:focus,
+.price-input:focus {
+  outline: none;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.3);
+}
+
+.submit {
+  background: linear-gradient(135deg, #2563eb, #1e40af);
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 700;
+  padding: 1rem;
+  width: 100%;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.25);
+}
+
+.submit:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(37, 99, 235, 0.35);
+}
+
+.status {
+  display: none;
+  margin-top: 1rem;
+  text-align: center;
+  font-weight: bold;
+  color: #16a34a;
+}
+
+/* =========================
+   PRODUCTS LIST (list.jsx)
+   ========================= */
+.products-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.product-cont {
+  display: flex;
+  gap: 1.5rem;
+  background: white;
+  border-radius: 16px;
+  padding: 1rem;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
+.product-cont:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+}
+
+/* square image */
+.product-image {
+  width: 180px;
+  height: 180px;
+  border-radius: 12px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.product-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  flex: 1;
+}
+
+.product-name {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #1e40af;
+}
+
+.product-disc {
+  font-size: 0.95rem;
+  color: #475569;
+  line-height: 1.5;
+}
+
+.product-type {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #64748b;
+}
+
+.product-price {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #2563eb;
+}
+
+.product-date {
+  font-size: 0.8rem;
+  color: #94a3b8;
+}
+
+/* responsive stack */
+@media (max-width: 750px) {
+  .product-cont {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .product-image {
+    width: 100%;
+    max-width: 320px;
+    aspect-ratio: 1 / 1;
+  }
+
+  .product-details {
+    align-items: center;
+  }
+}
