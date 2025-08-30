@@ -65,6 +65,7 @@ export default function Uploud(params) {
 
         <p className="discribe">أوصف منتجك</p>
         <input
+          maxLength={50}
           className="name-input"
           type="text"
           placeholder="اسم المنتج"
@@ -78,6 +79,7 @@ export default function Uploud(params) {
           className="disc-inp"
           type="text"
           value={discription}
+          maxLength={50}
           placeholder="اشرح منتجك"
           onChange={(e) => {
             setDiscription(e.target.value);
