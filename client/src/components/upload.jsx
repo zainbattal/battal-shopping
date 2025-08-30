@@ -30,10 +30,13 @@ export default function Uploud(params) {
       formData.append("type", type);
       formData.append("price", price);
       formData.append("image", image);
-      const response = await fetch("http://localhost:3000/post", {
-        method: "POST",
-        body: formData,
-      });
+      const response = await fetch(
+        "https://battal-shopping.onrender.com/post",
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
       if (response.ok) {
         setStatus("تم نشر المنتج بنجاح");
         stat.current.style.color = "GREEN";

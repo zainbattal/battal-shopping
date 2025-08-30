@@ -5,7 +5,7 @@ export default function GetProducts() {
   const [products, setProducts] = useState([]);
   const getProducts = async () => {
     try {
-      let response = await fetch("http://localhost:3000/list");
+      let response = await fetch("https://battal-shopping.onrender.com/list");
       let jsonData = await response.json();
       console.log(jsonData);
       setProducts(jsonData);
@@ -25,7 +25,7 @@ export default function GetProducts() {
           <div key={product.id} className="product-cont">
             <img
               className="product-image"
-              src={`http://localhost:3000/image/${product.id}`}
+              src={`https://battal-shopping.onrender.com/image/${product.id}`}
               alt={product.name}
             />
             <div className="product-details">
