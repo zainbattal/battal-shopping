@@ -76,7 +76,7 @@ export default function UserProducts() {
 
   return (
     <>
-      <h1 style={{ textAlign: "center" }} ref={textStat}></h1>
+      <p style={{ textAlign: "center" }} ref={textStat}></p>
       <div className="products-list">
         {products.map((product) => (
           <div key={product.id} className="product-cont">
