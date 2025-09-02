@@ -433,3 +433,16 @@ body {
 .product-cont {
   cursor: pointer;
 }
+
+/* =========================
+   MOBILE RESPONSIVENESS FIXES
+   ========================= */
+@media (max-width: 768px) {
+  /* Navbar: stack links instead of squeezing */
+  .siteNav {
+    width: 250%;
+  }
+  .number-input {
+    padding-left: 75px;
+  }
+}
