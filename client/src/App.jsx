@@ -30,15 +30,11 @@ export function App() {
       <div>
         {!hideNavbar && (
           <div className="siteNav">
-            <Link className="siteLink" onClick={handleLogout}>
+            <Link className="siteLinkOut" onClick={handleLogout}>
               تسجيل الخروج
             </Link>
 
-            <Link
-              style={{ marginLeft: "43vw" }}
-              className="siteLink"
-              to={"/profile"}
-            >
+            <Link className="siteLinkPro" to={"/profile"}>
               الملف الشخصي
             </Link>
             <Link className="siteLink" to={"/upload"}>

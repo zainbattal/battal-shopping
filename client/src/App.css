@@ -31,16 +31,21 @@ body {
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
 }
 
-.siteLink {
+.siteLink,
+.siteLinkOut,
+.siteLinkPro {
   color: white;
   font-weight: 600;
   font-size: 1.05rem;
   padding: 0.6rem 1.2rem;
   border-radius: 999px;
   transition: all 0.3s ease;
+  font-size: small;
 }
 
-.siteLink:hover {
+.siteLink:hover,
+.siteLinkOut:hover,
+.siteLinkPro:hover {
   background: rgba(255, 255, 255, 0.2);
   color: #f0f9ff;
   transform: translateY(-2px);
@@ -434,13 +439,27 @@ body {
   cursor: pointer;
 }
 
+.siteLinkPro {
+  margin-left: 43vw;
+}
+
 /* =========================
    MOBILE RESPONSIVENESS FIXES
    ========================= */
 @media (max-width: 768px) {
   /* Navbar: stack links instead of squeezing */
-  .siteNav {
-    width: 250%;
+
+  .siteLink {
+    margin: 0;
+    font-size: small;
+    padding: 0;
+  }
+  .siteLinkOut {
+    display: none;
+  }
+  .siteLinkPro {
+    margin-left: 0;
+    padding: 0;
   }
   .number-input {
     padding-left: 75px;
