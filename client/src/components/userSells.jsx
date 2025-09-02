@@ -20,8 +20,7 @@ export default function UserProducts() {
       console.log(jsonData);
       setProducts(jsonData);
       if (products.length == 0) {
-        textStat.current.innerText = "لم تقم بعرض أي شيئ للبيع";
-        textStat.current.style.margin = "200px";
+        console.log("no products");
       }
     } catch (error) {
       console.error(error);
@@ -76,7 +75,6 @@ export default function UserProducts() {
 
   return (
     <>
-      <p style={{ textAlign: "center" }} ref={textStat}></p>
       <div className="products-list">
         {products.map((product) => (
           <div key={product.id} className="product-cont">
@@ -97,6 +95,9 @@ export default function UserProducts() {
             </button>
           </div>
         ))}
+        <h1 style={{ textAlign: "center" }} ref={textStat}>
+          انتهت النتائج
+        </h1>
       </div>
     </>
   );
