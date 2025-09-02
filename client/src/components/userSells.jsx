@@ -1,0 +1,103 @@
+import React from "react";
+import { useState, useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
+
+export default function UserProducts() {
+  const [products, setProducts] = useState([]);
+
+  const textStat = useRef();
+  const navigate = useNavigate();
+  const getProducts = async () => {
+    try {
+      let response = await fetch(
+        "https://battal-shopping.onrender.com/profile",
+        {
+          method: "GET",
+          headers: { token: localStorage.token },
+        }
+      );
+      let jsonData = await response.json();
+      console.log(jsonData);
+      setProducts(jsonData);
+      if (products.length == 0) {
+        textStat.current.innerText = "لم تقم بعرض أي شيئ للبيع";
+        textStat.current.style.margin = "200px";
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const handleDelete = async (key) => {
+    try {
+      console.log(key);
+      const response = await fetch(
+        `https://battal-shopping.onrender.com/delete/${key}`,
+        {
+          method: "DELETE",
+          headers: { token: localStorage.token },
+        }
+      );
+      if (response.ok) {
+        window.location.reload();
+      }
+    } catch (error) {
+      console.error(error.message);
+    }
+  };
+
+  const checkAuthorization = async () => {
+    try {
+      const response = await fetch(
+        "https://battal-shopping.onrender.com/auth/is-authorized",
+        {
+          method: "GET",
+          headers: {
+            token: localStorage.token,
+          },
+        }
+      );
+
+      if (response.ok) {
+        console.log("ok"); // Fixed the if statement
+      } else {
+        navigate("/register");
+      }
+    } catch (error) {
+      console.error("Authorization check failed:", error);
+    }
+  };
+
+  useEffect(() => {
+    checkAuthorization();
+
+    getProducts();
+  }, []);
+
+  return (
+    <>
+      <h1 style={{ textAlign: "center" }} ref={textStat}></h1>
+      <div className="products-list">
+        {products.map((product) => (
+          <div key={product.id} className="product-cont">
+            <img
+              className="product-image"
+              src={`https://battal-shopping.onrender.com/image/${product.id}`}
+              alt={product.name}
+            />
+            <div className="product-details">
+              <span className="product-name">{product.name}</span>
+              <span className="product-disc">{product.discription}</span>
+              <span className="product-type">{product.type}</span>
+              <span className="product-price">{product.price} SP</span>
+              <span className="product-date">{product.date}</span>
+            </div>
+            <button className="dltBtn" onClick={() => handleDelete(product.id)}>
+              delete
+            </button>
+          </div>
+        ))}
+      </div>
+    </>
+  );
+}

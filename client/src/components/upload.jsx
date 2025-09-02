@@ -1,6 +1,8 @@
 import React from "react";
+import { use } from "react";
 import { useState } from "react";
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 export default function Uploud(params) {
   const [name, setName] = useState("");
   const [discription, setDiscription] = useState("");
@@ -12,6 +14,29 @@ export default function Uploud(params) {
   const stat = useRef();
   const submitBtn = useRef();
   const priceInp = useRef();
+  const navigate = useNavigate();
+  const checkAuthorization = async () => {
+    try {
+      const response = await fetch(
+        "https://battal-shopping.onrender.com/auth/is-authorized",
+        {
+          method: "GET",
+          headers: {
+            token: localStorage.token,
+          },
+        }
+      );
+
+      if (response.ok) {
+        console.log("");
+      } else {
+        navigate("/register");
+      }
+    } catch (error) {
+      console.error("Authorization check failed:", error);
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -34,6 +59,7 @@ export default function Uploud(params) {
         "https://battal-shopping.onrender.com/post",
         {
           method: "POST",
+          headers: { token: localStorage.token },
           body: formData,
         }
       );
@@ -55,6 +81,10 @@ export default function Uploud(params) {
   const handleImage = (e) => {
     setImage(e.target.files[0]);
   };
+
+  useEffect(() => {
+    checkAuthorization();
+  }, []);
 
   return (
     <>
@@ -80,7 +110,7 @@ export default function Uploud(params) {
           type="text"
           value={discription}
           maxLength={50}
-          placeholder="اشرح منتجك"
+          placeholder="وصف المنتج"
           onChange={(e) => {
             setDiscription(e.target.value);
           }}

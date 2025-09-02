@@ -3,8 +3,10 @@ const cors = require("cors");
 const app = express();
 const pool = require("./db");
 const multer = require("multer");
+const jwt = require("jsonwebtoken");
 
 const upload = multer();
+require("dotenv").config();
 
 app.use(cors());
 app.use(express.json());
@@ -14,7 +16,61 @@ app.get("/list", async (req, res) => {
     let response = await pool.query("SELECT * FROM products");
     res.json(response.rows);
   } catch (error) {
-    console.error(error);
+    console.error(error.message);
+  }
+});
+
+app.delete("/delete/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const token = req.header("token");
+    const decoded = jwt.verify(token, process.env.jwtSecret);
+
+    const userRow = await pool.query("select * from users where user_id = $1", [
+      decoded.user,
+    ]);
+    const user = userRow.rows[0].user_name;
+
+    const product = await pool.query("SELECT * FROM products WHERE id = $1", [
+      id,
+    ]);
+    const productUser = await product.rows[0].uploader;
+
+    if (user !== productUser) {
+      return res
+        .status(403)
+        .json("you do not have the ability to delete this product");
+    }
+
+    const response = await pool.query("DELETE FROM products WHERE id = $1", [
+      id,
+    ]);
+    res.json("product deleted");
+  } catch (error) {
+    console.error(error.message);
+    res.json("couldn't delete product");
+  }
+});
+
+app.get("/profile", async (req, res) => {
+  try {
+    const token = req.header("token");
+    const decoded = jwt.verify(token, process.env.jwtSecret);
+
+    const userRow = await pool.query("select * from users where user_id = $1", [
+      decoded.user,
+    ]);
+
+    const user = userRow.rows[0].user_name;
+
+    let response = await pool.query(
+      "SELECT * FROM products WHERE uploader = $1",
+      [user]
+    );
+    res.json(response.rows);
+  } catch (error) {
+    console.error(error.message);
+    res.status(401);
   }
 });
 
@@ -40,15 +96,45 @@ app.post("/post", upload.single("image"), async (req, res) => {
   try {
     const { name, discription, price, type } = req.body;
     const image = req.file.buffer;
+    const token = req.header("token");
+    const decoded = jwt.verify(token, process.env.jwtSecret);
+
+    const userRow = await pool.query("select * from users where user_id = $1", [
+      decoded.user,
+    ]);
+
+    const user = userRow.rows[0].user_name;
+    const userNumber = userRow.rows[0].user_number;
+
     let response = await pool.query(
-      "INSERT INTO products (name, discription, price, type, date, image) VALUES ($1, $2, $3, $4, CURRENT_DATE, $5) RETURNING *",
-      [name, discription, price, type, image]
+      "INSERT INTO products (name, discription, price, type, date, image, uploader, uploader_number) VALUES ($1, $2, $3, $4, CURRENT_DATE, $5, $6, $7) RETURNING *",
+      [name, discription, price, type, image, user, userNumber]
     );
     res.send("added!");
   } catch (error) {
     console.error(error);
   }
 });
+
+// routes
+
+app.post("/search", async (req, res) => {
+  try {
+    let { input } = req.body;
+    let response = await pool.query(
+      `SELECT * FROM products WHERE SIMILARITY(name, $1) > 0.2 OR SIMILARITY(discription, $1) > 0.2;`,
+      [input]
+    );
+    res.json(response.rows);
+  } catch (error) {
+    console.error(error.message);
+    res.json("server error");
+  }
+});
+
+// register and login routed
+
+app.use("/auth", require("./routes/jwtAuth"));
 
 app.listen(3000, () => {
   console.log("server started at port 3000");

@@ -220,3 +220,216 @@ body {
     align-items: center;
   }
 }
+
+.register-div,
+.up-div {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(13, 71, 161, 0.12);
+  padding: 30px;
+  width: 100%;
+  max-width: 420px;
+  transition: all 0.3s ease;
+  margin: 0 auto;
+}
+
+.register-div:hover,
+.up-div:hover {
+  box-shadow: 0 12px 30px rgba(13, 71, 161, 0.18);
+}
+
+.register-form,
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.register-form p,
+.login-form p {
+  color: #0d47a1;
+  font-weight: 600;
+  margin-bottom: 5px;
+  font-size: 16px;
+  text-align: left;
+}
+
+/* Input Fields */
+.login-name,
+.login-password,
+.number-input {
+  padding: 14px 16px;
+  border: 2px solid #e3e9f1;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  background-color: #f9fbfd;
+  width: 100%;
+  text-align: left;
+}
+
+.login-name:focus,
+.login-password:focus,
+.number-input:focus {
+  outline: none;
+  border-color: #0d47a1;
+  box-shadow: 0 0 0 3px rgba(13, 71, 161, 0.2);
+  background-color: white;
+}
+
+/* Phone Number Input Styling */
+.number-text {
+  text-align: left;
+}
+
+.number-input {
+  padding-left: 73px;
+}
+
+.syrian-num {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #0d47a1;
+  font-weight: 600;
+  background: rgba(13, 71, 161, 0.08);
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+/* Submit Button */
+.login-submit {
+  background-color: #0d47a1;
+  color: white;
+  border: none;
+  padding: 14px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.login-submit:hover {
+  background-color: #1565c0;
+  transform: translateY(-2px);
+}
+
+.login-submit:active {
+  transform: translateY(0);
+}
+
+/* Toggle Button */
+.register-div button,
+.login-div button {
+  background-color: transparent;
+  color: #0d47a1;
+  border: 2px solid #0d47a1;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.register-div button:hover,
+.login-div button:hover {
+  background-color: rgba(13, 71, 161, 0.08);
+}
+
+/* Error Message */
+.login-error {
+  color: #d32f2f !important;
+  font-weight: 500 !important;
+  text-align: center;
+  min-height: 15px;
+}
+
+/* Phone Input Container */
+.register-form > div {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* Submit Button Container */
+.submit-div {
+  display: flex;
+  justify-content: center;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+  .register-div,
+  .up-div {
+    padding: 20px;
+  }
+
+  .login-name,
+  .login-password,
+  .number-input,
+  .login-submit {
+    padding: 12px 14px;
+  }
+}
+
+.dltBtn {
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.dltBtn:hover {
+  scale: 1.05;
+  opacity: 0.7;
+}
+
+.search-input {
+  padding: 0.6rem 1rem;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.search-input:focus {
+  border-color: #4f46e5; /* indigo highlight */
+  box-shadow: 0 0 6px rgba(79, 70, 229, 0.4);
+}
+
+.search-submit {
+  margin-left: 0.5rem;
+  padding: 0.6rem 1.2rem;
+  background: #4f46e5; /* indigo */
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 500;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.search-submit:hover {
+  background: #4338ca; /* darker indigo */
+}
+
+.search-submit:active {
+  transform: scale(0.96);
+}
+
+.product-cont {
+  cursor: pointer;
+}
