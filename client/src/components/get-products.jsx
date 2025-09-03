@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 export default function GetProducts() {
   const [products, setProducts] = useState([]);
   const [priceFilter, setPriceFilter] = useState(99999999);
-  const [catFilter, setCatFilter] = useState("type");
+  const [catFilter, setCatFilter] = useState("all");
   const navigate = useNavigate();
   const getProducts = async () => {
     try {
@@ -57,7 +57,10 @@ export default function GetProducts() {
           <span className="filterName">الفئة</span>
           <select
             className="fileterSelect"
-            onChange={(e) => setCatFilter(e.target.value)}
+            onChange={(e) => {
+              setCatFilter(e.target.value);
+              getProducts();
+            }}
           >
             <option value="all">الكل</option>
             <option value="electronics">الكترونيات</option>
@@ -71,7 +74,10 @@ export default function GetProducts() {
           <span>السعر</span>
           <select
             className="fileterSelect"
-            onChange={(e) => setPriceFilter(e.target.value)}
+            onChange={(e) => {
+              setPriceFilter(e.target.value);
+              getProducts();
+            }}
           >
             <option value="99999999">الكل</option>
             <option value="1000000">تحت 1000000</option>
