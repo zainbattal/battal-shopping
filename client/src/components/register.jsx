@@ -3,8 +3,10 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useRef } from "react";
+import Turnstile from "react-turnstile";
 import blueLogo from "../assets/soowblue.png";
 export default function Register() {
+  const [turnstileToken, setTurnstileToken] = useState("");
   const [name, setName] = useState("");
   const [number, setNumber] = useState("");
   const [password, setPassword] = useState("");
@@ -49,6 +51,15 @@ export default function Register() {
       if (numberInp.current) {
       }
       const body = { name, number, password };
+
+      const res = await fetch("/verify-turnstile", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ token: turnstileToken }),
+      });
+
+      const data = await res.json();
+
       //fetch register api
       const response = await fetch(
         "https://battal-shopping.onrender.com/auth/register",
@@ -58,7 +69,8 @@ export default function Register() {
           body: JSON.stringify(body),
         }
       );
-      console.log(response.ok);
+
+      console.log(response.ok && data.success);
       if (response.ok) {
         const parseRes = await response.json();
 
@@ -139,6 +151,11 @@ export default function Register() {
               setPassword(e.target.value);
             }}
           />
+          <Turnstile
+            sitekey="0x4AAAAAAByfnMjZv6VQTT8D"
+            onSuccess={(token) => setTurnstileToken(token)}
+          />
+
           <p
             className="login-error"
             style={{ textAlign: "center" }}
