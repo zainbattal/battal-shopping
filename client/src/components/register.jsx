@@ -37,52 +37,58 @@ export default function Register() {
   };
 
   const handleSubmit = async (e) => {
-    try {
-      status.current.innerText = "";
-      e.preventDefault();
-      if (
-        numberInp.current.value.length !== 9 ||
-        numberInp.current.value < 0 ||
-        Number(numberInp.current.value.toString()[0] !== "9")
-      ) {
-        status.current.innerText = "الرجاء ادخال رقم سوري صحيح";
-        return;
-      }
-      if (numberInp.current) {
-      }
-      const body = { name, number, password };
+    e.preventDefault();
+    status.current.innerText = "";
 
-      const res = await fetch("/verify-turnstile", {
+    // Your number validation here
+    if (
+      numberInp.current.value.length !== 9 ||
+      numberInp.current.value < 0 ||
+      Number(numberInp.current.value.toString()[0]) !== 9 // fixed parentheses
+    ) {
+      status.current.innerText = "الرجاء ادخال رقم سوري صحيح";
+      return;
+    }
+
+    if (!turnstileToken) {
+      status.current.innerText = "يرجى التحقق من CAPTCHA";
+      return;
+    }
+
+    // Verify turnstile token first
+    const res = await fetch("/verify-turnstile", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ token: turnstileToken }),
+    });
+    const data = await res.json();
+
+    if (!res.ok || !data.success) {
+      status.current.innerText = "فشل التحقق من CAPTCHA، حاول مرة أخرى";
+      return;
+    }
+
+    // Now call register only if CAPTCHA verified
+    const body = { name, number, password };
+
+    const response = await fetch(
+      "https://battal-shopping.onrender.com/auth/register",
+      {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ token: turnstileToken }),
-      });
-
-      const data = await res.json();
-
-      //fetch register api
-      const response = await fetch(
-        "https://battal-shopping.onrender.com/auth/register",
-        {
-          method: "POST",
-          headers: { "content-type": "application/json" },
-          body: JSON.stringify(body),
-        }
-      );
-
-      console.log(response.ok && data.success);
-      if (response.ok) {
-        const parseRes = await response.json();
-
-        localStorage.setItem("token", parseRes.token);
-        localStorage.setItem("sooqUsername", name);
-        checkAuthorization();
-      } else {
-        status.current.innerText = "اسم المستخدم غير صالح";
-        status.current.style.color = "red";
+        body: JSON.stringify(body),
       }
-    } catch (error) {
-      console.error(error);
+    );
+
+    if (response.ok) {
+      const parseRes = await response.json();
+
+      localStorage.setItem("token", parseRes.token);
+      localStorage.setItem("sooqUsername", name);
+      checkAuthorization();
+    } else {
+      status.current.innerText = "اسم المستخدم غير صالح أو الرقم موجود مسبقاً";
+      status.current.style.color = "red";
     }
   };
 
