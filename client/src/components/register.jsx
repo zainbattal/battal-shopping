@@ -56,11 +56,14 @@ export default function Register() {
     }
 
     // Verify turnstile token first
-    const res = await fetch("/verify-turnstile", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ token: turnstileToken }),
-    });
+    const res = await fetch(
+      "https://battal-shopping.onrender.com/verify-turnstile",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ token: turnstileToken }),
+      }
+    );
     const data = await res.json();
 
     if (!res.ok || !data.success) {
