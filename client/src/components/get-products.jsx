@@ -11,7 +11,7 @@ export default function GetProducts() {
     try {
       let response = await fetch("https://battal-shopping.onrender.com/list", {
         method: "POST",
-        body: { catFilter, priceFilter },
+        body: JSON.stringify({ catFilter, priceFilter }),
         headers: { "content-type": "application/json" },
       });
       let jsonData = await response.json();
