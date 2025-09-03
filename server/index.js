@@ -11,7 +11,7 @@ require("dotenv").config();
 app.use(cors());
 app.use(express.json());
 
-app.get("/list", async (req, res) => {
+app.post("/list", async (req, res) => {
   try {
     const { catFilter, priceFilter } = req.body;
     let response = await pool.query(

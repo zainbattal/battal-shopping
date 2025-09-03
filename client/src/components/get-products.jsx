@@ -10,7 +10,7 @@ export default function GetProducts() {
   const getProducts = async () => {
     try {
       let response = await fetch("https://battal-shopping.onrender.com/list", {
-        method: "GET",
+        method: "POST",
         body: { catFilter, priceFilter },
         headers: { "content-type": "application/json" },
       });
