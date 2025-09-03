@@ -16,7 +16,7 @@ app.post("/list", async (req, res) => {
     const { catFilter, priceFilter } = req.body;
     console.log(catFilter);
     console.log(priceFilter);
-    if (catFilter == "all") {
+    if (catFilter === "all") {
       response = await pool.query("SELECT * FROM products WHERE price < $1", [
         priceFilter,
       ]);

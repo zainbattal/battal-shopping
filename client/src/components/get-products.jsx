@@ -57,7 +57,7 @@ export default function GetProducts() {
     checkAuthorization();
 
     getProducts();
-  }, []);
+  }, [catFilter, priceFilter]);
 
   return (
     <>
@@ -68,7 +68,6 @@ export default function GetProducts() {
             className="fileterSelect"
             onChange={(e) => {
               setCatFilter(e.target.value);
-              getProducts();
             }}
           >
             <option value="all">الكل</option>
@@ -85,7 +84,6 @@ export default function GetProducts() {
             className="fileterSelect"
             onChange={(e) => {
               setPriceFilter(e.target.value);
-              getProducts();
             }}
           >
             <option value="99999999">الكل</option>
