@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -7,13 +7,22 @@ export default function GetProducts() {
   const [priceFilter, setPriceFilter] = useState(99999999);
   const [catFilter, setCatFilter] = useState("all");
   const navigate = useNavigate();
+  const loading = useRef();
+  const list = useRef();
   const getProducts = async () => {
     try {
+      loading.current.style.display = "flex";
+      list.current.style.display = "none";
       let response = await fetch("https://battal-shopping.onrender.com/list", {
         method: "POST",
         body: JSON.stringify({ catFilter, priceFilter }),
         headers: { "content-type": "application/json" },
       });
+      if (response.ok) {
+        loading.current.style.display = "none";
+        list.current.style.display = "flex";
+      }
+
       let jsonData = await response.json();
       console.log(jsonData);
       setProducts(jsonData);
@@ -52,6 +61,14 @@ export default function GetProducts() {
 
   return (
     <>
+      <h1
+        ref={loading}
+        className="loadingText"
+        style={{ textAlign: "center", marginTop: "3vw" }}
+      >
+        ...جارٍ التحميل
+      </h1>
+
       <div className="filterCont">
         <div>
           <span className="filterName">الفئة</span>
@@ -87,7 +104,7 @@ export default function GetProducts() {
         </div>
       </div>
 
-      <div className="products-list">
+      <div ref={list} className="products-list">
         {products.map((product) => (
           <div
             key={product.id}
