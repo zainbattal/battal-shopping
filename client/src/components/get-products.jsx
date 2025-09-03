@@ -61,14 +61,6 @@ export default function GetProducts() {
 
   return (
     <>
-      <h1
-        ref={loading}
-        className="loadingText"
-        style={{ textAlign: "center", marginTop: "3vw" }}
-      >
-        ...جارٍ التحميل
-      </h1>
-
       <div className="filterCont">
         <div>
           <span className="filterName">الفئة</span>
@@ -103,6 +95,14 @@ export default function GetProducts() {
           </select>
         </div>
       </div>
+
+      <h1
+        ref={loading}
+        className="loadingText"
+        style={{ textAlign: "center", marginTop: "3vw" }}
+      >
+        ...جارٍ التحميل
+      </h1>
 
       <div ref={list} className="products-list">
         {products.map((product) => (
