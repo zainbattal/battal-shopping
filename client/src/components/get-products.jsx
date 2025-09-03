@@ -4,10 +4,16 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 export default function GetProducts() {
   const [products, setProducts] = useState([]);
+  const [priceFilter, setPriceFilter] = useState(99999999);
+  const [catFilter, setCatFilter] = useState("type");
   const navigate = useNavigate();
   const getProducts = async () => {
     try {
-      let response = await fetch("https://battal-shopping.onrender.com/list");
+      let response = await fetch("https://battal-shopping.onrender.com/list", {
+        method: "GET",
+        body: { catFilter, priceFilter },
+        headers: { "content-type": "application/json" },
+      });
       let jsonData = await response.json();
       console.log(jsonData);
       setProducts(jsonData);
@@ -46,6 +52,35 @@ export default function GetProducts() {
 
   return (
     <>
+      <div className="filterCont">
+        <div>
+          <span className="filterName">الفئة</span>
+          <select
+            className="fileterSelect"
+            onChange={(e) => setCatFilter(e.target.value)}
+          >
+            <option value="type">الكل</option>
+            <option value="electronics">الكترونيات</option>
+            <option value="cars">سيارات</option>
+            <option value="sports">الرياضة</option>
+            <option value="houseProducts">مستلزمات المنزل</option>
+            <option value="decoration">قطع زينة</option>
+          </select>
+        </div>
+        <div>
+          <span>السعر</span>
+          <select
+            className="fileterSelect"
+            onChange={(e) => setPriceFilter(e.target.value)}
+          >
+            <option value="99999999">الكل</option>
+            <option value="1000000">تحت 1000000</option>
+            <option value="100000"> تحت 100000</option>
+            <option value="50000">تحت 50000</option>
+          </select>
+        </div>
+      </div>
+
       <div className="products-list">
         {products.map((product) => (
           <div

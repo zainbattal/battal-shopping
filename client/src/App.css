@@ -439,8 +439,19 @@ body {
   cursor: pointer;
 }
 
+.filterCont {
+  display: flex;
+  justify-content: space-evenly;
+  border: 1px solid gray;
+  background-color: rgb(192, 192, 192);
+}
+
 .siteLinkPro {
   margin-left: 43vw;
+}
+
+.fileterSelect {
+  border-radius: 5px;
 }
 
 /* =========================
