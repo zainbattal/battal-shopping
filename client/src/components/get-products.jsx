@@ -59,7 +59,7 @@ export default function GetProducts() {
             className="fileterSelect"
             onChange={(e) => setCatFilter(e.target.value)}
           >
-            <option value="type">الكل</option>
+            <option value="all">الكل</option>
             <option value="electronics">الكترونيات</option>
             <option value="cars">سيارات</option>
             <option value="sports">الرياضة</option>
