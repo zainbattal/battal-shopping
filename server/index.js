@@ -14,10 +14,16 @@ app.use(express.json());
 app.post("/list", async (req, res) => {
   try {
     const { catFilter, priceFilter } = req.body;
-    let response = await pool.query(
-      "SELECT * FROM products WHERE type = $1 AND price < $2",
-      [catFilter, priceFilter]
-    );
+    if (catFilter === "all") {
+      response = await pool.query("SELECT * FROM products WHERE price < $1", [
+        priceFilter,
+      ]);
+    } else {
+      response = await pool.query(
+        "SELECT * FROM products WHERE type = $1 AND price < $2",
+        [catFilter, priceFilter]
+      );
+    }
     res.json(response.rows);
   } catch (error) {
     console.error(error.message);
