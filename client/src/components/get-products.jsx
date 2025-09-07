@@ -20,11 +20,11 @@ export default function GetProducts() {
         headers: { "content-type": "application/json" },
       });
       if (response.ok) {
-        loading.current.style.display = "none";
-        list.current.style.display = "flex";
         let jsonData = await response.json();
         console.log(jsonData);
         setProducts(jsonData);
+        loading.current.style.display = "none";
+        list.current.style.display = "flex";
       }
     } catch (error) {
       console.error(error);
