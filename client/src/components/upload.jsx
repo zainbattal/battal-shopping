@@ -9,6 +9,7 @@ export default function Uploud(params) {
   const [type, setType] = useState("notSet");
   const [price, setPrice] = useState(1000);
   const [image, setImage] = useState();
+  const [city, setCity] = useState("");
   const [status, setStatus] = useState("");
   const [badstatus, setBadstatus] = useState("");
   const stat = useRef();
@@ -55,6 +56,7 @@ export default function Uploud(params) {
       formData.append("type", type);
       formData.append("price", price);
       formData.append("image", image);
+      formData.append("city", city);
       const response = await fetch(
         "https://battal-shopping.onrender.com/post",
         {
@@ -151,6 +153,57 @@ export default function Uploud(params) {
             accept=".jpg, .jpeg, .png"
             onChange={handleImage}
           />
+          <p className="price">المدينة</p>
+          <select
+            className="type-select"
+            required
+            onChange={(e) => {
+              setCity(e.target.value);
+            }}
+          >
+            <option className="type-option" value="latakia">
+              اللاذقية
+            </option>
+            <option className="type-option" value="damascus">
+              دمشق
+            </option>
+            <option className="type-option" value="idlib">
+              ادلب
+            </option>
+            <option className="type-option" value="tartous">
+              طرطوس
+            </option>
+            <option className="type-option" value="hama">
+              حماة
+            </option>
+            <option className="type-option" value="daraa">
+              درعا
+            </option>
+            <option className="type-option" value="homs">
+              حمص
+            </option>
+            <option className="type-option" value="aleppo">
+              حلب
+            </option>
+            <option className="type-option" value="reef damascus">
+              ريف دمشق
+            </option>
+            <option className="type-option" value="hasaka">
+              الحسكة
+            </option>
+            <option className="type-option" value="qunaitra">
+              القنيطرة
+            </option>
+            <option className="type-option" value="der azzor">
+              دير الزور
+            </option>
+            <option className="type-option" value="swedaa">
+              السوداء
+            </option>
+            <option className="type-option" value="raqa">
+              الرقة
+            </option>
+          </select>
           <p className="price">السعر</p>
           <input
             ref={priceInp}

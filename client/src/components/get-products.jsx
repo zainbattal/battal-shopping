@@ -6,6 +6,7 @@ export default function GetProducts() {
   const [products, setProducts] = useState([]);
   const [priceFilter, setPriceFilter] = useState(99999999);
   const [catFilter, setCatFilter] = useState("all");
+  const [cityFilter, setCityFilter] = useState("damascus");
   const navigate = useNavigate();
   const loading = useRef();
   const list = useRef();
@@ -15,7 +16,7 @@ export default function GetProducts() {
       list.current.style.display = "none";
       let response = await fetch("https://battal-shopping.onrender.com/list", {
         method: "POST",
-        body: JSON.stringify({ catFilter, priceFilter }),
+        body: JSON.stringify({ catFilter, priceFilter, cityFilter }),
         headers: { "content-type": "application/json" },
       });
       if (response.ok) {
@@ -62,6 +63,59 @@ export default function GetProducts() {
   return (
     <>
       <div className="filterCont">
+        <div>
+          <span className="filterName">الفئة</span>
+          <select
+            className="fileterSelect"
+            onChange={(e) => {
+              setCityFilter(e.target.value);
+            }}
+          >
+            <option className="type-option" value="latakia">
+              اللاذقية
+            </option>
+            <option className="type-option" value="damascus">
+              دمشق
+            </option>
+            <option className="type-option" value="idlib">
+              ادلب
+            </option>
+            <option className="type-option" value="tartous">
+              طرطوس
+            </option>
+            <option className="type-option" value="hama">
+              حماة
+            </option>
+            <option className="type-option" value="daraa">
+              درعا
+            </option>
+            <option className="type-option" value="homs">
+              حمص
+            </option>
+            <option className="type-option" value="aleppo">
+              حلب
+            </option>
+            <option className="type-option" value="reef damascus">
+              ريف دمشق
+            </option>
+            <option className="type-option" value="hasaka">
+              الحسكة
+            </option>
+            <option className="type-option" value="qunaitra">
+              القنيطرة
+            </option>
+            <option className="type-option" value="der azzor">
+              دير الزور
+            </option>
+            <option className="type-option" value="swedaa">
+              السوداء
+            </option>
+            <option className="type-option" value="raqa">
+              الرقة
+            </option>
+          </select>
+        </div>
+
         <div>
           <span className="filterName">الفئة</span>
           <select
@@ -122,7 +176,7 @@ export default function GetProducts() {
               <span className="product-name">{product.name}</span>
               <span className="product-disc">{product.discription}</span>
               <span className="product-type">{product.type}</span>
-              <span className="product-price">{product.price} SP</span>
+              <span className="product-price">{product.price} SYP</span>
               <span className="product-date">{product.date}</span>
             </div>
           </div>

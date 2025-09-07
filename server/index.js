@@ -13,17 +13,18 @@ app.use(express.json());
 
 app.post("/list", async (req, res) => {
   try {
-    const { catFilter, priceFilter } = req.body;
+    const { catFilter, priceFilter, cityFilter } = req.body;
     console.log(catFilter);
     console.log(priceFilter);
     if (catFilter === "all") {
-      response = await pool.query("SELECT * FROM products WHERE price < $1", [
-        priceFilter,
-      ]);
+      response = await pool.query(
+        "SELECT * FROM products WHERE price < $1 and city = $2",
+        [priceFilter, cityFilter]
+      );
     } else {
       response = await pool.query(
-        "SELECT * FROM products WHERE type = $1 AND price < $2",
-        [catFilter, priceFilter]
+        "SELECT * FROM products WHERE type = $1 AND price < $2 and city = $3",
+        [catFilter, priceFilter, cityFilter]
       );
     }
     res.json(response.rows);
@@ -106,7 +107,7 @@ app.get("/image/:id", async (req, res) => {
 
 app.post("/post", upload.single("image"), async (req, res) => {
   try {
-    const { name, discription, price, type } = req.body;
+    const { name, discription, price, type, city } = req.body;
     const image = req.file.buffer;
     const token = req.header("token");
     const decoded = jwt.verify(token, process.env.jwtSecret);
@@ -119,8 +120,8 @@ app.post("/post", upload.single("image"), async (req, res) => {
     const userNumber = userRow.rows[0].user_number;
 
     let response = await pool.query(
-      "INSERT INTO products (name, discription, price, type, date, image, uploader, uploader_number) VALUES ($1, $2, $3, $4, CURRENT_DATE, $5, $6, $7) RETURNING *",
-      [name, discription, price, type, image, user, userNumber]
+      "INSERT INTO products (name, discription, price, type, date, image, uploader, uploader_number, city) VALUES ($1, $2, $3, $4, CURRENT_DATE, $5, $6, $7, $8) RETURNING *",
+      [name, discription, price, type, image, user, userNumber, city]
     );
     res.send("added!");
   } catch (error) {

@@ -87,7 +87,7 @@ export default function UserProducts() {
               <span className="product-name">{product.name}</span>
               <span className="product-disc">{product.discription}</span>
               <span className="product-type">{product.type}</span>
-              <span className="product-price">{product.price} SP</span>
+              <span className="product-price">{product.price} SYP</span>
               <span className="product-date">{product.date}</span>
             </div>
             <button className="dltBtn" onClick={() => handleDelete(product.id)}>
