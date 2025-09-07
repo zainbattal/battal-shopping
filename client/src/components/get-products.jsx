@@ -58,7 +58,7 @@ export default function GetProducts() {
     checkAuthorization();
 
     getProducts();
-  }, [catFilter, priceFilter]);
+  }, [catFilter, priceFilter, cityFilter]);
 
   return (
     <>
@@ -71,11 +71,11 @@ export default function GetProducts() {
               setCityFilter(e.target.value);
             }}
           >
-            <option className="type-option" value="latakia">
-              اللاذقية
-            </option>
             <option className="type-option" value="damascus">
               دمشق
+            </option>
+            <option className="type-option" value="latakia">
+              اللاذقية
             </option>
             <option className="type-option" value="idlib">
               ادلب
