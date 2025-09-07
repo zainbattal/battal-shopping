@@ -63,7 +63,7 @@ export default function GetProducts() {
     <>
       <div className="filterCont">
         <div>
-          <span className="filterName">الفئة</span>
+          <span className="filterName">المدينة</span>
           <select
             className="fileterSelect"
             onChange={(e) => {
@@ -147,11 +147,7 @@ export default function GetProducts() {
         </div>
       </div>
 
-      <p
-        ref={loading}
-        className="loadingText"
-        style={{ textAlign: "center", marginTop: "3vw", fontSize: "large" }}
-      >
+      <p ref={loading} className="loadingText" style={{ textAlign: "center" }}>
         ...جارٍ التحميل
       </p>
 
