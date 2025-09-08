@@ -12,7 +12,10 @@ export default function SearchProducts() {
   const searchStatus = useRef();
   const getProducts = async (e) => {
     try {
-      e.preventDefault();
+      if (e) {
+        e.preventDefault();
+      }
+      searchStatus.current.innerText = "جار التحميل";
       const body = { input, cityFilter, priceFilter, catFilter };
       let response = await fetch(
         "https://battal-shopping.onrender.com/search",
