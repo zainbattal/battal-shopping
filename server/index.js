@@ -133,15 +133,29 @@ app.post("/post", upload.single("image"), async (req, res) => {
 
 app.post("/search", async (req, res) => {
   try {
-    let { input } = req.body;
-    let response = await pool.query(
-      `SELECT * FROM products WHERE SIMILARITY(name, $1) > 0.2 OR SIMILARITY(discription, $1) > 0.2;`,
-      [input]
-    );
+    const { input, catFilter, cityFilter, priceFilter } = req.body;
+    let response;
+
+    if (catFilter === "all") {
+      response = await pool.query(
+        `SELECT * FROM products 
+         WHERE (SIMILARITY(name, $1) > 0.2 OR SIMILARITY(description, $1) > 0.2) 
+         AND price < $2 AND city = $3`,
+        [input, priceFilter, cityFilter]
+      );
+    } else {
+      response = await pool.query(
+        `SELECT * FROM products 
+         WHERE (SIMILARITY(name, $1) > 0.2 OR SIMILARITY(description, $1) > 0.2) 
+         AND type = $2 AND price < $3 AND city = $4`,
+        [input, catFilter, priceFilter, cityFilter]
+      );
+    }
+
     res.json(response.rows);
   } catch (error) {
     console.error(error.message);
-    res.json("server error");
+    res.status(500).json({ error: "Server error" });
   }
 });
 

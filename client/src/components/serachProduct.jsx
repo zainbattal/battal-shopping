@@ -5,12 +5,15 @@ import { useNavigate } from "react-router-dom";
 export default function SearchProducts() {
   const [products, setProducts] = useState([]);
   const [input, setInput] = useState("");
+  const [priceFilter, setPriceFilter] = useState(99999999);
+  const [catFilter, setCatFilter] = useState("all");
+  const [cityFilter, setCityFilter] = useState("damascus");
   const navigate = useNavigate();
   const searchStatus = useRef();
   const getProducts = async (e) => {
     try {
       e.preventDefault();
-      const body = { input };
+      const body = { input, cityFilter, priceFilter, catFilter };
       let response = await fetch(
         "https://battal-shopping.onrender.com/search",
         {
@@ -56,8 +59,97 @@ export default function SearchProducts() {
     checkAuthorization();
   }, []);
 
+  useEffect(() => {
+    getProducts();
+  }, [catFilter, priceFilter, cityFilter]);
+
   return (
     <>
+      <div className="filterCont">
+        <div>
+          <span className="filterName">المدينة</span>
+          <select
+            className="fileterSelect"
+            onChange={(e) => {
+              setCityFilter(e.target.value);
+            }}
+          >
+            <option className="type-option" value="damascus">
+              دمشق
+            </option>
+            <option className="type-option" value="latakia">
+              اللاذقية
+            </option>
+            <option className="type-option" value="idlib">
+              ادلب
+            </option>
+            <option className="type-option" value="tartous">
+              طرطوس
+            </option>
+            <option className="type-option" value="hama">
+              حماة
+            </option>
+            <option className="type-option" value="daraa">
+              درعا
+            </option>
+            <option className="type-option" value="homs">
+              حمص
+            </option>
+            <option className="type-option" value="aleppo">
+              حلب
+            </option>
+            <option className="type-option" value="reef damascus">
+              ريف دمشق
+            </option>
+            <option className="type-option" value="hasaka">
+              الحسكة
+            </option>
+            <option className="type-option" value="qunaitra">
+              القنيطرة
+            </option>
+            <option className="type-option" value="der azzor">
+              دير الزور
+            </option>
+            <option className="type-option" value="swedaa">
+              السوداء
+            </option>
+            <option className="type-option" value="raqa">
+              الرقة
+            </option>
+          </select>
+        </div>
+
+        <div>
+          <span className="filterName">الفئة</span>
+          <select
+            className="fileterSelect"
+            onChange={(e) => {
+              setCatFilter(e.target.value);
+            }}
+          >
+            <option value="all">الكل</option>
+            <option value="electronics">الكترونيات</option>
+            <option value="cars">سيارات</option>
+            <option value="sports">الرياضة</option>
+            <option value="houseProducts">مستلزمات المنزل</option>
+            <option value="decoration">قطع زينة</option>
+          </select>
+        </div>
+        <div>
+          <span>السعر</span>
+          <select
+            className="fileterSelect"
+            onChange={(e) => {
+              setPriceFilter(e.target.value);
+            }}
+          >
+            <option value="99999999">الكل</option>
+            <option value="1000000">تحت 1000000</option>
+            <option value="100000"> تحت 100000</option>
+            <option value="50000">تحت 50000</option>
+          </select>
+        </div>
+      </div>
       <form
         onSubmit={getProducts}
         style={{ display: "flex", justifyContent: "center", marginTop: "20px" }}
