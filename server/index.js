@@ -136,14 +136,14 @@ app.post("/search", async (req, res) => {
     const { input, catFilter, cityFilter, priceFilter } = req.body;
 
     if (catFilter === "all") {
-      const response = await pool.query(
+      response = await pool.query(
         `SELECT * FROM products 
          WHERE (SIMILARITY(name, $1) > 0.2 OR SIMILARITY(discription, $1) > 0.2) 
          AND price < $2 AND city = $3`,
         [input, priceFilter, cityFilter]
       );
     } else {
-      const response = await pool.query(
+      response = await pool.query(
         `SELECT * FROM products 
          WHERE (SIMILARITY(name, $1) > 0.2 OR SIMILARITY(discription, $1) > 0.2) 
          AND type = $2 AND price < $3 AND city = $4`,
