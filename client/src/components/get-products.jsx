@@ -158,7 +158,8 @@ export default function GetProducts() {
             className="product-cont"
             onClick={() => {
               alert(
-                `رقم البائع: \n +963 ${product.uploader_number}\n تاريخ التنزيل: \n ${product.date}`
+                //`رقم البائع: \n +963 ${product.uploader_number}\n تاريخ التنزيل: \n ${product.date}`
+                navigate(`products/${product.id}`)
               );
             }}
           >

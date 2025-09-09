@@ -192,6 +192,18 @@ app.post("/verify-turnstile", async (req, res) => {
 
 // register and login routed
 
+app.post("/getOne", async (req, res) => {
+  try {
+    const { id } = req.body;
+    const response = await pool.query("SELECT * FROM prosuct WHERE id = $1", [
+      id,
+    ]);
+    res.json(response.rows);
+  } catch (error) {
+    res.status(403).json(error);
+  }
+});
+
 app.use("/auth", require("./routes/jwtAuth"));
 
 app.listen(3000, () => {
