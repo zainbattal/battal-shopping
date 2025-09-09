@@ -547,3 +547,82 @@ body {
     flex: 2;
   }
 }
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #ffffff;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #1a1a1a;
+}
+
+.fullDetails {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
+  box-sizing: border-box;
+}
+
+.fullDetails img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  margin-bottom: 24px;
+  border: 1px solid #ccc;
+}
+
+.detailDiv {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.DetailsName {
+  font-size: 28px;
+  font-weight: 700;
+  color: #004080;
+  margin-bottom: 16px;
+  border-bottom: 2px solid #004080;
+  padding-bottom: 8px;
+}
+
+.DetailsSpan {
+  font-size: 16px;
+  font-weight: bold;
+  color: #004080;
+  margin-top: 16px;
+}
+
+.DetailsDisc,
+.DetailsUsername,
+.DetailsNumber,
+.DetailsType,
+.DetailsCity,
+.DetailsPrice,
+.DetailsDate {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #222;
+  margin: 0;
+}
+
+/* Responsive Design */
+@media (min-width: 768px) {
+  .fullDetails {
+    flex-direction: row;
+    gap: 40px;
+  }
+
+  .fullDetails img {
+    width: 50%;
+    max-height: 600px;
+  }
+
+  .detailDiv {
+    width: 50%;
+    padding-top: 12px;
+  }
+}
