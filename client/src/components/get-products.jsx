@@ -62,7 +62,7 @@ export default function GetProducts() {
   return (
     <>
       <div className="filterCont">
-        <div>
+        <div className="filter">
           <span className="filterName">المدينة</span>
           <select
             className="fileterSelect"
@@ -115,7 +115,7 @@ export default function GetProducts() {
           </select>
         </div>
 
-        <div>
+        <div className="filter">
           <span className="filterName">الفئة</span>
           <select
             className="fileterSelect"
@@ -131,7 +131,7 @@ export default function GetProducts() {
             <option value="decoration">قطع زينة</option>
           </select>
         </div>
-        <div>
+        <div className="filter">
           <span>السعر</span>
           <select
             className="fileterSelect"

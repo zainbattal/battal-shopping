@@ -585,6 +585,10 @@ body {
     align-items: flex-start;
   }
 
+  .filter {
+    scale: 0.7;
+  }
+
   .fullDetails img {
     width: 45%;
     margin-bottom: 0;
