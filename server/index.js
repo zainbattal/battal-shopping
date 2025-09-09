@@ -198,7 +198,7 @@ app.post("/getOne", async (req, res) => {
     const response = await pool.query("SELECT * FROM product WHERE id = $1", [
       id,
     ]);
-    res.json(response.rows);
+    res.json(response.rows[0]);
   } catch (error) {
     res.status(403).json(error);
   }
