@@ -548,147 +548,47 @@ body {
   }
 }
 
-body {
-  margin: 0;
-  padding: 0;
-  background-color: #ffffff;
-  font-family: Arial, Helvetica, sans-serif;
-  color: #1a1a1a;
-}
-
 .fullDetails {
   display: flex;
   flex-direction: column;
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 24px;
-  box-sizing: border-box;
-}
-
-.fullDetails img {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-  margin-bottom: 24px;
-  border: 1px solid #ccc;
-}
-
-.detailDiv {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.DetailsName {
-  font-size: 28px;
-  font-weight: 700;
-  color: #004080;
-  margin-bottom: 16px;
-  border-bottom: 2px solid #004080;
-  padding-bottom: 8px;
-}
-
-.DetailsSpan {
-  font-size: 16px;
-  font-weight: bold;
-  color: #004080;
-  margin-top: 16px;
-}
-
-.DetailsDisc,
-.DetailsUsername,
-.DetailsNumber,
-.DetailsType,
-.DetailsCity,
-.DetailsPrice,
-.DetailsDate {
-  font-size: 16px;
-  line-height: 1.6;
-  color: #222;
-  margin: 0;
-}
-
-/* Responsive Design */
-@media (min-width: 768px) {
-  .fullDetails {
-    flex-direction: row;
-    gap: 40px;
-  }
-
-  .fullDetails img {
-    width: 50%;
-    max-height: 600px;
-  }
-
-  .detailDiv {
-    width: 50%;
-    padding-top: 12px;
-  }
-}
-
-/* Reset & Base Styles */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: "Inter", "Segoe UI", sans-serif;
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 1.5rem;
   background-color: #ffffff;
-  color: #1e1e1e;
-  line-height: 1.8;
-  font-size: 18px;
-  padding: 0;
-}
-
-/* Fullscreen layout */
-.fullDetails {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  width: 100%;
-  padding: 32px 24px;
-  gap: 32px;
-  max-width: 1000px;
-  margin: 0 auto;
-}
-
-/* Responsive image */
-.fullDetails img {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-  max-height: 500px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   border-radius: 12px;
+  overflow: hidden;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #1f3b57;
 }
 
-/* Typography layout */
+.fullDetails img {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+}
+
 .detailDiv {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 1rem;
 }
 
-/* Product name */
 .DetailsName {
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: #003366;
-  letter-spacing: -0.5px;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #104e8b;
+  margin-bottom: 0.5rem;
 }
 
-/* Labels */
 .DetailsSpan {
   font-size: 1rem;
   font-weight: 600;
-  text-transform: uppercase;
-  color: #0070f3;
-  margin-bottom: 4px;
+  color: #1f3b57;
 }
 
-/* Text fields */
 .DetailsDisc,
 .DetailsUsername,
 .DetailsNumber,
@@ -696,145 +596,27 @@ body {
 .DetailsCity,
 .DetailsPrice,
 .DetailsDate {
-  font-size: 1.1rem;
-  color: #333;
-  padding-left: 4px;
+  font-size: 0.95rem;
+  color: #444;
+  margin: 0;
+  padding-left: 0.5rem;
+  border-left: 3px solid #1e90ff33;
 }
 
-/* Responsive design */
+/* Responsive styles */
 @media (min-width: 768px) {
   .fullDetails {
-    padding: 64px;
     flex-direction: row;
-    gap: 64px;
+    gap: 2rem;
   }
 
   .fullDetails img {
-    flex: 1;
-    max-height: 600px;
+    width: 50%;
+    height: auto;
+    margin-bottom: 0;
   }
 
   .detailDiv {
     flex: 1;
-    padding-top: 0;
   }
-}
-
-.fullDetails {
-  display: grid;
-  grid-template-columns: 1fr;
-  background: white;
-  max-width: 1200px;
-  margin: 20px auto;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  gap: 20px;
-}
-
-.fullDetails img {
-  width: 100%;
-  max-width: 500px;
-  height: auto;
-  margin: 0 auto;
-  display: block;
-  border-radius: 8px;
-  object-fit: contain;
-}
-
-.detailDiv {
-  display: flex;
-  flex-direction: column;
-}
-
-.DetailsName {
-  color: #0066c0;
-  font-size: 24px;
-  font-weight: 600;
-  margin-bottom: 15px;
-  line-height: 1.3;
-}
-
-.DetailsSpan {
-  display: block;
-  color: #111;
-  font-weight: 700;
-  margin-top: 16px;
-  margin-bottom: 6px;
-  font-size: 16px;
-}
-
-.DetailsDisc,
-.DetailsUsername,
-.DetailsNumber,
-.DetailsType,
-.DetailsCity {
-  color: #555;
-  line-height: 1.5;
-  margin-bottom: 8px;
-  padding: 8px 0;
-  border-bottom: 1px solid #eee;
-}
-
-.DetailsPrice {
-  color: #b12704;
-  font-size: 24px;
-  font-weight: 600;
-  margin: 15px 0;
-  padding: 10px 0;
-}
-
-.DetailsDate {
-  color: #767676;
-  font-size: 14px;
-  margin-top: 10px;
-  padding-top: 10px;
-  border-top: 1px solid #eee;
-}
-
-/* Desktop layout */
-@media (min-width: 768px) {
-  .fullDetails {
-    grid-template-columns: 1fr 1fr;
-    gap: 30px;
-    padding: 30px;
-  }
-
-  .fullDetails img {
-    max-height: 500px;
-    object-fit: contain;
-  }
-
-  .detailDiv {
-    padding: 10px 0;
-  }
-}
-
-/* Add to cart button */
-.detailDiv::after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-.detailDiv::before {
-  content: "أضف إلى السلة";
-  display: block;
-  background: #ffd814;
-  color: #0f1111;
-  text-align: center;
-  padding: 12px 20px;
-  border-radius: 20px;
-  font-weight: 600;
-  font-size: 16px;
-  margin-top: 20px;
-  cursor: pointer;
-  width: 200px;
-  border: none;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  transition: all 0.3s ease;
-}
-
-.detailDiv::before:hover {
-  background: #f7ca00;
 }
