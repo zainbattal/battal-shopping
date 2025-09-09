@@ -8,7 +8,7 @@ const jwt = require("jsonwebtoken");
 const upload = multer();
 require("dotenv").config();
 
-app.use(cors({ origin: "https://battal-shopping.vercel.app" }));
+app.use(cors());
 app.use(express.json());
 
 app.post("/list", async (req, res) => {
@@ -195,7 +195,7 @@ app.post("/verify-turnstile", async (req, res) => {
 app.post("/getOne", async (req, res) => {
   try {
     const { id } = req.body;
-    const response = await pool.query("SELECT * FROM product WHERE id = $1", [
+    const response = await pool.query("SELECT * FROM products WHERE id = $1", [
       id,
     ]);
     res.json(response.rows[0]);
