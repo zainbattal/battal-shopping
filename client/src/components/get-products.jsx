@@ -157,10 +157,11 @@ export default function GetProducts() {
             key={product.id}
             className="product-cont"
             onClick={() => {
-              alert(
-                //`رقم البائع: \n +963 ${product.uploader_number}\n تاريخ التنزيل: \n ${product.date}`
-                navigate(`products/${product.id}`)
-              );
+              navigate(`products/${product.id}`);
+              //alert(
+              //`رقم البائع: \n +963 ${product.uploader_number}\n تاريخ التنزيل: \n ${product.date}`
+
+              //);
             }}
           >
             <img
