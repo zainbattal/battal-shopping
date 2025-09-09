@@ -7,10 +7,10 @@ export default function ProductDetails() {
   const [post, setPost] = useState(null);
 
   const GetProduct = async () => {
-    const res = fetch("https://battal-shopping.onrender.com/getOne", {
+    const res = await fetch("https://battal-shopping.onrender.com/getOne", {
       method: "POST",
       headers: { "content-type": "application/json" },
-      body: { id },
+      body: JSON.stringify({ id }),
     });
     let jsonData = await res.json();
     setPost(jsonData);
