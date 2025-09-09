@@ -20,6 +20,7 @@ body {
 .siteNav {
   display: flex;
   justify-content: center;
+  gap: 2rem;
   padding: 1rem 2rem;
   position: sticky;
   top: 0;
@@ -458,6 +459,10 @@ body {
    ========================= */
 @media (max-width: 768px) {
   /* Navbar: stack links instead of squeezing */
+
+  .siteNav {
+    gap: 0;
+  }
 
   .siteLink {
     margin: 0;
