@@ -8,7 +8,7 @@ const jwt = require("jsonwebtoken");
 const upload = multer();
 require("dotenv").config();
 
-app.use(cors());
+app.use(cors({ origin: "https://battal-shopping.vercel.app" }));
 app.use(express.json());
 
 app.post("/list", async (req, res) => {
