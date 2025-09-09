@@ -25,40 +25,24 @@ export default function ProductDetails() {
 
   return (
     <>
-      <div className="detailDiv">
-        <h3 className="DetailsName">{post.name}</h3>
-
-        <div className="infoRow">
+      <div className="fullDetails">
+        <img src={`https://battal-shopping.onrender.com/image/${id}`} />
+        <div className="detailDiv">
+          <h3 className="DetailsName">{post.name}</h3>
           <span className="DetailsSpan">الوصف:</span>
           <p className="DetailsDisc">{post.discription}</p>
-        </div>
-
-        <div className="infoRow">
           <span className="DetailsSpan">اسم المستخدم:</span>
           <p className="DetailsUsername">{post.uploader}</p>
-        </div>
-
-        <div className="infoRow">
-          <span className="DetailsSpan">رقم المستخدم:</span>
+          <span className="DetailsSpan">رقم المستخدم</span>
           <p className="DetailsNumber">{post.uploader_number}</p>
-        </div>
-
-        <div className="infoRow">
           <span className="DetailsSpan">الفئة:</span>
           <p className="DetailsType">{post.type}</p>
-        </div>
-
-        <div className="infoRow">
           <span className="DetailsSpan">المدينة:</span>
           <p className="DetailsCity">{post.city}</p>
-        </div>
-
-        <div className="infoRow">
           <span className="DetailsSpan">السعر:</span>
-          <p className="DetailsPrice">{post.price} ر.س</p>
+          <p className="DetailsPrice">{post.price}</p>
+          <p className="DetailsDate">{post.date}</p>
         </div>
-
-        <p className="DetailsDate">{post.date}</p>
       </div>
     </>
   );

@@ -586,3 +586,34 @@ body {
     flex: 1;
   }
 }
+
+.fullDetails {
+  display: flex;
+  flex-direction: column;
+  padding: 24px 16px;
+  background: #ffffff;
+  max-width: 1200px;
+  margin: 32px auto;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+  box-sizing: border-box;
+}
+
+@media (min-width: 768px) {
+  .fullDetails {
+    flex-direction: row;
+    gap: 40px;
+    align-items: center; /* 💥 This line vertically centers the image */
+  }
+
+  .fullDetails img {
+    width: 45%;
+    max-height: 500px;
+    object-fit: contain;
+    background-color: #f0f2f5;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #e0e0e0;
+    margin-bottom: 0; /* remove mobile spacing */
+  }
+}
