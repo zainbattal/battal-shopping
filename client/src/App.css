@@ -721,42 +721,64 @@ body {
 }
 
 .fullDetails {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr;
   background: white;
-  border-radius: 12px;
+  border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
   max-width: 1200px;
   margin: 0 auto;
+  position: relative;
 }
 
 .fullDetails img {
   width: 100%;
-  height: 300px;
+  height: 280px;
   object-fit: cover;
-  border-bottom: 3px solid #1976d2;
+  display: block;
+  border-bottom: 4px solid #1976d2;
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
 
 .detailDiv {
-  padding: 20px;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .DetailsName {
-  color: #1976d2;
-  font-size: 24px;
-  margin-bottom: 15px;
-  padding-bottom: 10px;
-  border-bottom: 2px solid #e3f2fd;
+  color: #1565c0;
+  font-size: 26px;
+  margin-bottom: 5px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid #bbdefb;
+  font-weight: 700;
 }
 
 .DetailsSpan {
   display: block;
-  color: #1976d2;
+  color: #0d47a1;
   font-weight: 600;
-  margin-top: 15px;
-  margin-bottom: 5px;
-  font-size: 16px;
+  margin-top: 8px;
+  font-size: 17px;
+  position: relative;
+  padding-right: 10px;
+}
+
+.DetailsSpan::before {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 18px;
+  background: #1976d2;
+  border-radius: 10px;
 }
 
 .DetailsDisc,
@@ -765,58 +787,104 @@ body {
 .DetailsType,
 .DetailsCity,
 .DetailsPrice {
-  background: #e3f2fd;
-  padding: 10px 15px;
-  border-radius: 8px;
-  margin-bottom: 5px;
+  background: #f5f9ff;
+  padding: 14px 18px;
+  border-radius: 12px;
+  margin: 5px 0;
   border-right: 3px solid #1976d2;
+  box-shadow: 0 2px 8px rgba(25, 118, 210, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.DetailsDisc:hover,
+.DetailsUsername:hover,
+.DetailsNumber:hover,
+.DetailsType:hover,
+.DetailsCity:hover,
+.DetailsPrice:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(25, 118, 210, 0.12);
 }
 
 .DetailsPrice {
   color: #1976d2;
   font-weight: bold;
-  font-size: 20px;
+  font-size: 22px;
+  background: #e3f2fd;
+  border-right: 3px solid #0d47a1;
 }
 
 .DetailsDate {
   text-align: left;
-  color: #757575;
+  color: #78909c;
   font-size: 14px;
-  margin-top: 15px;
-  padding-top: 10px;
-  border-top: 1px dashed #bdbdbd;
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 1px dashed #b0bec5;
 }
 
-/* Desktop styles */
+/* Desktop styles with sticky image */
 @media (min-width: 768px) {
   .fullDetails {
-    flex-direction: row;
+    grid-template-columns: 1fr 1fr;
+    min-height: 600px;
   }
 
   .fullDetails img {
-    width: 40%;
-    height: auto;
+    height: 100%;
+    position: sticky;
+    top: 0;
     border-bottom: none;
-    border-right: 3px solid #1976d2;
+    border-right: 4px solid #1976d2;
   }
 
   .detailDiv {
-    width: 60%;
-    padding: 30px;
+    padding: 35px;
+    gap: 16px;
+    overflow-y: auto;
+    max-height: 600px;
+  }
+
+  .detailDiv::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .detailDiv::-webkit-scrollbar-thumb {
+    background: #bbdefb;
+    border-radius: 10px;
+  }
+
+  .detailDiv::-webkit-scrollbar-thumb:hover {
+    background: #64b5f6;
   }
 }
 
 /* Mobile optimization */
 @media (max-width: 480px) {
-  .DetailsName {
-    font-size: 20px;
+  .fullDetails img {
+    position: sticky;
+    top: 0;
+    height: 220px;
   }
 
   .detailDiv {
-    padding: 15px;
+    padding: 20px 15px;
+  }
+
+  .DetailsName {
+    font-size: 22px;
   }
 
   .DetailsSpan {
-    font-size: 15px;
+    font-size: 16px;
+  }
+
+  .DetailsDisc,
+  .DetailsUsername,
+  .DetailsNumber,
+  .DetailsType,
+  .DetailsCity,
+  .DetailsPrice {
+    padding: 12px 15px;
   }
 }
