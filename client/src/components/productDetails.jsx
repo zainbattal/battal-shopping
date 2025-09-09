@@ -56,7 +56,7 @@ export default function ProductDetails() {
           <p className="DetailsDisc">{post.discription}</p>
           <span className="DetailsSpan">اسم المستخدم:</span>
           <p className="DetailsUsername">{post.uploader}</p>
-          <span className="DetailsSpan">{"اسم الستخدم (اضغط للنسخ):"}</span>
+          <span className="DetailsSpan">{"رقم الستخدم (اضغط للنسخ):"}</span>
           <p
             className="DetailsNumber"
             style={{ cursor: "pointer" }}
