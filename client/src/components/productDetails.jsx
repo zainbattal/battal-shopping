@@ -13,7 +13,7 @@ export default function ProductDetails() {
       body: { id },
     });
     let jsonData = await res.json();
-    setProducts(jsonData);
+    setPost(jsonData);
   };
   useEffect(() => {
     GetProduct();
