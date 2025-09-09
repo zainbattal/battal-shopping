@@ -195,7 +195,7 @@ app.post("/verify-turnstile", async (req, res) => {
 app.post("/getOne", async (req, res) => {
   try {
     const { id } = req.body;
-    const response = await pool.query("SELECT * FROM prosuct WHERE id = $1", [
+    const response = await pool.query("SELECT * FROM product WHERE id = $1", [
       id,
     ]);
     res.json(response.rows);
