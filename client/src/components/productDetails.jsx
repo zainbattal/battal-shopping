@@ -40,7 +40,7 @@ export default function ProductDetails() {
           <span className="DetailsSpan">المدينة:</span>
           <p className="DetailsCity">{post.city}</p>
           <span className="DetailsSpan">السعر:</span>
-          <p className="DetailsPrice">{post.price}</p>
+          <p className="DetailsPrice">{post.price} SYP</p>
           <p className="DetailsDate">{post.date}</p>
         </div>
       </div>
