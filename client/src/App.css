@@ -464,6 +464,10 @@ body {
     gap: 0;
   }
 
+  .filter {
+    scale: 0.7;
+  }
+
   .siteLink {
     margin: 0;
 
@@ -583,10 +587,6 @@ body {
     flex-direction: row;
     gap: 40px;
     align-items: flex-start;
-  }
-
-  .filter {
-    scale: 0.7;
   }
 
   .fullDetails img {
