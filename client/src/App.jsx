@@ -50,7 +50,7 @@ export function App() {
             <img
               src={logo}
               alt="sooqsyria"
-              style={{ width: "100px", height: "80px" }}
+              style={{ width: "80px", height: "80px" }}
             />
           </div>
         )}

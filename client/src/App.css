@@ -464,6 +464,8 @@ body {
     margin: 0;
     font-size: small;
     padding: 0;
+    scale: 0.7;
+    font-size: larger;
   }
   .siteLinkOut {
     display: none;
