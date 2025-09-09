@@ -39,6 +39,7 @@ export default function ProductDetails() {
             style={{ cursor: "pointer" }}
             onClick={() => {
               navigator.clipboard.writeText(post.uploader_number);
+              alert("تم نسخ الرقم");
             }}
           >
             {post.uploader_number}
