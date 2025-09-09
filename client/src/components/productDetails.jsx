@@ -18,16 +18,17 @@ export default function ProductDetails() {
   useEffect(() => {
     GetProduct();
   }, []);
-  return (
-    <>
-      <div>
-        <img src={`https://battal-shopping.onrender.com/image/${id}`} />
-        <h3>{post.name}</h3>
-        <p>{post.discription}</p>
-        <p>{post.type}</p>
-        <p>{post.price}</p>
-        <p>{post.date}</p>
-      </div>
-    </>
-  );
+  if (post)
+    return (
+      <>
+        <div>
+          <img src={`https://battal-shopping.onrender.com/image/${id}`} />
+          <h3>{post.name}</h3>
+          <p>{post.discription}</p>
+          <p>{post.type}</p>
+          <p>{post.price}</p>
+          <p>{post.date}</p>
+        </div>
+      </>
+    );
 }
