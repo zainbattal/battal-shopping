@@ -1,7 +1,8 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-export default function ProductPage(params) {
+
+export default function ProductDetails() {
   const { id } = useParams();
   const [post, setPost] = useState(null);
 

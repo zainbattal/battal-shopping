@@ -6,6 +6,7 @@ import Uploud from "./components/upload";
 import GetProducts from "./components/get-products";
 import Register from "./components/register";
 import Login from "./components/login";
+import ProductDetails from "./components/productDetails";
 import UserProducts from "./components/userSells";
 import SearchProducts from "./components/serachProduct";
 import logo from "./assets/soow.png";
@@ -62,6 +63,7 @@ export function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/search" element={<SearchProducts />} />
+        <Route path="/products/:id" element={<ProductDetails />} />
       </Routes>
     </>
   );
