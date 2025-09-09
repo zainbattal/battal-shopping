@@ -6,6 +6,28 @@ export default function ProductDetails() {
   const { id } = useParams();
   const [post, setPost] = useState(null);
 
+  const checkAuthorization = async () => {
+    try {
+      const response = await fetch(
+        "https://battal-shopping.onrender.com/auth/is-authorized",
+        {
+          method: "GET",
+          headers: {
+            token: localStorage.token,
+          },
+        }
+      );
+
+      if (response.ok) {
+        console.log("ok"); // Fixed the if statement
+      } else {
+        navigate("/register");
+      }
+    } catch (error) {
+      console.error("Authorization check failed:", error);
+    }
+  };
+
   const GetProduct = async () => {
     const res = await fetch("https://battal-shopping.onrender.com/getOne", {
       method: "POST",
@@ -16,6 +38,7 @@ export default function ProductDetails() {
     setPost(jsonData);
   };
   useEffect(() => {
+    checkAuthorization();
     GetProduct();
   }, []);
 
@@ -38,8 +61,9 @@ export default function ProductDetails() {
             className="DetailsNumber"
             style={{ cursor: "pointer" }}
             onClick={() => {
-              navigator.clipboard.writeText(post.uploader_number);
-              alert("تم نسخ الرقم");
+              navigator.clipboard.writeText(post.uploader_number).then(() => {
+                alert("تم نسخ الرقم");
+              });
             }}
           >
             {post.uploader_number}
