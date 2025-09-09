@@ -25,13 +25,24 @@ export default function ProductDetails() {
 
   return (
     <>
-      <div>
+      <div className="fullDetails">
         <img src={`https://battal-shopping.onrender.com/image/${id}`} />
-        <h3>{post.name}</h3>
-        <p>{post.discription}</p>
-        <p>{post.type}</p>
-        <p>{post.price}</p>
-        <p>{post.date}</p>
+        <div className="detailDiv">
+          <h3 className="DetailsName">{post.name}</h3>
+          <span className="DetailsSpan">الوصف:</span>
+          <p className="DetailsDisc">{post.discription}</p>
+          <span className="DetailsSpan">اسم المستخدم:</span>
+          <p className="DetailsUsername">{post.uploader}</p>
+          <span className="DetailsSpan">رقم المستخدم</span>
+          <p className="DetailsNumber">{post.uploader_number}</p>
+          <span className="DetailsSpan">الفئة:</span>
+          <p className="DetailsType">{post.type}</p>
+          <span className="DetailsSpan">المدينة:</span>
+          <p className="DetailsCity">{post.city}</p>
+          <span className="DetailsSpan">السعر:</span>
+          <p className="DetailsPrice">{post.price}</p>
+          <p className="DetailsDate">{post.date}</p>
+        </div>
       </div>
     </>
   );
