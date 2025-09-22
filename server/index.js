@@ -205,6 +205,7 @@ app.post("/getOne", async (req, res) => {
 });
 
 app.use("/auth", require("./routes/jwtAuth"));
+app.use("/gets", require("./routes/gets"));
 
 app.listen(3000, () => {
   console.log("server started at port 3000");

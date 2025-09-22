@@ -57,6 +57,14 @@ export default function GetProducts() {
   };
 
   const handleSave = async (id) => {
+    const response = await fetch(
+      "https://battal-shopping.onrender.com/gets/saveOne",
+      {
+        method: "POST",
+        body: JSON.stringify({ id }),
+        headers: { "content-type": "application/json" },
+      }
+    );
     console.log("Saving ID:", id);
   };
 

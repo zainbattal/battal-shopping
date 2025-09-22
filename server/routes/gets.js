@@ -1,0 +1,23 @@
+const router = require("express").Router();
+const pool = require("../db");
+const authorization = require("../middleware/authorization");
+
+router.post("/saveOne", (req, res) => {
+  try {
+    const { id } = req.body;
+
+    const response = pool.query(
+      `UPDATE users
+         SET saved_products = saved_products || $1
+         WHERE name = 'zezo';
+`,
+      [id]
+    );
+
+    res.send(`saved ${id}`);
+  } catch (error) {
+    res.json(error.message);
+  }
+});
+
+module.exports = router;
