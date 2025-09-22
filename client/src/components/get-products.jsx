@@ -7,6 +7,9 @@ export default function GetProducts() {
   const [priceFilter, setPriceFilter] = useState(99999999);
   const [catFilter, setCatFilter] = useState("all");
   const [cityFilter, setCityFilter] = useState("damascus");
+
+  const [saveID, setSaveID] = useState("");
+
   const navigate = useNavigate();
   const loading = useRef();
   const list = useRef();
@@ -51,6 +54,10 @@ export default function GetProducts() {
     } catch (error) {
       console.error("Authorization check failed:", error);
     }
+  };
+
+  const handleSave = async () => {
+    console.log(saveID);
   };
 
   useEffect(() => {
@@ -176,6 +183,14 @@ export default function GetProducts() {
               <span className="product-price">{product.price} SYP</span>
               <span className="product-date">{product.date}</span>
             </div>
+            <button
+              onClick={() => {
+                setSaveID(product.id);
+                handleSave;
+              }}
+            >
+              save
+            </button>
           </div>
         ))}
       </div>
