@@ -11,7 +11,7 @@ router.post("/saveOne", async (req, res) => {
          SET saved_products = saved_products || $1
          WHERE user_name = 'zezo';
 `,
-      [id]
+      [[id]]
     );
 
     res.json(response);
