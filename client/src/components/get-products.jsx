@@ -57,8 +57,7 @@ export default function GetProducts() {
   };
 
   const handleSave = async (id) => {
-    setSaveID(id);
-    console.log(saveID);
+    console.log("Saving ID:", id);
   };
 
   useEffect(() => {
