@@ -187,7 +187,7 @@ export default function GetProducts() {
               onClick={(e) => {
                 e.stopPropagation(); // 🛑 prevents the parent onClick
                 setSaveID(product.id);
-                handleSave; // <-- Note: you were missing () here
+                handleSave(); // <-- Note: you were missing () here
               }}
             >
               save
