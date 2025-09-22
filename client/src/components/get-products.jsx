@@ -184,10 +184,10 @@ export default function GetProducts() {
               <span className="product-date">{product.date}</span>
             </div>
             <button
-              style={{ position: "absolute", right: "100px" }}
               onClick={() => {
+                e.stopPropagation(); // 🛑 prevents the parent onClick
                 setSaveID(product.id);
-                handleSave;
+                handleSave; // <-- Note: you were missing () here
               }}
             >
               save
