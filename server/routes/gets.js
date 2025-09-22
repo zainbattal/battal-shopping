@@ -2,16 +2,16 @@ const router = require("express").Router();
 const pool = require("../db");
 const authorization = require("../middleware/authorization");
 
-router.post("/saveOne", (req, res) => {
+router.post("/saveOne", async (req, res) => {
   try {
     const { id } = req.body;
 
-    const response = pool.query(
+    const response = await pool.query(
       `UPDATE users
          SET saved_products = saved_products || $1
          WHERE user_name = 'zezo';
 `,
-      [[id]]
+      [id]
     );
 
     res.json(response);
