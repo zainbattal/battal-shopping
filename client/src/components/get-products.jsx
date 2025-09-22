@@ -65,7 +65,7 @@ export default function GetProducts() {
         headers: { "content-type": "application/json" },
       }
     );
-    console.log("Saving ID:", id);
+    console.log(response);
   };
 
   useEffect(() => {

@@ -14,7 +14,7 @@ router.post("/saveOne", (req, res) => {
       [id]
     );
 
-    res.send(`saved ${id}`);
+    res.json(response);
   } catch (error) {
     res.json(error.message);
   }
