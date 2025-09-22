@@ -56,7 +56,8 @@ export default function GetProducts() {
     }
   };
 
-  const handleSave = async () => {
+  const handleSave = async (id) => {
+    setSaveID(id);
     console.log(saveID);
   };
 
@@ -186,8 +187,7 @@ export default function GetProducts() {
             <button
               onClick={(e) => {
                 e.stopPropagation(); // 🛑 prevents the parent onClick
-                setSaveID(product.id);
-                handleSave(); // <-- Note: you were missing () here
+                handleSave(product.id); // <-- Note: you were missing () here
               }}
             >
               save
