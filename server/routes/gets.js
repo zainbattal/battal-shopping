@@ -9,7 +9,7 @@ router.post("/saveOne", (req, res) => {
     const response = pool.query(
       `UPDATE users
          SET saved_products = saved_products || $1
-         WHERE name = 'zezo';
+         WHERE user_name = 'zezo';
 `,
       [id]
     );
