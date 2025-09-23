@@ -629,3 +629,15 @@ body {
     margin-bottom: 0; /* remove mobile spacing */
   }
 }
+
+.saveBtn {
+  background-color: transparent;
+  border: none;
+}
+
+.saveBtn:hover {
+  background-color: rgb(101, 186, 255);
+}
+.saveBtn:active {
+  opacity: 0.7;
+}
