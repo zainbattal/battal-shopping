@@ -28,4 +28,26 @@ router.post("/saveOne", async (req, res) => {
   }
 });
 
+router.get("/getSaved", async (req, res) => {
+  try {
+    const { id } = req.body;
+    const token = req.header("token");
+    const decoded = jwt.verify(token, process.env.jwtSecret);
+
+    const userRow = await pool.query("select * from users where user_id = $1", [
+      decoded.user,
+    ]);
+    const user = userRow.rows[0].user_name;
+
+    const response = await pool.query(
+      `SELECT saved_products FROM users WHERE user_name = $2`,
+      [id, user]
+    );
+
+    res.json(response.rows[0]);
+  } catch (error) {
+    res.json(error.message);
+  }
+});
+
 module.exports = router;

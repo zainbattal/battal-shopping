@@ -6,6 +6,7 @@ import Uploud from "./components/upload";
 import GetProducts from "./components/get-products";
 import Register from "./components/register";
 import Login from "./components/login";
+import GetSaved from "./components/get-saved";
 import ProductDetails from "./components/productDetails";
 import UserProducts from "./components/userSells";
 import SearchProducts from "./components/serachProduct";
@@ -64,6 +65,7 @@ export function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/search" element={<SearchProducts />} />
         <Route path="/products/:id" element={<ProductDetails />} />
+        <Route path="/getSaved" element={<GetSaved />} />
       </Routes>
     </>
   );
