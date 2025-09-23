@@ -196,7 +196,7 @@ export default function GetProducts() {
             <button
               style={{
                 display: "inline-flex",
-                width: "32px",
+                height: "30px",
               }}
               className="saveBtn"
               onClick={(e) => {
@@ -204,7 +204,13 @@ export default function GetProducts() {
                 handleSave(product.id); // <-- Note: you were missing () here
               }}
             >
-              <img src={bookmarkAdd} alt="bookmark" />
+              <img
+                src={bookmarkAdd}
+                alt="bookmark"
+                style={{
+                  width: "30px",
+                }}
+              />
             </button>
           </div>
         ))}
