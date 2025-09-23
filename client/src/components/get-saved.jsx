@@ -16,7 +16,9 @@ export default function UserProducts() {
           headers: { token: localStorage.token },
         }
       );
-      console.log(response);
+
+      const data = await response.json();
+      console.log(data);
     } catch (error) {
       console.error(error);
     }
