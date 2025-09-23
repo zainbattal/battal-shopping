@@ -2,6 +2,7 @@ const router = require("express").Router();
 const { use } = require("react");
 const pool = require("../db");
 const authorization = require("../middleware/authorization");
+const jwt = require("jsonwebtoken");
 
 router.post("/saveOne", async (req, res) => {
   try {
@@ -28,7 +29,7 @@ router.post("/saveOne", async (req, res) => {
   }
 });
 
-router.post("/getSaved", async (req, res) => {
+router.get("/getSaved", async (req, res) => {
   try {
     const token = req.header("token");
     const decoded = jwt.verify(token, process.env.jwtSecret);

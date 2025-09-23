@@ -12,15 +12,11 @@ export default function UserProducts() {
       let response = await fetch(
         "https://battal-shopping.onrender.com/gets/getSaved",
         {
-          method: "POST",
+          method: "GET",
           headers: { token: localStorage.token },
         }
       );
       console.log(response);
-
-      if (products.length == 0) {
-        console.log("no products");
-      }
     } catch (error) {
       console.error(error);
     }
