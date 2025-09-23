@@ -50,4 +50,18 @@ router.get("/getSaved", async (req, res) => {
   }
 });
 
+router.post("/getProductsSaved", async (req, res) => {
+  try {
+    const { savedProductIds } = req.body;
+
+    const response = await pool.query(
+      "SELECT * FROM products WHERE id = ANY($1) ORDER BY array_position($1, id)",
+      [savedProductIds]
+    );
+    res.json(response.rows);
+  } catch (error) {
+    res.json(error.message);
+  }
+});
+
 module.exports = router;

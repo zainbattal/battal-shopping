@@ -19,6 +19,16 @@ export default function UserProducts() {
 
       const data = await response.json();
       console.log(data.saved_products);
+
+      let response2 = await fetch(
+        "https://battal-shopping.onrender.com/gets/getProductsSaved",
+        {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+        }
+      );
+      const data2 = await response2.json();
+      console.log(data2);
     } catch (error) {
       console.error(error);
     }
