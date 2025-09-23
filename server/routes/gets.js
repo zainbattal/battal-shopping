@@ -28,7 +28,7 @@ router.post("/saveOne", async (req, res) => {
   }
 });
 
-router.get("/getSaved", async (req, res) => {
+router.post("/getSaved", async (req, res) => {
   try {
     const token = req.header("token");
     const decoded = jwt.verify(token, process.env.jwtSecret);

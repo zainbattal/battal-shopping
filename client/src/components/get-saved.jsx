@@ -12,7 +12,7 @@ export default function UserProducts() {
       let response = await fetch(
         "https://battal-shopping.onrender.com/gets/getSaved",
         {
-          method: "GET",
+          method: "POST",
           headers: { token: localStorage.token },
         }
       );
