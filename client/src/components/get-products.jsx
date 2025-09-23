@@ -196,6 +196,7 @@ export default function GetProducts() {
             <button
               style={{
                 display: "inline-flex",
+                width: "32px",
               }}
               className="saveBtn"
               onClick={(e) => {
