@@ -18,7 +18,7 @@ export default function UserProducts() {
       );
 
       const data = await response.json();
-      console.log(data);
+      console.log(data.saved_products);
     } catch (error) {
       console.error(error);
     }
