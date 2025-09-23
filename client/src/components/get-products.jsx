@@ -205,6 +205,8 @@ export default function GetProducts() {
               }}
             >
               <img
+                className="bokkmarkAdd
+              "
                 src={bookmarkAdd}
                 alt="bookmark"
                 style={{
