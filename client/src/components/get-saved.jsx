@@ -16,9 +16,8 @@ export default function UserProducts() {
           headers: { token: localStorage.token },
         }
       );
-      let jsonData = await response.json();
-      console.log(jsonData);
-      setProducts(jsonData);
+      console.log(response);
+
       if (products.length == 0) {
         console.log("no products");
       }
