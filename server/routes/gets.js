@@ -58,6 +58,8 @@ router.post("/getProductsSaved", async (req, res) => {
       "SELECT * FROM products WHERE id = ANY($1) ORDER BY array_position($1, id)",
       [savedProductIds]
     );
+    console.log(response.rows);
+    console.log(savedProductIds);
     res.json(response.rows);
   } catch (error) {
     res.json(error.message);
