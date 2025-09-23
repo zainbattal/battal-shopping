@@ -10,10 +10,13 @@ require("dotenv").config();
 
 app.use(
   cors({
-    origin: "https://battal-shopping.vercel.app", // ✅ Allow your frontend
-    credentials: true, // Optional: if you're using cookies or auth headers
+    origin: "https://battal-shopping.vercel.app",
+    methods: ["GET", "POST", "DELETE", "PUT", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization", "token"],
+    credentials: true,
   })
 );
+
 app.use(express.json());
 
 app.post("/list", async (req, res) => {
