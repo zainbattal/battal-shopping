@@ -30,7 +30,6 @@ router.post("/saveOne", async (req, res) => {
 
 router.get("/getSaved", async (req, res) => {
   try {
-    const { id } = req.body;
     const token = req.header("token");
     const decoded = jwt.verify(token, process.env.jwtSecret);
 
@@ -40,8 +39,8 @@ router.get("/getSaved", async (req, res) => {
     const user = userRow.rows[0].user_name;
 
     const response = await pool.query(
-      `SELECT saved_products FROM users WHERE user_name = $2`,
-      [id, user]
+      `SELECT saved_products FROM users WHERE user_name = $1`,
+      [user]
     );
 
     res.json(response.rows[0]);
