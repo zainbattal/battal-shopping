@@ -8,10 +8,10 @@ router.post("/saveOne", async (req, res) => {
 
     const response = await pool.query(
       `UPDATE users
-         SET saved_products = saved_products || $1
-         WHERE user_name = 'zezo';
-`,
-      [[id]]
+     SET saved_products = saved_products || $1
+     WHERE user_name = 'zezo'
+     AND NOT ($1 = ANY(saved_products));`,
+      [id]
     );
 
     res.json(response);

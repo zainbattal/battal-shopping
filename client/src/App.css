@@ -633,6 +633,8 @@ body {
 .saveBtn {
   background-color: transparent;
   border: none;
+  cursor: pointer;
+  border-radius: 15px;
 }
 
 .saveBtn:hover {
