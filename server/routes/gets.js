@@ -37,6 +37,11 @@ router.get("/getSaved", async (req, res) => {
     const userRow = await pool.query("select * from users where user_id = $1", [
       decoded.user,
     ]);
+
+    if (userRow.rows.length === 0) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
     const user = userRow.rows[0].user_name;
 
     const response = await pool.query(
