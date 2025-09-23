@@ -2,6 +2,8 @@ import React, { useRef } from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import bookmarkAdd from "../assets/bookmarkAdd.svg";
+
 export default function GetProducts() {
   const [products, setProducts] = useState([]);
   const [priceFilter, setPriceFilter] = useState(99999999);
@@ -192,12 +194,16 @@ export default function GetProducts() {
               <span className="product-date">{product.date}</span>
             </div>
             <button
+              style={{
+                display: "inline-flex",
+              }}
+              className="saveBtn"
               onClick={(e) => {
                 e.stopPropagation(); // 🛑 prevents the parent onClick
                 handleSave(product.id); // <-- Note: you were missing () here
               }}
             >
-              save
+              <img src={bookmarkAdd} alt="bookmark" />
             </button>
           </div>
         ))}
