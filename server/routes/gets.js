@@ -21,7 +21,7 @@ router.post("/saveOne", async (req, res) => {
      AND NOT ($1 = ANY(saved_products));`,
       [id, decoded.user]
     );
-
+    console.log(response);
     res.json(response);
   } catch (error) {
     res.json(error.message);
