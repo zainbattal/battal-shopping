@@ -66,4 +66,34 @@ router.post("/getProductsSaved", async (req, res) => {
   }
 });
 
+app.delete("/unsave/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const token = req.header("token");
+    const decoded = jwt.verify(token, process.env.jwtSecret);
+
+    const userRow = await pool.query("select * from users where user_id = $1", [
+      decoded.user,
+    ]);
+    const user = userRow.rows[0].user_name;
+
+    if (user !== productUser) {
+      return res
+        .status(403)
+        .json("you do not have the ability to delete this product");
+    }
+
+    const response = await pool.query(
+      `UPDATE users
+SET  = array_remove(saved_products, $1)
+WHERE user_name = $2;`,
+      [id, user]
+    );
+    res.json("product unsaved");
+  } catch (error) {
+    console.error(error.message);
+    res.json("couldn't delete product");
+  }
+});
+
 module.exports = router;

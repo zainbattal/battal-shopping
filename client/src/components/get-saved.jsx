@@ -38,11 +38,11 @@ export default function UserProducts() {
     }
   };
 
-  const handleDelete = async (key) => {
+  const handleUnsave = async (key) => {
     try {
       console.log(key);
       const response = await fetch(
-        `https://battal-shopping.onrender.com/delete/${key}`,
+        `https://battal-shopping.onrender.com/gets/unsave/${key}`,
         {
           method: "DELETE",
           headers: { token: localStorage.token },
@@ -105,7 +105,7 @@ export default function UserProducts() {
                 title="إلغاء الحفظ"
                 style={{}}
                 className="unsaveBtn"
-                onClick={() => handleDelete(product.id)}
+                onClick={() => handleUnsave(product.id)}
               >
                 <img
                   src={bookmarkRemove}
