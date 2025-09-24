@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import bookmarkRemove from "../assets/bookmark_remove.svg";
 
 export default function UserProducts() {
   const [products, setProducts] = useState([]);
@@ -101,11 +102,10 @@ export default function UserProducts() {
                 <span className="product-date">{product.date}</span>
               </div>
               <button
+                style={{ height: "50px", display: "inline-flex" }}
                 className="dltBtn"
                 onClick={() => handleDelete(product.id)}
-              >
-                delete
-              </button>
+              ></button>
             </div>
           ))}
           <h1 style={{ textAlign: "center" }} ref={textStat}>
