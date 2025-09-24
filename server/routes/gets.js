@@ -82,7 +82,7 @@ router.delete("/unsave/:id", async (req, res) => {
         .status(403)
         .json("you do not have the ability to delete this product");
     }
-    const productId = id;
+    const productId = String(id).trim();
     const response = await pool.query(
       `UPDATE users
 SET saved_products = array_remove(saved_products, $1)
