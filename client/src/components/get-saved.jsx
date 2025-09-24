@@ -78,9 +78,11 @@ export default function UserProducts() {
 
   useEffect(() => {
     checkAuthorization();
-
-    getProducts();
   }, []);
+
+  useEffect(() => {
+    getProducts();
+  }, [products]);
 
   return (
     <>
