@@ -59,7 +59,7 @@ router.post("/getProductsSaved", async (req, res) => {
       [data2]
     );
     console.log(response.rows);
-    console.log(data2);
+    console.log(data2 + "this is data");
     res.json(response.rows);
   } catch (error) {
     res.json(error.message);
