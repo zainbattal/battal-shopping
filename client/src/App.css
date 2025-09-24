@@ -670,3 +670,6 @@ body {
   display: flex;
   flex-direction: row;
 }
+.sidebarBtn {
+  display: block;
+}
