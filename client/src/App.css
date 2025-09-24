@@ -663,3 +663,10 @@ body {
   scale: 1.2;
   opacity: 0.6;
 }
+.sidebar {
+  background-color: #0071e3;
+  width: 200px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+}
