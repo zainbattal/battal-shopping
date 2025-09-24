@@ -80,43 +80,11 @@ export function App() {
         className="sidebar"
         style={{ display: isOn ? "block" : "none", position: "absolute" }}
       >
-        <div className="btnDiv">
-          <img className="BtnImg" src="" alt="" />
-          <button className="sidebarBtn" onClick={navigate("/")}>
-            Home
-          </button>
-        </div>
-
-        <div className="btnDiv">
-          <img className="BtnImg" src="" alt="" />
-          <button className="sidebarBtn" onClick={navigate("/getSaved")}>
-            Saved
-          </button>
-        </div>
-        <div className="btnDiv">
-          <img className="BtnImg" src="" alt="" />
-          <button className="sidebarBtn" onClick={navigate("/search")}>
-            Search
-          </button>
-        </div>
-        <div className="btnDiv">
-          <img className="BtnImg" src="" alt="" />
-          <button className="sidebarBtn" onClick={navigate("/profile")}>
-            Profile
-          </button>
-        </div>
-        <div className="btnDiv">
-          <img className="BtnImg" src="" alt="" />
-          <button
-            className="sidebarBtn"
-            onClick={() => {
-              localStorage.removeItem("token");
-              window.location.reload();
-            }}
-          >
-            Logout
-          </button>
-        </div>
+        <Link>Home</Link>
+        <Link>Search</Link>
+        <Link>Saved</Link>
+        <Link>Profile</Link>
+        <Link>LogOut</Link>
       </div>
       <Routes>
         <Route path="/profile" element={<UserProducts />} />
