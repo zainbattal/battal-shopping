@@ -665,8 +665,8 @@ body {
   flex-direction: row;
 }
 .sidebarBtn {
-  margin-right: 10px;
-  display: inline-flex;
+  margin: 20px;
+  display: block;
   border-left: 0;
   border-right: 0;
   border-top: 0;

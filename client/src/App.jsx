@@ -80,11 +80,28 @@ export function App() {
         className="sidebar"
         style={{ display: isOn ? "block" : "none", position: "absolute" }}
       >
-        <Link className="sidebarBtn">Home</Link>
-        <Link className="sidebarBtn">Search</Link>
-        <Link className="sidebarBtn">Saved</Link>
-        <Link className="sidebarBtn">Profile</Link>
-        <Link className="sidebarBtn">LogOut</Link>
+        <Link to={"/"} className="sidebarBtn">
+          Home
+        </Link>
+        <Link to={"/search"} className="sidebarBtn">
+          Search
+        </Link>
+        <Link to={"/getSaved"} className="sidebarBtn">
+          Saved
+        </Link>
+        <Link to={"/profile"} className="sidebarBtn">
+          Profile
+        </Link>
+        <Link
+          onClick={(e) => {
+            e.preventDefault();
+            localStorage.removeItem("token");
+            window.location.reload();
+          }}
+          className="sidebarBtn"
+        >
+          LogOut
+        </Link>
       </div>
       <Routes>
         <Route path="/profile" element={<UserProducts />} />
