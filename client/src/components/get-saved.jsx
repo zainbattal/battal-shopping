@@ -31,6 +31,7 @@ export default function UserProducts() {
       const data2 = await response2.json();
       setProducts(data2);
       console.log(data2);
+      textStat.current.innerText = "انتهت النتائج";
     } catch (error) {
       console.error(error);
     }
@@ -108,7 +109,7 @@ export default function UserProducts() {
             </div>
           ))}
           <h1 style={{ textAlign: "center" }} ref={textStat}>
-            انتهت النتائج
+            جار التحميل
           </h1>
         </div>
       }
