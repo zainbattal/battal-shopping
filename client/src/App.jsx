@@ -80,9 +80,12 @@ export function App() {
         className="sidebar"
         style={{ display: isOn ? "block" : "none", position: "absolute" }}
       >
-        <button className="sidebarBtn">
-          <img className="BtnImg" src={home} alt="" /> Home
-        </button>
+        <div className="btnDiv">
+          <button className="sidebarBtn">
+            <img className="BtnImg" src={home} alt="" /> Home
+          </button>
+        </div>
+
         <button className="sidebarBtn">
           <img src="" alt="" /> test
         </button>
