@@ -651,4 +651,14 @@ body {
   border: none;
   border-radius: 5px;
   display: inline-flex;
+  transition: all 0.3s;
+}
+
+.unsaveBtn:hover {
+  scale: 1.2;
+  opacity: 0.8;
+}
+.unsaveBtn:active {
+  scale: 1.2;
+  opacity: 0.6;
 }
