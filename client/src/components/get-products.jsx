@@ -63,7 +63,7 @@ export default function GetProducts() {
       "https://battal-shopping.onrender.com/gets/saveOne",
       {
         method: "POST",
-        body: { id: id },
+        body: JSON.stringify({ id }),
         headers: { "content-type": "application/json" },
       }
     );
