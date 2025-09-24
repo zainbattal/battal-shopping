@@ -66,11 +66,14 @@ export function App() {
           </div>
         )}
 
-        <div className="sidebar" style={{ display: isOn ? "block" : "none" }}>
-          <button className="sidebarBtn"></button>
-          <button className="sidebarBtn"></button>
-          <button className="sidebarBtn"></button>
-          <button className="sidebarBtn"></button>
+        <div
+          className="sidebar"
+          style={{ display: isOn ? "block" : "none", position: "absolute" }}
+        >
+          <button className="sidebarBtn">test</button>
+          <button className="sidebarBtn">test</button>
+          <button className="sidebarBtn">test</button>
+          <button className="sidebarBtn">test</button>
         </div>
       </div>
 
