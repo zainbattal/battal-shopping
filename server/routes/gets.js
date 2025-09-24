@@ -85,7 +85,7 @@ app.delete("/unsave/:id", async (req, res) => {
 
     const response = await pool.query(
       `UPDATE users
-SET  = array_remove(saved_products, $1)
+SET saved_products = array_remove(saved_products, $1)
 WHERE user_name = $2;`,
       [id, user]
     );
