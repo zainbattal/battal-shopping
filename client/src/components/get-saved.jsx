@@ -84,30 +84,35 @@ export default function UserProducts() {
 
   return (
     <>
-      {/* <div className="products-list">
-        {products.map((product) => (
-          <div key={product.id} className="product-cont">
-            <img
-              className="product-image"
-              src={`https://battal-shopping.onrender.com/image/${product.id}`}
-              alt={product.name}
-            />
-            <div className="product-details">
-              <span className="product-name">{product.name}</span>
-              <span className="product-disc">{product.discription}</span>
-              <span className="product-type">{product.type}</span>
-              <span className="product-price">{product.price} SYP</span>
-              <span className="product-date">{product.date}</span>
+      {
+        <div className="products-list">
+          {products.map((product) => (
+            <div key={product.id} className="product-cont">
+              <img
+                className="product-image"
+                src={`https://battal-shopping.onrender.com/image/${product.id}`}
+                alt={product.name}
+              />
+              <div className="product-details">
+                <span className="product-name">{product.name}</span>
+                <span className="product-disc">{product.discription}</span>
+                <span className="product-type">{product.type}</span>
+                <span className="product-price">{product.price} SYP</span>
+                <span className="product-date">{product.date}</span>
+              </div>
+              <button
+                className="dltBtn"
+                onClick={() => handleDelete(product.id)}
+              >
+                delete
+              </button>
             </div>
-            <button className="dltBtn" onClick={() => handleDelete(product.id)}>
-              delete
-            </button>
-          </div>
-        ))}
-        <h1 style={{ textAlign: "center" }} ref={textStat}>
-          انتهت النتائج
-        </h1>
-      </div> */}
+          ))}
+          <h1 style={{ textAlign: "center" }} ref={textStat}>
+            انتهت النتائج
+          </h1>
+        </div>
+      }
     </>
   );
 }
