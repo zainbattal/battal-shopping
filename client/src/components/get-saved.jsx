@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function UserProducts() {
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState();
 
   const textStat = useRef();
   const navigate = useNavigate();
@@ -29,6 +29,7 @@ export default function UserProducts() {
         }
       );
       const data2 = await response2.json();
+      setProducts(data2);
       console.log(data2);
     } catch (error) {
       console.error(error);
