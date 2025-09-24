@@ -12,8 +12,10 @@ import UserProducts from "./components/userSells";
 import SearchProducts from "./components/serachProduct";
 import logo from "./assets/soow.png";
 import "./App.css";
+import { useEffect } from "react";
 
 export function App() {
+  const [isOn, setIsOn] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
   const hideNavbar =
@@ -27,13 +29,17 @@ export function App() {
     }
   };
 
+  useEffect(() => {
+    console.log(isOn);
+  }, [isOn]);
+
   return (
     <>
       <div>
         {!hideNavbar && (
           <div className="siteNav">
-            <Link className="siteLinkOut" onClick={handleLogout}>
-              تسجيل الخروج
+            <Link className="siteLinkOut" onClick={setIsOn((prev) => !prev)}>
+              show sidebar
             </Link>
 
             <Link className="siteLinkPro" to={"/profile"}>
@@ -55,6 +61,13 @@ export function App() {
             />
           </div>
         )}
+
+        <div className="sidebar" style={{ display: "none" }}>
+          <button className="sidebarBtn"></button>
+          <button className="sidebarBtn"></button>
+          <button className="sidebarBtn"></button>
+          <button className="sidebarBtn"></button>
+        </div>
       </div>
 
       <Routes>
