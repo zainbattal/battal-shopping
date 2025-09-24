@@ -64,7 +64,10 @@ export default function GetProducts() {
       {
         method: "POST",
         body: JSON.stringify({ id }),
-        headers: { "content-type": "application/json" },
+        headers: {
+          "content-type": "application/json",
+          token, // send the JWT token here
+        },
       }
     );
     console.log(response);
