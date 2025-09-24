@@ -14,6 +14,7 @@ import SearchProducts from "./components/serachProduct";
 
 import menu from "./assets/hamburger.svg";
 import logo from "./assets/soow.png";
+import home from "./assets/home.svg";
 import "./App.css";
 import { useEffect } from "react";
 
@@ -80,7 +81,7 @@ export function App() {
         style={{ display: isOn ? "block" : "none", position: "absolute" }}
       >
         <button className="sidebarBtn">
-          <img className="BtnImg" src="" alt="" /> test
+          <img className="BtnImg" src={home} alt="" /> Home
         </button>
         <button className="sidebarBtn">
           <img src="" alt="" /> test

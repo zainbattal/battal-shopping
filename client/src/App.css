@@ -44,7 +44,6 @@ body {
 }
 
 .siteLink:hover,
-.siteLinkOut:hover,
 .siteLinkPro:hover {
   background: rgba(255, 255, 255, 0.2);
   color: #f0f9ff;
@@ -696,4 +695,14 @@ body {
 .BtnImg {
   width: 25px;
   margin: 5px;
+}
+
+.siteLinkOut:hover {
+  scale: 1.2;
+}
+.siteLinkOut:active {
+  opacity: 0.8;
+}
+.siteLinkOut {
+  transition: all 0.3s;
 }
