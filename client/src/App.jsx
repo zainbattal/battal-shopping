@@ -81,9 +81,8 @@ export function App() {
         style={{ display: isOn ? "block" : "none", position: "absolute" }}
       >
         <div className="btnDiv">
-          <button className="sidebarBtn">
-            <img className="BtnImg" src={home} alt="" /> Home
-          </button>
+          <img className="BtnImg" src={home} alt="" />
+          <button className="sidebarBtn">Home</button>
         </div>
 
         <button className="sidebarBtn">

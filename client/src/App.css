@@ -708,5 +708,5 @@ body {
 }
 
 .btnDiv {
-  display: block;
+  display: flex;
 }
