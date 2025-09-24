@@ -174,9 +174,7 @@ export default function SearchProducts() {
               key={product.id}
               className="product-cont"
               onClick={() => {
-                alert(
-                  `رقم البائع: \n +963 ${product.uploader_number}\n تاريخ التنزيل: \n ${product.date}`
-                );
+                navigate(`products/${product.id}`);
               }}
             >
               <img
