@@ -81,19 +81,42 @@ export function App() {
         style={{ display: isOn ? "block" : "none", position: "absolute" }}
       >
         <div className="btnDiv">
-          <img className="BtnImg" src={home} alt="" />
-          <button className="sidebarBtn">Home</button>
+          <img className="BtnImg" src="" alt="" />
+          <button className="sidebarBtn" onClick={navigate("/")}>
+            Home
+          </button>
         </div>
 
-        <button className="sidebarBtn">
-          <img src="" alt="" /> test
-        </button>
-        <button className="sidebarBtn">
-          <img src="" alt="" /> test
-        </button>
-        <button className="sidebarBtn">
-          <img src="" alt="" /> test
-        </button>
+        <div className="btnDiv">
+          <img className="BtnImg" src="" alt="" />
+          <button className="sidebarBtn" onClick={navigate("/getSaved")}>
+            Saved
+          </button>
+        </div>
+        <div className="btnDiv">
+          <img className="BtnImg" src="" alt="" />
+          <button className="sidebarBtn" onClick={navigate("/search")}>
+            Search
+          </button>
+        </div>
+        <div className="btnDiv">
+          <img className="BtnImg" src="" alt="" />
+          <button className="sidebarBtn" onClick={navigate("/profile")}>
+            Profile
+          </button>
+        </div>
+        <div className="btnDiv">
+          <img className="BtnImg" src="" alt="" />
+          <button
+            className="sidebarBtn"
+            onClick={() => {
+              localStorage.removeItem("token");
+              window.location.reload();
+            }}
+          >
+            Logout
+          </button>
+        </div>
       </div>
       <Routes>
         <Route path="/profile" element={<UserProducts />} />
