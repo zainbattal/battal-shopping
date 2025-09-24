@@ -70,6 +70,9 @@ export default function GetProducts() {
         },
       }
     );
+    if (response.ok) {
+      alert("تم حفظ المنتج");
+    }
     console.log(response);
   };
 
