@@ -652,6 +652,7 @@ body {
   border-radius: 5px;
   display: inline-flex;
   transition: all 0.3s;
+  cursor: pointer;
 }
 
 .unsaveBtn:hover {
