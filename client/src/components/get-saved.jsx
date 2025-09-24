@@ -23,7 +23,7 @@ export default function UserProducts() {
       let response2 = await fetch(
         "https://battal-shopping.onrender.com/gets/getProductsSaved",
         {
-          body: JSON.stringify({ data2: data }),
+          body: JSON.stringify({ data: data }),
           method: "POST",
           headers: { "content-type": "application/json" },
         }
