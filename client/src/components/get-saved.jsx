@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function UserProducts() {
-  const [products, setProducts] = useState();
+  const [products, setProducts] = useState([]);
 
   const textStat = useRef();
   const navigate = useNavigate();
