@@ -66,7 +66,7 @@ export default function GetProducts() {
         body: JSON.stringify({ id }),
         headers: {
           "content-type": "application/json",
-          token, // send the JWT token here
+          token: localStorage.token, // send the JWT token here
         },
       }
     );
