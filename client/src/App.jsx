@@ -39,7 +39,10 @@ export function App() {
       <div>
         {!hideNavbar && (
           <div className="siteNav">
-            <Link className="siteLinkOut" onClick={setIsOn((prev) => !prev)}>
+            <Link
+              className="siteLinkOut"
+              onClick={() => setIsOn((prev) => !prev)}
+            >
               show sidebar
             </Link>
 
