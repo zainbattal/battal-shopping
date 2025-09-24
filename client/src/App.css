@@ -663,6 +663,7 @@ body {
   height: 100%;
   display: flex;
   flex-direction: row;
+  z-index: 1000;
 }
 .sidebarBtn {
   margin: 20px;
