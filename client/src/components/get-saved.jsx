@@ -103,9 +103,9 @@ export default function UserProducts() {
               </div>
               <button
                 style={{
-                  height: "50px",
+                  height: "30px",
                   display: "inline-flex",
-                  width: "50px",
+                  width: "30px",
                 }}
                 className="dltBtn"
                 onClick={() => handleDelete(product.id)}
