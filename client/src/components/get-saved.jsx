@@ -105,7 +105,13 @@ export default function UserProducts() {
                 style={{ height: "50px", display: "inline-flex" }}
                 className="dltBtn"
                 onClick={() => handleDelete(product.id)}
-              ></button>
+              >
+                <img
+                  src={bookmarkRemove}
+                  alt="unsave"
+                  style={{ width: "50px" }}
+                />
+              </button>
             </div>
           ))}
           <h1 style={{ textAlign: "center" }} ref={textStat}>
