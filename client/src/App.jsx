@@ -65,18 +65,17 @@ export function App() {
             />
           </div>
         )}
-
-        <div
-          className="sidebar"
-          style={{ display: isOn ? "block" : "none", position: "absolute" }}
-        >
-          <button className="sidebarBtn">test</button>
-          <button className="sidebarBtn">test</button>
-          <button className="sidebarBtn">test</button>
-          <button className="sidebarBtn">test</button>
-        </div>
       </div>
 
+      <div
+        className="sidebar"
+        style={{ display: isOn ? "block" : "none", position: "absolute" }}
+      >
+        <button className="sidebarBtn">test</button>
+        <button className="sidebarBtn">test</button>
+        <button className="sidebarBtn">test</button>
+        <button className="sidebarBtn">test</button>
+      </div>
       <Routes>
         <Route path="/profile" element={<UserProducts />} />
         <Route path="/upload" element={<Uploud />} />
