@@ -474,14 +474,9 @@ body {
     scale: 0.6;
     font-size: larger;
   }
-  .siteLinkOut {
-    display: none;
-  }
+
   .siteLinkPro {
-    margin-left: 0;
-    padding: 0;
-    scale: 0.6;
-    font-size: larger;
+    display: none;
   }
   .number-input {
     padding-left: 75px;
