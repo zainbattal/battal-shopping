@@ -668,7 +668,8 @@ body {
   width: 200px;
   height: 100%;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  column-count: 1;
 }
 .sidebarBtn {
   margin-right: 10px;
@@ -686,7 +687,7 @@ body {
 }
 
 .sidebarBtn:hover {
-  border-bottom: 4px;
+  border-bottom: 4px solid white;
   opacity: 0.9;
 }
 
