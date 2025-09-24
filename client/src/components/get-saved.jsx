@@ -102,12 +102,8 @@ export default function UserProducts() {
                 <span className="product-date">{product.date}</span>
               </div>
               <button
-                style={{
-                  height: "30px",
-                  display: "inline-flex",
-                  width: "30px",
-                }}
-                className="dltBtn"
+                style={{}}
+                className="unsaveBtn"
                 onClick={() => handleDelete(product.id)}
               >
                 <img
