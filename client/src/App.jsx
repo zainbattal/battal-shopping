@@ -80,11 +80,11 @@ export function App() {
         className="sidebar"
         style={{ display: isOn ? "block" : "none", position: "absolute" }}
       >
-        <Link>Home</Link>
-        <Link>Search</Link>
-        <Link>Saved</Link>
-        <Link>Profile</Link>
-        <Link>LogOut</Link>
+        <Link className="sidebarBtn">Home</Link>
+        <Link className="sidebarBtn">Search</Link>
+        <Link className="sidebarBtn">Saved</Link>
+        <Link className="sidebarBtn">Profile</Link>
+        <Link className="sidebarBtn">LogOut</Link>
       </div>
       <Routes>
         <Route path="/profile" element={<UserProducts />} />
