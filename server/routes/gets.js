@@ -77,11 +77,6 @@ router.delete("/unsave/:id", async (req, res) => {
     ]);
     const user = userRow.rows[0].user_name;
 
-    if (user !== productUser) {
-      return res
-        .status(403)
-        .json("you do not have the ability to delete this product");
-    }
     const productId = String(id).trim();
     const response = await pool.query(
       `UPDATE users
