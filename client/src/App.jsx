@@ -66,7 +66,7 @@ export function App() {
           </div>
         )}
 
-        <div className="sidebar" style={{ display: "none" }}>
+        <div className="sidebar" style={{ display: isOn ? "block" : "none" }}>
           <button className="sidebarBtn"></button>
           <button className="sidebarBtn"></button>
           <button className="sidebarBtn"></button>
