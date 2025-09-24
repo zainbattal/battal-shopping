@@ -52,14 +52,14 @@ router.get("/getSaved", async (req, res) => {
 
 router.post("/getProductsSaved", async (req, res) => {
   try {
-    const { savedProductIds } = req.body;
+    const { data2 } = req.body;
 
     const response = await pool.query(
       "SELECT * FROM products WHERE id = ANY($1) ORDER BY array_position($1, id)",
-      [savedProductIds]
+      [data2]
     );
     console.log(response.rows);
-    console.log(savedProductIds);
+    console.log(data2);
     res.json(response.rows);
   } catch (error) {
     res.json(error.message);
