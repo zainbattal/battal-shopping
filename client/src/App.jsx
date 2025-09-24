@@ -11,6 +11,8 @@ import GetSaved from "./components/get-saved";
 import ProductDetails from "./components/productDetails";
 import UserProducts from "./components/userSells";
 import SearchProducts from "./components/serachProduct";
+
+import menu from "./assets/hamburger.svg";
 import logo from "./assets/soow.png";
 import "./App.css";
 import { useEffect } from "react";
@@ -43,7 +45,13 @@ export function App() {
               className="siteLinkOut"
               onClick={() => setIsOn((prev) => !prev)}
             >
-              show sidebar
+              <img
+                style={{
+                  width: "40px",
+                }}
+                src={menu}
+                alt=""
+              />
             </Link>
 
             <Link className="siteLinkPro" to={"/profile"}>
@@ -71,10 +79,18 @@ export function App() {
         className="sidebar"
         style={{ display: isOn ? "block" : "none", position: "absolute" }}
       >
-        <button className="sidebarBtn">test</button>
-        <button className="sidebarBtn">test</button>
-        <button className="sidebarBtn">test</button>
-        <button className="sidebarBtn">test</button>
+        <button className="sidebarBtn">
+          <img className="BtnImg" src="" alt="" /> test
+        </button>
+        <button className="sidebarBtn">
+          <img src="" alt="" /> test
+        </button>
+        <button className="sidebarBtn">
+          <img src="" alt="" /> test
+        </button>
+        <button className="sidebarBtn">
+          <img src="" alt="" /> test
+        </button>
       </div>
       <Routes>
         <Route path="/profile" element={<UserProducts />} />
