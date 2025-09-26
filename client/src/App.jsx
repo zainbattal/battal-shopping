@@ -15,6 +15,10 @@ import SearchProducts from "./components/serachProduct";
 import menu from "./assets/hamburger.svg";
 import logo from "./assets/soow.png";
 import home from "./assets/home.svg";
+import searchSvg from "./assets/search.svg";
+import bookmarksvg from "./assets/bookmark.svg";
+import profileSvg from "./assets/account.svg";
+import logoutSvg from "./assets/logout.svg";
 import "./App.css";
 import { useEffect } from "react";
 
@@ -86,12 +90,15 @@ export function App() {
           Home
         </Link>
         <Link to={"/search"} className="sidebarBtn">
+          <img src={searchSvg} alt="" />
           Search
         </Link>
         <Link to={"/getSaved"} className="sidebarBtn">
+          <img src={bookmarksvg} alt="" />
           Saved
         </Link>
         <Link to={"/profile"} className="sidebarBtn">
+          <img src={profileSvg} alt="" />
           Profile
         </Link>
         <Link
@@ -102,6 +109,7 @@ export function App() {
           }}
           className="sidebarBtn"
         >
+          <img src={logoutSvg} alt="" />
           LogOut
         </Link>
       </div>
