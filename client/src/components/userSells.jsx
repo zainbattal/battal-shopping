@@ -107,8 +107,8 @@ export default function UserProducts() {
           marginTop: "100px",
         }}
       >
-        ...جارٍ التحميل
-        <h1 className="username">{username}</h1>
+        أهلاً بك
+        <h1 className="username"> {"" + username} </h1>
       </h1>
 
       <div className="products-list">
