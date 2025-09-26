@@ -74,7 +74,7 @@ export function App() {
               الصفحة الرئيسية
             </Link>
             <img
-              src={logo}
+              src={SVGlogo}
               alt="sooqsyria"
               style={{ width: "80px", height: "80px" }}
             />
