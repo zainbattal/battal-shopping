@@ -88,19 +88,19 @@ export function App() {
         <div style={{ display: "grid" }}>
           <Link to={"/"} className="sidebarBtn">
             <img src={home} alt="" />
-            Home
+            الصفحة الرئيسية
           </Link>
           <Link to={"/search"} className="sidebarBtn">
             <img src={searchSvg} alt="" />
-            Search
+            البحث
           </Link>
           <Link to={"/getSaved"} className="sidebarBtn">
             <img src={bookmarksvg} alt="" />
-            Saved
+            المحفوظة
           </Link>
           <Link to={"/profile"} className="sidebarBtn">
             <img src={profileSvg} alt="" />
-            Profile
+            الملف الشخصي
           </Link>
           <Link
             onClick={(e) => {
@@ -111,7 +111,7 @@ export function App() {
             className="sidebarBtn"
           >
             <img src={logoutSvg} alt="" />
-            LogOut
+            تسجيل الخروج
           </Link>
         </div>
       </div>
