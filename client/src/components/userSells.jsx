@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function UserProducts() {
   const [products, setProducts] = useState([]);
-
+  const [username, setUsername] = useState("");
   const textStat = useRef();
   const navigate = useNavigate();
   const getProducts = async () => {
@@ -22,6 +22,26 @@ export default function UserProducts() {
       if (products.length == 0) {
         console.log("no products");
       }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const getUsername = async () => {
+    try {
+      const response = await fetch(
+        "https://battal-shopping.onrender.com/gets/username",
+        {
+          method: "POST",
+          body: JSON.stringify({ id }),
+          headers: {
+            "content-type": "application/json",
+            token: localStorage.token, // send the JWT token here
+          },
+        }
+      );
+      let jsonData = await response.json();
+      console.log(jsonData);
     } catch (error) {
       console.error(error);
     }
@@ -69,6 +89,7 @@ export default function UserProducts() {
 
   useEffect(() => {
     checkAuthorization();
+    getUsername();
 
     getProducts();
   }, []);

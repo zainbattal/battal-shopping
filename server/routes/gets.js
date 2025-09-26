@@ -91,4 +91,21 @@ WHERE user_name = $2;`,
   }
 });
 
+// get name
+
+router.post("/username", async (req, res) => {
+  try {
+    const token = req.header("token");
+    const decoded = jwt.verify(token, process.env.jwtSecret);
+
+    const userRow = await pool.query(
+      "select user_name from users where user_id = $1",
+      [decoded.user]
+    );
+    res.json(userRow.rows[1]);
+  } catch (error) {
+    res.json(error.message);
+  }
+});
+
 module.exports = router;
