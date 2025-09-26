@@ -85,8 +85,8 @@ export function App() {
         className="sidebar"
         style={{ display: isOn ? "block" : "none", position: "absolute" }}
       >
-        <div>
-          <img src={logo} alt="logo" width="100%" />
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          <img src={logo} alt="logo" width="75%" />
         </div>
 
         <Link to={"/"} className="sidebarBtn">
