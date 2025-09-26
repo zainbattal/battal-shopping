@@ -33,7 +33,6 @@ export default function UserProducts() {
         "https://battal-shopping.onrender.com/gets/username",
         {
           method: "POST",
-          body: JSON.stringify({ id }),
           headers: {
             "content-type": "application/json",
             token: localStorage.token, // send the JWT token here
