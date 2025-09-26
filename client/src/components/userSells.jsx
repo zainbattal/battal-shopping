@@ -97,7 +97,6 @@ export default function UserProducts() {
   return (
     <>
       <h1
-        ref={loading}
         className="loadingText"
         style={{
           display: "flex",
