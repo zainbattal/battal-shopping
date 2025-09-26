@@ -41,6 +41,7 @@ export default function UserProducts() {
       );
       let jsonData = await response.json();
       console.log(jsonData);
+      setUsername(jsonData.user_name);
     } catch (error) {
       console.error(error);
     }
@@ -95,6 +96,22 @@ export default function UserProducts() {
 
   return (
     <>
+      <h1
+        ref={loading}
+        className="loadingText"
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          width: "100%",
+          textAlign: "center",
+          marginTop: "100px",
+        }}
+      >
+        ...جارٍ التحميل
+        <h1 className="username">{username}</h1>
+      </h1>
+
       <div className="products-list">
         {products.map((product) => (
           <div key={product.id} className="product-cont">

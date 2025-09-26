@@ -706,3 +706,12 @@ body {
 .btnDiv {
   display: flex;
 }
+
+.username {
+  transition: all 0.5s;
+}
+.username:hover {
+  color: #4e80ee;
+  scale: 1.1;
+  text-shadow: 2px 2px 4px #0d47a1;
+}
