@@ -170,20 +170,20 @@ export default function GetProducts() {
         </div>
       </div>
 
-      <h2
+      <h1
         ref={loading}
         className="loadingText"
         style={{
           display: "flex",
-          justifyContent: "center", // horizontal center
-          alignItems: "center", // vertical center
-          height: "100vh", // full screen height
-          width: "100%", // full width
-          direction: "rtl",
+          justifyContent: "center",
+          alignItems: "center",
+          width: "100%",
+          textAlign: "center",
+          marginTop: "400px",
         }}
       >
         ...جارٍ التحميل
-      </h2>
+      </h1>
 
       <div ref={list} className="products-list">
         {products.map((product) => (
