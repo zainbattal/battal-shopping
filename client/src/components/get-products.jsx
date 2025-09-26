@@ -179,7 +179,7 @@ export default function GetProducts() {
           alignItems: "center",
           width: "100%",
           textAlign: "center",
-          marginTop: "400px",
+          marginTop: "100px",
         }}
       >
         ...جارٍ التحميل
