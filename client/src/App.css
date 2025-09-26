@@ -709,27 +709,44 @@ body {
 
 .username {
   position: relative;
-  color: #333;
-  transition: color 0.4s ease;
+  display: inline-block;
+  color: #000; /* default color */
+  transition: all 0.5s;
   overflow: hidden;
+  background: none;
+  cursor: pointer;
 }
 
-.username::after {
-  content: "";
+.username::before {
+  content: attr(data-text);
   position: absolute;
-  left: 0;
-  bottom: 0;
-  height: 2px;
+  top: 0;
+  left: -100%;
   width: 100%;
-  background: #4e80ee;
-  transform: translateX(-100%);
-  transition: transform 0.4s ease;
-}
-
-.username:hover {
+  height: 100%;
   color: #4e80ee;
+  white-space: nowrap;
+  overflow: hidden;
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    #4e80ee 50%,
+    transparent 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: none;
 }
 
-.username:hover::after {
-  transform: translateX(0);
+.username:hover::before {
+  animation: shine 1.2s forwards;
+}
+
+@keyframes shine {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
 }
