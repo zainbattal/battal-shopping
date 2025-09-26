@@ -200,7 +200,7 @@ export default function Uploud(params) {
             <option className="type-option" value="دير الزور">
               دير الزور
             </option>
-            <option className="type-option" value="السوداء">
+            <option className="type-option" value="السويداء">
               السوداء
             </option>
             <option className="type-option" value="الرقة">

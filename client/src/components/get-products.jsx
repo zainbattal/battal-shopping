@@ -130,7 +130,7 @@ export default function GetProducts() {
               دير الزور
             </option>
             <option className="type-option" value="السوداء">
-              السوداء
+              السويداء
             </option>
             <option className="type-option" value="الرقة">
               الرقة
