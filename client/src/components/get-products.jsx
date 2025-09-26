@@ -170,7 +170,17 @@ export default function GetProducts() {
         </div>
       </div>
 
-      <h3 ref={loading} className="loadingText">
+      <h3
+        ref={loading}
+        className="loadingText"
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          width: "100%",
+          textAlign: "center",
+        }}
+      >
         ...جارٍ التحميل
       </h3>
 
