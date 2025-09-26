@@ -392,6 +392,8 @@ body {
   padding-right: 5px;
   cursor: pointer;
   transition: all 0.2s;
+  height: 40px;
+  display: inline-flex;
 }
 
 .dltBtn:hover {

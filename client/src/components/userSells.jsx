@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-
+import deleteSvg from "../assets/delete.svg";
 export default function UserProducts() {
   const [products, setProducts] = useState([]);
   const [username, setUsername] = useState("");
@@ -132,7 +132,7 @@ export default function UserProducts() {
               <span className="product-date">{product.date}</span>
             </div>
             <button className="dltBtn" onClick={() => handleDelete(product.id)}>
-              delete
+              <img src={deleteSvg} width="30px" alt="delete" />
             </button>
           </div>
         ))}
