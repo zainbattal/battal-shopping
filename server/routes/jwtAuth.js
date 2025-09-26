@@ -9,6 +9,8 @@ router.post("/register", async (req, res) => {
   try {
     const { name, number, password } = req.body;
 
+    name = name.trim().toLowerCase();
+
     // some error handlings
     if (Number(number.toString()[0]) !== 9) {
       return res.status(401).send("not a uasable number");
