@@ -708,6 +708,7 @@ body {
 }
 
 .username {
+  user-select: none;
   display: inline-block;
   position: relative;
   color: #000;
