@@ -39,8 +39,7 @@ export default function UserProducts() {
           },
         }
       );
-      let jsonData = await response.json();
-      console.log(jsonData);
+      console.log(response);
     } catch (error) {
       console.error(error);
     }
