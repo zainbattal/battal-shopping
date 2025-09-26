@@ -85,36 +85,35 @@ export function App() {
         className="sidebar"
         style={{ display: isOn ? "block" : "none", position: "absolute" }}
       >
-        <div style={{ display: "grid" }}>
-          <Link to={"/"} className="sidebarBtn">
-            <img src={home} alt="" />
-            الصفحة الرئيسية
-          </Link>
-          <Link to={"/search"} className="sidebarBtn">
-            <img src={searchSvg} alt="" />
-            البحث
-          </Link>
-          <Link to={"/getSaved"} className="sidebarBtn">
-            <img src={bookmarksvg} alt="" />
-            المحفوظة
-          </Link>
-          <Link to={"/profile"} className="sidebarBtn">
-            <img src={profileSvg} alt="" />
-            الملف الشخصي
-          </Link>
-          <Link
-            onClick={(e) => {
-              e.preventDefault();
-              localStorage.removeItem("token");
-              window.location.reload();
-            }}
-            className="sidebarBtn"
-          >
-            <img src={logoutSvg} alt="" />
-            تسجيل الخروج
-          </Link>
-        </div>
+        <Link to={"/"} className="sidebarBtn">
+          <img src={home} alt="" />
+          الصفحة الرئيسية
+        </Link>
+        <Link to={"/search"} className="sidebarBtn">
+          <img src={searchSvg} alt="" />
+          البحث
+        </Link>
+        <Link to={"/getSaved"} className="sidebarBtn">
+          <img src={bookmarksvg} alt="" />
+          المحفوظة
+        </Link>
+        <Link to={"/profile"} className="sidebarBtn">
+          <img src={profileSvg} alt="" />
+          الملف الشخصي
+        </Link>
+        <Link
+          onClick={(e) => {
+            e.preventDefault();
+            localStorage.removeItem("token");
+            window.location.reload();
+          }}
+          className="sidebarBtn"
+        >
+          <img src={logoutSvg} alt="" />
+          تسجيل الخروج
+        </Link>
       </div>
+
       <Routes>
         <Route path="/profile" element={<UserProducts />} />
         <Route path="/upload" element={<Uploud />} />
