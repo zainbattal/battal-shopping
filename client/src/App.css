@@ -32,7 +32,6 @@ body {
 }
 
 .siteLink,
-.siteLinkOut,
 .siteLinkPro {
   color: white;
   font-weight: 600;
@@ -40,6 +39,16 @@ body {
   padding: 0.6rem 1.2rem;
   border-radius: 999px;
   transition: all 0.3s ease;
+  font-size: small;
+}
+
+.siteLinkOut {
+  color: white;
+  font-weight: 600;
+  font-size: 1.05rem;
+  padding: 0.6rem 1.2rem;
+  border-radius: 999px;
+  transition: background-color 0.3s ease;
   font-size: small;
 }
 
