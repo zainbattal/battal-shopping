@@ -105,10 +105,14 @@ export default function UserProducts() {
           width: "100%",
           textAlign: "center",
           marginTop: "100px",
+          gap: "10px", // optional: space between texts
+          flexWrap: "wrap", // optional: wrap if screen is small
         }}
       >
-        أهلاً بك
-        <h1 className="username"> {" " + username + " "} </h1>
+        <span style={{ direction: "rtl" }}>أهلاً بك</span>
+        <span className="username" style={{ direction: "ltr" }}>
+          {username}
+        </span>
       </h1>
 
       <div className="products-list">
