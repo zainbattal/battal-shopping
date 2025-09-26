@@ -708,10 +708,28 @@ body {
 }
 
 .username {
-  transition: all 0.5s;
+  position: relative;
+  color: #333;
+  transition: color 0.4s ease;
+  overflow: hidden;
 }
+
+.username::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 100%;
+  background: #4e80ee;
+  transform: translateX(-100%);
+  transition: transform 0.4s ease;
+}
+
 .username:hover {
   color: #4e80ee;
-  scale: 1.1;
-  text-shadow: 2px 2px 4px #0d47a1;
+}
+
+.username:hover::after {
+  transform: translateX(0);
 }
