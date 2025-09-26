@@ -710,7 +710,6 @@ body {
 .username {
   display: inline-block;
   position: relative;
-  font-size: 3em;
   color: #000;
   background: linear-gradient(90deg, #000, #4e80ee, #000);
   background-size: 200%;
