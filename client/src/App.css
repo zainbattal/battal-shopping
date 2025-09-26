@@ -682,6 +682,7 @@ body {
   text-decoration: none;
   font-size: medium;
   margin: 30px;
+  transition: background-color 0.1s;
 }
 
 .sidebarBtn:hover {
