@@ -678,6 +678,8 @@ body {
 }
 .sidebarBtn {
   margin: 20px;
+  margin-top: 0;
+  margin-bottom: 40px;
   display: flex;
   border-left: 0;
   border-right: 0;

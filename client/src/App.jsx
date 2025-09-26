@@ -86,7 +86,7 @@ export function App() {
         style={{ display: isOn ? "block" : "none", position: "absolute" }}
       >
         <div style={{ display: "flex", justifyContent: "center" }}>
-          <img src={logo} alt="logo" width="75%" />
+          <img src={logo} alt="logo" width="60%" />
         </div>
 
         <Link to={"/"} className="sidebarBtn">
