@@ -102,7 +102,7 @@ router.post("/username", async (req, res) => {
       "select user_name from users where user_id = $1",
       [decoded.user]
     );
-    res.json(userRow.rows[1]);
+    res.json(userRow.rows[0]);
   } catch (error) {
     res.json(error.message);
   }
