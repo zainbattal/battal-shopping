@@ -49,6 +49,7 @@ export function App() {
               <img
                 style={{
                   width: "40px",
+                  userSelect: "none",
                 }}
                 src={menu}
                 alt=""
