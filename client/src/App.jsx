@@ -85,33 +85,35 @@ export function App() {
         className="sidebar"
         style={{ display: isOn ? "block" : "none", position: "absolute" }}
       >
-        <Link to={"/"} className="sidebarBtn">
-          <img src={home} alt="" />
-          Home
-        </Link>
-        <Link to={"/search"} className="sidebarBtn">
-          <img src={searchSvg} alt="" />
-          Search
-        </Link>
-        <Link to={"/getSaved"} className="sidebarBtn">
-          <img src={bookmarksvg} alt="" />
-          Saved
-        </Link>
-        <Link to={"/profile"} className="sidebarBtn">
-          <img src={profileSvg} alt="" />
-          Profile
-        </Link>
-        <Link
-          onClick={(e) => {
-            e.preventDefault();
-            localStorage.removeItem("token");
-            window.location.reload();
-          }}
-          className="sidebarBtn"
-        >
-          <img src={logoutSvg} alt="" />
-          LogOut
-        </Link>
+        <div style={{ display: "grid" }}>
+          <Link to={"/"} className="sidebarBtn">
+            <img src={home} alt="" />
+            Home
+          </Link>
+          <Link to={"/search"} className="sidebarBtn">
+            <img src={searchSvg} alt="" />
+            Search
+          </Link>
+          <Link to={"/getSaved"} className="sidebarBtn">
+            <img src={bookmarksvg} alt="" />
+            Saved
+          </Link>
+          <Link to={"/profile"} className="sidebarBtn">
+            <img src={profileSvg} alt="" />
+            Profile
+          </Link>
+          <Link
+            onClick={(e) => {
+              e.preventDefault();
+              localStorage.removeItem("token");
+              window.location.reload();
+            }}
+            className="sidebarBtn"
+          >
+            <img src={logoutSvg} alt="" />
+            LogOut
+          </Link>
+        </div>
       </div>
       <Routes>
         <Route path="/profile" element={<UserProducts />} />
