@@ -2,6 +2,7 @@ import React from "react";
 import { useEffect } from "react";
 import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import bookmarkAdd from "../assets/bookmarkAdd.svg";
 export default function SearchProducts() {
   const [products, setProducts] = useState([]);
   const [input, setInput] = useState("");
