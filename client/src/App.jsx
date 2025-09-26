@@ -85,6 +85,10 @@ export function App() {
         className="sidebar"
         style={{ display: isOn ? "block" : "none", position: "absolute" }}
       >
+        <div>
+          <img src={logo} alt="logo" width="100%" />
+        </div>
+
         <Link to={"/"} className="sidebarBtn">
           <img src={home} alt="" />
           الصفحة الرئيسية
