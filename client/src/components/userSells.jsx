@@ -33,13 +33,15 @@ export default function UserProducts() {
         "https://battal-shopping.onrender.com/gets/username",
         {
           method: "POST",
+          body: JSON.stringify({ id }),
           headers: {
             "content-type": "application/json",
             token: localStorage.token, // send the JWT token here
           },
         }
       );
-      console.log(response);
+      let jsonData = await response.json();
+      console.log(jsonData);
     } catch (error) {
       console.error(error);
     }
