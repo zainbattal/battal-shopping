@@ -699,13 +699,10 @@ body {
 }
 
 .siteLinkOut:hover {
-  scale: 1.2;
-}
-.siteLinkOut:active {
   opacity: 0.8;
 }
-.siteLinkOut {
-  transition: all 0.3s;
+.siteLinkOut:active {
+  opacity: 0.6;
 }
 
 .btnDiv {
