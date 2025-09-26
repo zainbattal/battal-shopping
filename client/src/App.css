@@ -680,7 +680,8 @@ body {
   color: white;
   cursor: pointer;
   text-decoration: none;
-  font-size: small;
+  font-size: medium;
+  margin: 30px;
 }
 
 .sidebarBtn:hover {
