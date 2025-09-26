@@ -82,6 +82,7 @@ export function App() {
         style={{ display: isOn ? "block" : "none", position: "absolute" }}
       >
         <Link to={"/"} className="sidebarBtn">
+          <img src={home} alt="" />
           Home
         </Link>
         <Link to={"/search"} className="sidebarBtn">
