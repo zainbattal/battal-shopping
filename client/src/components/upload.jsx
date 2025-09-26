@@ -126,23 +126,26 @@ export default function Uploud(params) {
               setType(e.target.value);
             }}
           >
-            <option className="type-option" value="notSet">
+            <option className="type-option" value="غير محدد">
               غير محدد
             </option>
             <option className="type-option" value="electronics">
               الكترونيات
             </option>
-            <option className="type-option" value="cars">
+            <option className="type-option" value="سيارات">
               سيارات
             </option>
-            <option className="type-option" value="sports">
+            <option className="type-option" value="الرياضة">
               الرياضة
             </option>
-            <option className="type-option" value="houseProducts">
+            <option className="type-option" value="مستلزمات المنزل">
               مستلزمات المنزل
             </option>
-            <option className="type-option" value="decoration">
+            <option className="type-option" value="قطع زينة">
               قطع زينة
+            </option>
+            <option className="type-option" value="عقارات">
+              عقارات
             </option>
           </select>
           <p className="type">صورة المنتج</p>
@@ -161,46 +164,46 @@ export default function Uploud(params) {
               setCity(e.target.value);
             }}
           >
-            <option className="type-option" value="latakia">
+            <option className="type-option" value="اللاذقية">
               اللاذقية
             </option>
-            <option className="type-option" value="damascus">
+            <option className="type-option" value="دمشق">
               دمشق
             </option>
-            <option className="type-option" value="idlib">
+            <option className="type-option" value="ادلب">
               ادلب
             </option>
-            <option className="type-option" value="tartous">
+            <option className="type-option" value="طرطوس">
               طرطوس
             </option>
-            <option className="type-option" value="hama">
+            <option className="type-option" value="حماة">
               حماة
             </option>
-            <option className="type-option" value="daraa">
+            <option className="type-option" value="درعا">
               درعا
             </option>
-            <option className="type-option" value="homs">
+            <option className="type-option" value="حمص">
               حمص
             </option>
-            <option className="type-option" value="aleppo">
+            <option className="type-option" value="حلب">
               حلب
             </option>
-            <option className="type-option" value="reef damascus">
+            <option className="type-option" value="ريف دمشق">
               ريف دمشق
             </option>
-            <option className="type-option" value="hasaka">
+            <option className="type-option" value="الحسكة">
               الحسكة
             </option>
-            <option className="type-option" value="qunaitra">
+            <option className="type-option" value="القنيطرة">
               القنيطرة
             </option>
-            <option className="type-option" value="der azzor">
+            <option className="type-option" value="دير الزور">
               دير الزور
             </option>
-            <option className="type-option" value="swedaa">
+            <option className="type-option" value="السوداء">
               السوداء
             </option>
-            <option className="type-option" value="raqa">
+            <option className="type-option" value="الرقة">
               الرقة
             </option>
           </select>
