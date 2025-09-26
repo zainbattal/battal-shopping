@@ -58,6 +58,24 @@ export default function SearchProducts() {
     }
   };
 
+  const handleSave = async (id) => {
+    const response = await fetch(
+      "https://battal-shopping.onrender.com/gets/saveOne",
+      {
+        method: "POST",
+        body: JSON.stringify({ id }),
+        headers: {
+          "content-type": "application/json",
+          token: localStorage.token, // send the JWT token here
+        },
+      }
+    );
+    if (response.ok) {
+      alert("تم حفظ المنتج");
+    }
+    console.log(response);
+  };
+
   useEffect(() => {
     checkAuthorization();
   }, []);
@@ -189,6 +207,27 @@ export default function SearchProducts() {
                 <span className="product-price">{product.price} SYP</span>
                 <span className="product-date">{product.date}</span>
               </div>
+              <button
+                style={{
+                  display: "inline-flex",
+                  height: "30px",
+                }}
+                className="saveBtn"
+                onClick={(e) => {
+                  e.stopPropagation(); // 🛑 prevents the parent onClick
+                  handleSave(product.id); // <-- Note: you were missing () here
+                }}
+              >
+                <img
+                  className="bokkmarkAdd
+                            "
+                  src={bookmarkAdd}
+                  alt="bookmark"
+                  style={{
+                    width: "30px",
+                  }}
+                />
+              </button>
             </div>
           ))}
         <h1 ref={searchStatus}>ابحث عن شيء</h1>
