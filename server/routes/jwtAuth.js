@@ -52,7 +52,7 @@ router.post("/register", async (req, res) => {
 
 router.post("/login", async (req, res) => {
   try {
-    const { name, password } = req.body;
+    let { name, password } = req.body;
     //check if user doesn't exist
 
     name = name.trim().toLowerCase();
