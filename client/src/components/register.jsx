@@ -87,7 +87,6 @@ export default function Register() {
       const parseRes = await response.json();
 
       localStorage.setItem("token", parseRes.token);
-      localStorage.setItem("sooqUsername", name);
       checkAuthorization();
     } else {
       status.current.innerText = "اسم المستخدم غير صالح";
@@ -160,10 +159,10 @@ export default function Register() {
               setPassword(e.target.value);
             }}
           />
-          <Turnstile
+          {/* <Turnstile
             sitekey="0x4AAAAAAByfnMjZv6VQTT8D"
             onSuccess={(token) => setTurnstileToken(token)}
-          />
+          /> */}
 
           <p
             className="login-error"
