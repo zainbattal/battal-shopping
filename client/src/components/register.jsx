@@ -50,26 +50,26 @@ export default function Register() {
       return;
     }
 
-    if (!turnstileToken) {
-      status.current.innerText = "يرجى التحقق من CAPTCHA";
-      return;
-    }
+    // if (!turnstileToken) {
+    //   status.current.innerText = "يرجى التحقق من CAPTCHA";
+    //   return;
+    // }
 
     // Verify turnstile token first
-    const res = await fetch(
-      "https://battal-shopping.onrender.com/verify-turnstile",
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ token: turnstileToken }),
-      }
-    );
-    const data = await res.json();
+    // const res = await fetch(
+    //   "https://battal-shopping.onrender.com/verify-turnstile",
+    //   {
+    //     method: "POST",
+    //     headers: { "Content-Type": "application/json" },
+    //     body: JSON.stringify({ token: turnstileToken }),
+    //   }
+    // );
+    // const data = await res.json();
 
-    if (!res.ok || !data.success) {
-      status.current.innerText = "فشل التحقق من CAPTCHA، حاول مرة أخرى";
-      return;
-    }
+    // if (!res.ok || !data.success) {
+    //   status.current.innerText = "فشل التحقق من CAPTCHA، حاول مرة أخرى";
+    //   return;
+    // }
 
     // Now call register only if CAPTCHA verified
     const body = { name, number, password };
@@ -90,7 +90,7 @@ export default function Register() {
       localStorage.setItem("sooqUsername", name);
       checkAuthorization();
     } else {
-      status.current.innerText = "اسم المستخدم غير صالح أو الرقم موجود مسبقاً";
+      status.current.innerText = "اسم المستخدم غير صالح";
       status.current.style.color = "red";
     }
   };

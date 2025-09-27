@@ -54,6 +54,9 @@ router.post("/login", async (req, res) => {
   try {
     const { name, password } = req.body;
     //check if user doesn't exist
+
+    name = name.trim().toLowerCase();
+
     const user = await pool.query("select * from users where user_name = $1", [
       name,
     ]);
