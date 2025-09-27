@@ -7,7 +7,7 @@ const authorization = require("../middleware/authorization");
 
 router.post("/register", async (req, res) => {
   try {
-    const { name, number, password } = req.body;
+    let { name, number, password } = req.body;
 
     name = name.trim().toLowerCase();
 
