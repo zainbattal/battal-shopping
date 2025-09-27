@@ -89,6 +89,9 @@ export default function Register() {
       localStorage.setItem("token", parseRes.token);
       checkAuthorization();
     } else {
+      const errorText = await response.text();
+      console.error("Registration error:", errorText);
+
       status.current.innerText = "اسم المستخدم غير صالح";
       status.current.style.color = "red";
     }
