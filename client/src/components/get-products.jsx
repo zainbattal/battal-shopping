@@ -12,7 +12,7 @@ export default function GetProducts() {
   const [cityFilter, setCityFilter] = useState("damascus");
 
   const [saveID, setSaveID] = useState("");
-  const [saveImg, setSaveImage] = useState(bookmarkAdd);
+  const [saveImages, setSaveImages] = useState({});
 
   const navigate = useNavigate();
   const loading = useRef();
@@ -62,7 +62,10 @@ export default function GetProducts() {
   };
 
   const handleSave = async (id) => {
-    setSaveImage(loadingGif);
+    setSaveImages((prev) => ({
+      ...prev,
+      [id]: loadingGif,
+    }));
     const response = await fetch(
       "https://battal-shopping.onrender.com/gets/saveOne",
       {
@@ -76,12 +79,14 @@ export default function GetProducts() {
     );
     if (response.ok) {
       alert("تم حفظ المنتج");
-      setSaveImage(bookmarkAdd);
     } else {
       alert("تعذر حفظ المنتج");
-      setSaveImage(bookmarkAdd);
     }
     console.log(response);
+    setSaveImages((prev) => ({
+      ...prev,
+      [id]: bookmarkAdd,
+    }));
   };
 
   useEffect(() => {
