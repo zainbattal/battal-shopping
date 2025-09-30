@@ -240,7 +240,10 @@ export default function GetProducts() {
                 src={saveImages[product.id] || bookmarkAdd}
                 alt="bookmark"
                 style={{
-                  width: "30px",
+                  width:
+                    saveImages[product.id] === loadingGif ? "50px" : "30px",
+                  height:
+                    saveImages[product.id] === loadingGif ? "50px" : "30px",
                 }}
               />
             </button>
