@@ -90,6 +90,9 @@ export default function GetProducts() {
   };
 
   useEffect(() => {
+    const img = new Image();
+    img.src = loadingGif;
+
     checkAuthorization();
 
     getProducts();
