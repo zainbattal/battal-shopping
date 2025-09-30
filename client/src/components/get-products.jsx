@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import bookmarkAdd from "../assets/bookmarkAdd.svg";
+import loadingGif from "../assets/loading gif.gif";
 
 export default function GetProducts() {
   const [products, setProducts] = useState([]);
@@ -15,6 +16,7 @@ export default function GetProducts() {
   const navigate = useNavigate();
   const loading = useRef();
   const list = useRef();
+  const saveImage = useRef();
   const getProducts = async () => {
     try {
       loading.current.style.display = "flex";
@@ -59,6 +61,7 @@ export default function GetProducts() {
   };
 
   const handleSave = async (id) => {
+    saveImage.current.src = loadingGif;
     const response = await fetch(
       "https://battal-shopping.onrender.com/gets/saveOne",
       {
@@ -72,6 +75,10 @@ export default function GetProducts() {
     );
     if (response.ok) {
       alert("تم حفظ المنتج");
+      saveImage.current.src = bookmarkAdd;
+    } else {
+      alert("تعذر حفظ المنتج");
+      saveImage.current.src = bookmarkAdd;
     }
     console.log(response);
   };
@@ -222,6 +229,7 @@ export default function GetProducts() {
               }}
             >
               <img
+                ref={saveImage}
                 className="bokkmarkAdd
               "
                 src={bookmarkAdd}

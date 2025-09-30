@@ -11,6 +11,7 @@ export default function Register() {
   const [number, setNumber] = useState("");
   const [password, setPassword] = useState("");
   const numberInp = useRef();
+  const submitBtn = useRef();
   const status = useRef();
   const navigate = useNavigate();
 
@@ -38,6 +39,7 @@ export default function Register() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    submitBtn.current.innerText = "جارٍ التسجيل ...";
     status.current.innerText = "";
 
     // Your number validation here
@@ -89,9 +91,9 @@ export default function Register() {
       localStorage.setItem("token", parseRes.token);
       checkAuthorization();
     } else {
+      submitBtn.current.innerText = "إنشاء الحساب";
       const errorText = await response.text();
       console.error("Registration error:", errorText);
-
       status.current.innerText = "اسم المستخدم غير صالح";
       status.current.style.color = "red";
     }
@@ -174,6 +176,7 @@ export default function Register() {
           ></p>
 
           <input
+            ref={submitBtn}
             className="login-submit"
             type="submit"
             value={"إنشاء الحساب"}
