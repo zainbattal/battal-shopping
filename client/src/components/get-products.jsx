@@ -235,10 +235,9 @@ export default function GetProducts() {
               }}
             >
               <img
-                ref={saveImage}
                 className="bokkmarkAdd
               "
-                src={bookmarkAdd}
+                src={saveImages[product.id] || bookmarkAdd}
                 alt="bookmark"
                 style={{
                   width: "30px",
