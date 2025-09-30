@@ -90,9 +90,6 @@ export default function GetProducts() {
   };
 
   useEffect(() => {
-    const img = new Image();
-    img.src = loadingGif;
-
     checkAuthorization();
 
     getProducts();
@@ -243,10 +240,7 @@ export default function GetProducts() {
                 src={saveImages[product.id] || bookmarkAdd}
                 alt="bookmark"
                 style={{
-                  width:
-                    saveImages[product.id] === loadingGif ? "50px" : "30px",
-                  height:
-                    saveImages[product.id] === loadingGif ? "50px" : "30px",
+                  width: "30px",
                 }}
               />
             </button>
