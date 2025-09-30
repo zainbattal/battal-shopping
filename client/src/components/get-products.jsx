@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import bookmarkAdd from "../assets/bookmarkAdd.svg";
-import loadingGif from "../assets/loading gif.gif";
+import loadingGif from "../assets/loadingGIF.gif";
 
 export default function GetProducts() {
   const [products, setProducts] = useState([]);
