@@ -78,7 +78,7 @@ export default function GetProducts() {
         },
       }
     );
-    saveBtn.current.style.backgroundColor = "none";
+    saveBtn.current.style.backgroundColor = "None";
     if (response.ok) {
       alert("تم حفظ المنتج");
     } else {
