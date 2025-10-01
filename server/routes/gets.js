@@ -15,7 +15,7 @@ router.post("/saveOne", async (req, res) => {
     const user = userRow.rows[0].user_name;
     const saves_array = userRow.rows[0].saved_products;
 
-    if (saves_array.includes(id)) {
+    if (saves_array.includes(toString(id))) {
       return;
     }
 
