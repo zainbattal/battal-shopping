@@ -244,6 +244,7 @@ export default function GetProducts() {
                 }}
               />
             </button>
+            <span>{product.saves}</span>
           </div>
         ))}
       </div>
