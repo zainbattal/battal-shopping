@@ -17,7 +17,7 @@ export default function GetProducts() {
   const navigate = useNavigate();
   const loading = useRef();
   const list = useRef();
-  const saveImage = useRef();
+  const saveBtn = useRef();
   const getProducts = async () => {
     try {
       loading.current.style.display = "flex";
@@ -62,6 +62,7 @@ export default function GetProducts() {
   };
 
   const handleSave = async (id) => {
+    saveBtn.current.style.background_color = "Cyan";
     setSaveImages((prev) => ({
       ...prev,
       [id]: loadingGif,
@@ -224,6 +225,7 @@ export default function GetProducts() {
               <span className="product-date">{product.date}</span>
             </div>
             <button
+              ref={saveBtn}
               style={{
                 display: "inline-flex",
                 height: "30px",
