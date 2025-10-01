@@ -21,6 +21,14 @@ router.post("/saveOne", async (req, res) => {
      AND NOT ($1 = ANY(saved_products));`,
       [id, decoded.user]
     );
+
+    const addSave = await pool.query(
+      `UPDATE products
+SET saves = saves + 1
+WHERE id = $1`,
+      [id]
+    );
+
     console.log(response);
     res.json(response);
   } catch (error) {
@@ -58,6 +66,7 @@ router.post("/getProductsSaved", async (req, res) => {
       "SELECT * FROM products WHERE id = ANY($1) ORDER BY array_position($1, id)",
       [data2]
     );
+
     console.log(response.rows);
     console.log(data2 + "this is data");
     res.json(response.rows);
@@ -84,6 +93,14 @@ SET saved_products = array_remove(saved_products, $1)
 WHERE user_name = $2;`,
       [productId, user]
     );
+
+    const addSave = await pool.query(
+      `UPDATE products
+SET saves = saves - 1
+WHERE id = $1`,
+      [id]
+    );
+
     res.json("product unsaved");
   } catch (error) {
     console.error(error.message);
