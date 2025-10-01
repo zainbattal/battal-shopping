@@ -737,3 +737,7 @@ body {
 .username:hover {
   background-position: 100% 0;
 }
+
+.saveBtn.clicked {
+  background-color: cyan;
+}

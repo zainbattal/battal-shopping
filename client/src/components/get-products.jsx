@@ -62,7 +62,7 @@ export default function GetProducts() {
   };
 
   const handleSave = async (id) => {
-    saveBtn.current.style.backgroundColor = "cyan";
+    saveBtn.current.classList.add("clicked");
     setSaveImages((prev) => ({
       ...prev,
       [id]: loadingGif,
@@ -78,7 +78,7 @@ export default function GetProducts() {
         },
       }
     );
-    saveBtn.current.style.backgroundColor = "Transparent";
+    saveBtn.current.classList.remove("clicked");
     if (response.ok) {
       alert("تم حفظ المنتج");
     } else {
