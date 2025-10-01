@@ -15,8 +15,8 @@ router.post("/saveOne", async (req, res) => {
     const user = userRow.rows[0].user_name;
     const saves_array = userRow.rows[0].saved_products;
 
-    if (saves_array.includes(toString(id))) {
-      return;
+    if (saves_array.map(String).includes(String(id))) {
+      return res.status(200).json({ message: "Product already saved" });
     }
 
     const response = await pool.query(
