@@ -6,7 +6,7 @@ export default function ProductDetails() {
   const { id } = useParams();
   const [post, setPost] = useState(null);
   const image = useRef();
-
+  const imageSelf = useRef();
   const checkAuthorization = async () => {
     try {
       const response = await fetch(
@@ -100,7 +100,7 @@ export default function ProductDetails() {
                 style={{ cursor: "pointer" }}
                 onClick={() => {
                   image.current.style.display = "flex";
-                  image.current.src = i;
+                  imageSelf.current.src = i;
                 }}
                 key={i}
                 src={`https://battal-shopping.onrender.com/image/${post.id}/${i}`}
