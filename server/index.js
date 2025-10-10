@@ -4,7 +4,7 @@ const app = express();
 const pool = require("./db");
 const multer = require("multer");
 const jwt = require("jsonwebtoken");
-
+const sharp = require("sharp");
 const upload = multer();
 require("dotenv").config();
 
@@ -133,10 +133,23 @@ app.post("/post", upload.array("images", 10), async (req, res) => {
     const user = userRow.rows[0].user_name;
     const userNumber = userRow.rows[0].user_number;
 
-    const images = req.files.map((file) => file.buffer); // array of BYTEA
+    // ✅ Compress each image using sharp
+    const images = await Promise.all(
+      req.files.map(async (file) => {
+        const compressed = await sharp(file.buffer)
+          .resize({ width: 1080 }) // Resize (optional, keeps aspect ratio)
+          .jpeg({ quality: 70 }) // Compress to JPEG with 70% quality
+          .toBuffer(); // Convert to buffer for PostgreSQL BYTEA
+
+        return compressed;
+      })
+    );
 
     const response = await pool.query(
-      "INSERT INTO products (name, discription, price, type, date, image, uploader, uploader_number, city) VALUES ($1, $2, $3, $4, CURRENT_DATE, $5, $6, $7, $8) RETURNING *",
+      `INSERT INTO products 
+      (name, discription, price, type, date, image, uploader, uploader_number, city) 
+      VALUES ($1, $2, $3, $4, CURRENT_DATE, $5, $6, $7, $8) 
+      RETURNING *`,
       [name, discription, price, type, images, user, userNumber, city]
     );
 
