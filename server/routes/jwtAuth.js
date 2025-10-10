@@ -7,17 +7,17 @@ const authorization = require("../middleware/authorization");
 
 router.post("/register", async (req, res) => {
   try {
-    let { name, number, password, hcaptchaToken } = req.body;
-    console.log(hcaptchaToken);
+    let { name, number, password, hCaptchaToken } = req.body;
+
     name = name.trim().toLowerCase();
     const secret = process.env.HCAPTCHA_SECRET;
-    console.log(hcaptchaToken);
+    console.log(hCaptchaToken);
     console.log(secret);
     const verifyRes = await fetch("https://hcaptcha.com/siteverify", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: `secret=${encodeURIComponent(secret)}&response=${encodeURIComponent(
-        hcaptchaToken
+        hCaptchaToken
       )}`,
     });
     const verifyJson = await verifyRes.json();
