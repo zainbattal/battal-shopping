@@ -97,8 +97,9 @@ export default function ProductDetails() {
           >
             {[0, 1, 2].map((i) => (
               <img
+                style={{ cursor: "pointer" }}
                 onClick={() => {
-                  image.current.style.display = "inline";
+                  image.current.style.display = "flex";
                   image.current.src = i;
                 }}
                 key={i}
