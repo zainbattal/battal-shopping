@@ -9,7 +9,7 @@ export default function Uploud(params) {
   const [type, setType] = useState("notSet");
   const [price, setPrice] = useState(1000);
   const [image, setImage] = useState();
-  const [city, setCity] = useState("");
+  const [city, setCity] = useState("اللاذقية");
   const [status, setStatus] = useState("");
   const [badstatus, setBadstatus] = useState("");
   const stat = useRef();
