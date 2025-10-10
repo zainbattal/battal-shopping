@@ -469,6 +469,9 @@ body {
    ========================= */
 @media (max-width: 768px) {
   /* Navbar: stack links instead of squeezing */
+  .imagesDiv {
+    flex-direction: column;
+  }
 
   .siteNav {
     gap: 0;
@@ -588,10 +591,6 @@ body {
 
 /* Responsive layout for larger screens */
 @media (min-width: 768px) {
-  .imagesDiv {
-    flex-direction: column;
-  }
-
   .fullDetails {
     flex-direction: row;
     gap: 40px;
