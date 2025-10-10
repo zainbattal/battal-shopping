@@ -49,7 +49,20 @@ export default function ProductDetails() {
   return (
     <>
       <div className="fullDetails">
-        <img src={`https://battal-shopping.onrender.com/image/${id}`} />
+        <div
+          className="imagesDiv"
+          style={{ display: "flex", flexDirection: "row" }}
+        >
+          {[0, 1, 2].map((i) => (
+            <img
+              key={i}
+              src={`https://your-api.com/image/${product.id}/${i}`}
+              alt={`product ${i}`}
+              onError={(e) => (e.target.style.display = "none")} // hide broken images
+            />
+          ))}
+        </div>
+
         <div className="detailDiv">
           <h3 className="DetailsName">{post.name}</h3>
           <span className="DetailsSpan">الوصف:</span>
