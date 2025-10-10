@@ -56,7 +56,7 @@ export default function ProductDetails() {
           {[0, 1, 2].map((i) => (
             <img
               key={i}
-              src={`https://your-api.com/image/${post.id}/${i}`}
+              src={`https://battal-shopping.onrender.com/image/${post.id}/${i}`}
               alt={`product ${i}`}
               onError={(e) => (e.target.style.display = "none")} // hide broken images
             />
