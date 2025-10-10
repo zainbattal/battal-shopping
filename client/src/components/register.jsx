@@ -41,6 +41,13 @@ export default function Register() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!hCaptchaToken) {
+      status.current.innerText = "يرجى التحقق من أنك لست روبوتًا";
+      submitBtn.current.innerText = "إنشاء الحساب";
+      return;
+    }
+
     submitBtn.current.innerText = "جارٍ التسجيل ...";
     status.current.innerText = "";
 
