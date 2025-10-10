@@ -7,8 +7,8 @@ const authorization = require("../middleware/authorization");
 
 router.post("/register", async (req, res) => {
   try {
-    let { name, number, password, hcaptchaToken: hCaptchaToken } = req.body;
-
+    let { name, number, password, hcaptchaToken } = req.body;
+    console.log(hcaptchaToken);
     name = name.trim().toLowerCase();
     const secret = process.env.HCAPTCHA_SECRET;
     console.log(hcaptchaToken);
