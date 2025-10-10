@@ -9,7 +9,7 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const status = useRef();
   const navigate = useNavigate();
-
+  const submitBtn = useRef();
   const checkAuthorization = async () => {
     try {
       const response = await fetch(
@@ -34,6 +34,7 @@ export default function Login() {
 
   const handleSubmit = async (e) => {
     try {
+      submitBtn.current.value = "جار التحقق";
       status.current.innerText = "";
       e.preventDefault();
       const body = { name, password };
@@ -61,6 +62,7 @@ export default function Login() {
     } catch (error) {
       console.error(error);
     }
+    submitBtn.current.value = "تسجيل الدخول";
   };
 
   useEffect(() => {
@@ -113,6 +115,7 @@ export default function Login() {
             <p className="login-error" ref={status}></p>
             <div className="submit-div">
               <input
+                ref={submitBtn}
                 className="login-submit"
                 type="submit"
                 value={"تسجيل الدخول"}

@@ -7,7 +7,6 @@ import { useRef } from "react";
 import Turnstile from "react-turnstile";
 import blueLogo from "../assets/soowblue.png";
 export default function Register() {
-  const [turnstileToken, setTurnstileToken] = useState("");
   const [name, setName] = useState("");
   const [number, setNumber] = useState("");
   const [password, setPassword] = useState("");
@@ -41,7 +40,7 @@ export default function Register() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    submitBtn.current.value = "جار التحقق";
     if (!hCaptchaToken) {
       status.current.innerText = "يرجى التحقق من أنك لست روبوتًا";
       submitBtn.current.innerText = "إنشاء الحساب";
@@ -84,6 +83,7 @@ export default function Register() {
       status.current.innerText = "اسم المستخدم غير صالح";
       status.current.style.color = "red";
     }
+    submitBtn.current.value = "إنشاء الحساب";
   };
 
   useEffect(() => {

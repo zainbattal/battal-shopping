@@ -36,7 +36,24 @@ export default function SearchProducts() {
       console.error(error);
     }
   };
-
+  const getAllProducts = async () => {
+    try {
+      loading.current.style.display = "flex";
+      list.current.style.display = "none";
+      let response = await fetch("https://battal-shopping.onrender.com/list", {
+        method: "POST",
+        body: JSON.stringify({ catFilter, priceFilter, cityFilter }),
+        headers: { "content-type": "application/json" },
+      });
+      if (response.ok) {
+        let jsonData = await response.json();
+        console.log(jsonData);
+        setProducts(jsonData);
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
   const checkAuthorization = async () => {
     try {
       const response = await fetch(
@@ -79,6 +96,7 @@ export default function SearchProducts() {
 
   useEffect(() => {
     checkAuthorization();
+    getAllProducts();
   }, []);
 
   useEffect(() => {

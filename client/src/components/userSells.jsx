@@ -118,7 +118,13 @@ export default function UserProducts() {
 
       <div className="products-list">
         {products.map((product) => (
-          <div key={product.id} className="product-cont">
+          <div
+            key={product.id}
+            className="product-cont"
+            onClick={() => {
+              navigate(`products/${product.id}`);
+            }}
+          >
             <img
               className="product-image"
               src={`https://battal-shopping.onrender.com/image/${product.id}`}
