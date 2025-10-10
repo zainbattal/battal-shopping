@@ -151,11 +151,14 @@ export default function Register() {
               setPassword(e.target.value);
             }}
           />
-          <HCaptcha
-            sitekey="ddc07ae2-ffb2-485c-a266-29c650e63f96"
-            onVerify={(token) => setHCaptchaToken(token)}
-            onExpire={() => setHCaptchaToken("")}
-          />
+          <div style={{ justifyContent: "center" }}>
+            <HCaptcha7
+              sitekey="ddc07ae2-ffb2-485c-a266-29c650e63f96"
+              onVerify={(token) => setHCaptchaToken(token)}
+              onExpire={() => setHCaptchaToken("")}
+            />
+          </div>
+
           {/* <Turnstile
             sitekey="0x4AAAAAAByfnMjZv6VQTT8D"
             onSuccess={(token) => setTurnstileToken(token)}
