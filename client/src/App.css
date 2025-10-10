@@ -588,6 +588,10 @@ body {
 
 /* Responsive layout for larger screens */
 @media (min-width: 768px) {
+  .imagesDiv {
+    flex-direction: column;
+  }
+
   .fullDetails {
     flex-direction: row;
     gap: 40px;

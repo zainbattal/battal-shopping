@@ -49,20 +49,6 @@ export default function ProductDetails() {
   return (
     <>
       <div className="fullDetails">
-        <div
-          className="imagesDiv"
-          style={{ display: "flex", flexDirection: "row" }}
-        >
-          {[0, 1, 2].map((i) => (
-            <img
-              key={i}
-              src={`https://battal-shopping.onrender.com/image/${post.id}/${i}`}
-              alt={`product ${i}`}
-              onError={(e) => (e.target.style.display = "none")} // hide broken images
-            />
-          ))}
-        </div>
-
         <div className="detailDiv">
           <h3 className="DetailsName">{post.name}</h3>
           <span className="DetailsSpan">الوصف:</span>
@@ -88,6 +74,19 @@ export default function ProductDetails() {
           <span className="DetailsSpan">السعر:</span>
           <p className="DetailsPrice">{post.price} SYP</p>
           <p className="DetailsDate">{post.date}</p>
+          <div
+            className="imagesDiv"
+            style={{ display: "flex", flexDirection: "row" }}
+          >
+            {[0, 1, 2].map((i) => (
+              <img
+                key={i}
+                src={`https://battal-shopping.onrender.com/image/${post.id}/${i}`}
+                alt={`product ${i}`}
+                onError={(e) => (e.target.style.display = "none")} // hide broken images
+              />
+            ))}
+          </div>
         </div>
       </div>
     </>
