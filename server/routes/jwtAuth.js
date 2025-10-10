@@ -7,9 +7,26 @@ const authorization = require("../middleware/authorization");
 
 router.post("/register", async (req, res) => {
   try {
-    let { name, number, password } = req.body;
+    let { name, number, password, hcaptchaToken } = req.body;
 
     name = name.trim().toLowerCase();
+
+    const verifyRes = await fetch("https://hcaptcha.com/siteverify", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: `secret=${encodeURIComponent(secret)}&response=${encodeURIComponent(
+        hcaptchaToken
+      )}`,
+    });
+    const verifyJson = await verifyRes.json();
+
+    if (!verifyJson.success) {
+      return res.status(400).json({
+        success: false,
+        msg: "Captcha verification failed",
+        details: verifyJson["error-codes"],
+      });
+    }
 
     // some error handlings
     if (Number(number.toString()[0]) !== 9) {

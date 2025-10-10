@@ -1,4 +1,5 @@
 import React from "react";
+import HCaptcha from "@hcaptcha/react-hcaptcha";
 import { useState } from "react";
 import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
@@ -10,6 +11,7 @@ export default function Register() {
   const [name, setName] = useState("");
   const [number, setNumber] = useState("");
   const [password, setPassword] = useState("");
+  const [hCaptchaToken, setHCaptchaToken] = useState("");
   const numberInp = useRef();
   const submitBtn = useRef();
   const status = useRef();
@@ -52,29 +54,7 @@ export default function Register() {
       return;
     }
 
-    // if (!turnstileToken) {
-    //   status.current.innerText = "يرجى التحقق من CAPTCHA";
-    //   return;
-    // }
-
-    // Verify turnstile token first
-    // const res = await fetch(
-    //   "https://battal-shopping.onrender.com/verify-turnstile",
-    //   {
-    //     method: "POST",
-    //     headers: { "Content-Type": "application/json" },
-    //     body: JSON.stringify({ token: turnstileToken }),
-    //   }
-    // );
-    // const data = await res.json();
-
-    // if (!res.ok || !data.success) {
-    //   status.current.innerText = "فشل التحقق من CAPTCHA، حاول مرة أخرى";
-    //   return;
-    // }
-
-    // Now call register only if CAPTCHA verified
-    const body = { name, number, password };
+    const body = { name, number, password, hCaptchaToken };
 
     const response = await fetch(
       "https://battal-shopping.onrender.com/auth/register",
@@ -163,6 +143,11 @@ export default function Register() {
             onChange={(e) => {
               setPassword(e.target.value);
             }}
+          />
+          <HCaptcha
+            sitekey="ddc07ae2-ffb2-485c-a266-29c650e63f96"
+            onVerify={(token) => setHCaptchaToken(token)}
+            onExpire={() => setHCaptchaToken("")}
           />
           {/* <Turnstile
             sitekey="0x4AAAAAAByfnMjZv6VQTT8D"
