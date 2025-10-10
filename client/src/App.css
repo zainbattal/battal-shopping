@@ -744,3 +744,7 @@ body {
 .saveBtn.clicked {
   background-color: cyan;
 }
+
+.refImageDiv {
+  background-color: rgba(0, 0, 0, 0.15);
+}

@@ -1,10 +1,11 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-
+import { useRef } from "react";
 export default function ProductDetails() {
   const { id } = useParams();
   const [post, setPost] = useState(null);
+  const image = useRef();
 
   const checkAuthorization = async () => {
     try {
@@ -48,6 +49,22 @@ export default function ProductDetails() {
 
   return (
     <>
+      <div
+        onClick={() => (image.current.style.display = "none")}
+        className="refImageDiv"
+        ref={image}
+        style={{
+          position: "absolute",
+          display: "flex",
+          justifyContent: "center",
+          display: "none",
+          width: "auto",
+          height: "auto",
+        }}
+      >
+        <img src="" alt="" />
+      </div>
+
       <div className="fullDetails">
         <div className="detailDiv">
           <h3 className="DetailsName">{post.name}</h3>
@@ -80,6 +97,10 @@ export default function ProductDetails() {
           >
             {[0, 1, 2].map((i) => (
               <img
+                onClick={() => {
+                  image.current.style.display = "inline";
+                  image.current.src = i;
+                }}
                 key={i}
                 src={`https://battal-shopping.onrender.com/image/${post.id}/${i}`}
                 alt={`product ${i}`}
