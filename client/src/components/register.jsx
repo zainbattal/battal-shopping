@@ -152,7 +152,7 @@ export default function Register() {
             }}
           />
           <div style={{ justifyContent: "center" }}>
-            <HCaptcha7
+            <HCaptcha
               sitekey="ddc07ae2-ffb2-485c-a266-29c650e63f96"
               onVerify={(token) => setHCaptchaToken(token)}
               onExpire={() => setHCaptchaToken("")}
