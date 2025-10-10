@@ -215,7 +215,7 @@ export default function GetProducts() {
           >
             <img
               className="product-image"
-              src={`https://battal-shopping.onrender.com/image/${product.id}`}
+              src={`https://battal-shopping.onrender.com/image/${product.id}/0`}
               alt={product.name}
             />
             <div className="product-details">

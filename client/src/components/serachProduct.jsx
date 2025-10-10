@@ -38,8 +38,6 @@ export default function SearchProducts() {
   };
   const getAllProducts = async () => {
     try {
-      loading.current.style.display = "flex";
-      list.current.style.display = "none";
       let response = await fetch("https://battal-shopping.onrender.com/list", {
         method: "POST",
         body: JSON.stringify({ catFilter, priceFilter, cityFilter }),
@@ -216,7 +214,7 @@ export default function SearchProducts() {
             >
               <img
                 className="product-image"
-                src={`https://battal-shopping.onrender.com/image/${product.id}`}
+                src={`https://battal-shopping.onrender.com/image/${product.id}/0`}
                 alt={product.name}
               />
               <div className="product-details">

@@ -8,7 +8,7 @@ export default function Uploud(params) {
   const [discription, setDiscription] = useState("");
   const [type, setType] = useState("notSet");
   const [price, setPrice] = useState(1000);
-  const [image, setImage] = useState();
+  const [images, setImages] = useState();
   const [city, setCity] = useState("اللاذقية");
   const [status, setStatus] = useState("");
   const [badstatus, setBadstatus] = useState("");
@@ -55,7 +55,9 @@ export default function Uploud(params) {
       formData.append("discription", discription.trim());
       formData.append("type", type);
       formData.append("price", price);
-      formData.append("image", image);
+      images.forEach((img) => {
+        formData.append("images", img); // Same name as in multer: "images"
+      });
       formData.append("city", city);
       const response = await fetch(
         "https://battal-shopping.onrender.com/post",
@@ -81,7 +83,7 @@ export default function Uploud(params) {
   };
 
   const handleImage = (e) => {
-    setImage(e.target.files[0]);
+    setImages([...e.target.files]);
   };
 
   useEffect(() => {
@@ -152,6 +154,7 @@ export default function Uploud(params) {
           <input
             className="image-input"
             required
+            multiple
             type="file"
             accept=".jpg, .jpeg, .png"
             onChange={handleImage}

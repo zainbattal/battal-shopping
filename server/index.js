@@ -95,17 +95,24 @@ app.get("/profile", async (req, res) => {
   }
 });
 
-app.get("/image/:id", async (req, res) => {
+app.get("/image/:id/:index", async (req, res) => {
   try {
-    const { id } = req.params;
+    const { id, index } = req.params;
     const result = await pool.query(
       "SELECT image FROM products WHERE id = $1",
       [id]
     );
     if (result.rows.length === 0) return res.status(404).send("not found");
 
-    const image = result.rows[0].image;
-    res.set("Content-Type", "image/jpeg"); // or png if needed
+    const images = result.rows[0].image;
+
+    const idx = parseInt(index, 10);
+    if (isNaN(idx) || idx < 0 || idx >= images.length) {
+      return res.status(400).send("invalid index");
+    }
+
+    const image = images[idx];
+    res.set("Content-Type", "image/jpeg"); // or infer content-type dynamically
     res.send(image);
   } catch (error) {
     console.error(error);
@@ -113,27 +120,30 @@ app.get("/image/:id", async (req, res) => {
   }
 });
 
-app.post("/post", upload.single("image"), async (req, res) => {
+app.post("/post", upload.array("images", 10), async (req, res) => {
   try {
     const { name, discription, price, type, city } = req.body;
-    const image = req.file.buffer;
     const token = req.header("token");
     const decoded = jwt.verify(token, process.env.jwtSecret);
 
-    const userRow = await pool.query("select * from users where user_id = $1", [
+    const userRow = await pool.query("SELECT * FROM users WHERE user_id = $1", [
       decoded.user,
     ]);
 
     const user = userRow.rows[0].user_name;
     const userNumber = userRow.rows[0].user_number;
 
-    let response = await pool.query(
+    const images = req.files.map((file) => file.buffer); // array of BYTEA
+
+    const response = await pool.query(
       "INSERT INTO products (name, discription, price, type, date, image, uploader, uploader_number, city) VALUES ($1, $2, $3, $4, CURRENT_DATE, $5, $6, $7, $8) RETURNING *",
-      [name, discription, price, type, image, user, userNumber, city]
+      [name, discription, price, type, images, user, userNumber, city]
     );
+
     res.send("added!");
   } catch (error) {
     console.error(error);
+    res.status(500).send("Something went wrong");
   }
 });
 
