@@ -5,8 +5,9 @@ import { useRef } from "react";
 export default function ProductDetails() {
   const { id } = useParams();
   const [post, setPost] = useState(null);
-  const image = useRef();
-  const imageSelf = useRef();
+  const imageWrapper = useRef();
+  const imageTag = useRef();
+
   const checkAuthorization = async () => {
     try {
       const response = await fetch(
@@ -50,19 +51,25 @@ export default function ProductDetails() {
   return (
     <>
       <div
-        onClick={() => (image.current.style.display = "none")}
+        onClick={() => (imageWrapper.current.style.display = "none")}
         className="refImageDiv"
-        ref={image}
+        ref={imageWrapper}
         style={{
           position: "absolute",
-          display: "flex",
           justifyContent: "center",
           display: "none",
           width: "auto",
           height: "auto",
+          backgroundColor: "rgba(0,0,0,0.8)", // optional for effect
+          zIndex: 1000, // make sure it stays on top
         }}
       >
-        <img src="" alt="" />
+        <img
+          ref={imageTag}
+          src=""
+          alt="popup"
+          style={{ maxWidth: "90%", maxHeight: "90%" }}
+        />
       </div>
 
       <div className="fullDetails">
@@ -97,15 +104,15 @@ export default function ProductDetails() {
           >
             {[0, 1, 2].map((i) => (
               <img
+                key={i}
                 style={{ cursor: "pointer" }}
                 onClick={() => {
-                  image.current.style.display = "flex";
-                  imageSelf.current.src = i;
+                  imageWrapper.current.style.display = "flex";
+                  imageTag.current.src = `https://battal-shopping.onrender.com/image/${post.id}/${i}`;
                 }}
-                key={i}
                 src={`https://battal-shopping.onrender.com/image/${post.id}/${i}`}
                 alt={`product ${i}`}
-                onError={(e) => (e.target.style.display = "none")} // hide broken images
+                onError={(e) => (e.target.style.display = "none")}
               />
             ))}
           </div>
