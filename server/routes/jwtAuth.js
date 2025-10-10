@@ -11,8 +11,6 @@ router.post("/register", async (req, res) => {
 
     name = name.trim().toLowerCase();
     const secret = process.env.HCAPTCHA_SECRET;
-    console.log(hCaptchaToken);
-    console.log(secret);
     const verifyRes = await fetch("https://hcaptcha.com/siteverify", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
