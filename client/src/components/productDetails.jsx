@@ -7,7 +7,8 @@ export default function ProductDetails() {
   const [post, setPost] = useState(null);
   const imageWrapper = useRef();
   const imageTag = useRef();
-
+  const [popupVisible, setPopupVisible] = useState(false);
+  const [popupSrc, setPopupSrc] = useState("");
   const checkAuthorization = async () => {
     try {
       const response = await fetch(
@@ -50,27 +51,31 @@ export default function ProductDetails() {
 
   return (
     <>
-      <div
-        onClick={() => (imageWrapper.current.style.display = "none")}
-        className="refImageDiv"
-        ref={imageWrapper}
-        style={{
-          position: "absolute",
-          justifyContent: "center",
-          display: "none",
-          width: "auto",
-          height: "auto",
-          backgroundColor: "rgba(0,0,0,0.8)", // optional for effect
-          zIndex: 1000, // make sure it stays on top
-        }}
-      >
-        <img
-          ref={imageTag}
-          src=""
-          alt="popup"
-          style={{ maxWidth: "90%", maxHeight: "90%" }}
-        />
-      </div>
+      {popupVisible && (
+        <div
+          onClick={() => setPopupVisible(false)}
+          className="refImageDiv"
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundColor: "rgba(0,0,0,0.8)",
+            zIndex: 1000,
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            cursor: "pointer",
+          }}
+        >
+          <img
+            src={popupSrc}
+            alt="product zoom"
+            style={{ maxWidth: "90%", maxHeight: "90%" }}
+          />
+        </div>
+      )}
 
       <div className="fullDetails">
         <div className="detailDiv">
@@ -107,8 +112,10 @@ export default function ProductDetails() {
                 key={i}
                 style={{ cursor: "pointer" }}
                 onClick={() => {
-                  imageWrapper.current.style.display = "flex";
-                  imageTag.current.src = `https://battal-shopping.onrender.com/image/${post.id}/${i}`;
+                  setPopupSrc(
+                    `https://battal-shopping.onrender.com/image/${post.id}/${i}`
+                  );
+                  setPopupVisible(true);
                 }}
                 src={`https://battal-shopping.onrender.com/image/${post.id}/${i}`}
                 alt={`product ${i}`}
