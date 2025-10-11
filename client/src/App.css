@@ -469,9 +469,6 @@ body {
    ========================= */
 @media (max-width: 768px) {
   /* Navbar: stack links instead of squeezing */
-  .imagesDiv {
-    flex-direction: row;
-  }
 
   .siteNav {
     gap: 0;
