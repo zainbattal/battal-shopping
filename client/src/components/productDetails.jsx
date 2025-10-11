@@ -52,7 +52,23 @@ export default function ProductDetails() {
   return (
     <>
       {popupVisible && (
-        <div onClick={() => setPopupVisible(false)} className="refImageDiv">
+        <div
+          onClick={() => setPopupVisible(false)}
+          className="refImageDiv"
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundColor: "rgba(0,0,0,0.8)",
+            zIndex: 1000,
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            cursor: "pointer",
+          }}
+        >
           <img
             src={popupSrc}
             alt="product zoom"
@@ -87,10 +103,7 @@ export default function ProductDetails() {
           <span className="DetailsSpan">السعر:</span>
           <p className="DetailsPrice">{post.price} SYP</p>
           <p className="DetailsDate">{post.date}</p>
-          <div
-            className="imagesDiv"
-            style={{ display: "flex", flexDirection: "row" }}
-          >
+          <div className="imagesDiv">
             {[0, 1, 2].map((i) => (
               <img
                 key={i}
