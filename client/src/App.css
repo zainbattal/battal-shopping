@@ -755,3 +755,11 @@ body {
     align-items: center;
   }
 }
+
+.product-cont {
+  flex: 1 1 calc(50% - 1.5rem);
+  box-sizing: border-box;
+}
+.products-list {
+  flex-wrap: wrap;
+}
