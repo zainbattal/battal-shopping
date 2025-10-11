@@ -52,23 +52,7 @@ export default function ProductDetails() {
   return (
     <>
       {popupVisible && (
-        <div
-          onClick={() => setPopupVisible(false)}
-          className="refImageDiv"
-          style={{
-            position: "fixed",
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            backgroundColor: "rgba(0,0,0,0.8)",
-            zIndex: 1000,
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            cursor: "pointer",
-          }}
-        >
+        <div onClick={() => setPopupVisible(false)} className="refImageDiv">
           <img
             src={popupSrc}
             alt="product zoom"
