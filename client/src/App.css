@@ -470,7 +470,7 @@ body {
 @media (max-width: 768px) {
   /* Navbar: stack links instead of squeezing */
   .imagesDiv {
-    flex-direction: column;
+    flex-direction: row;
   }
 
   .siteNav {

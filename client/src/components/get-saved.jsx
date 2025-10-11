@@ -91,7 +91,7 @@ export default function UserProducts() {
             <div key={product.id} className="product-cont">
               <img
                 className="product-image"
-                src={`https://battal-shopping.onrender.com/image/${product.id}`}
+                src={`https://battal-shopping.onrender.com/image/${product.id}/0`}
                 alt={product.name}
               />
               <div className="product-details">
