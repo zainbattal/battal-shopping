@@ -11,6 +11,8 @@ export default function ProductDetails() {
   const [popupSrc, setPopupSrc] = useState("");
   const [arrayNum, setArrayNum] = useState(0);
   const [imageCount, setImageCount] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(0);
+
   const checkAuthorization = async () => {
     try {
       const response = await fetch(
