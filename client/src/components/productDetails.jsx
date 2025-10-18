@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
 export default function ProductDetails() {
@@ -7,11 +7,9 @@ export default function ProductDetails() {
   const [post, setPost] = useState(null);
   const [imageCount, setImageCount] = useState(0);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [imageUrls, setImageUrls] = useState([]);
 
-  const imageWrapper = useRef();
-  const imageTag = useRef();
-
-  // Check auth
+  // Check authorization
   const checkAuthorization = async () => {
     try {
       const response = await fetch(
@@ -32,7 +30,7 @@ export default function ProductDetails() {
     }
   };
 
-  // Fetch product
+  // Fetch product details and preload images
   const GetProduct = async () => {
     try {
       const res = await fetch("https://battal-shopping.onrender.com/getOne", {
@@ -45,19 +43,28 @@ export default function ProductDetails() {
 
       if (jsonData) {
         setPost(jsonData);
-        setImageCount(jsonData.image?.length || 0);
+
+        const count = jsonData.image?.length || 0;
+        setImageCount(count);
         setCurrentIndex(0);
+
+        const urls = [];
+
+        for (let i = 0; i < count; i++) {
+          const url = `https://battal-shopping.onrender.com/image/${jsonData.id}/${i}`;
+          const img = new Image();
+          img.src = url;
+          urls.push(url);
+        }
+
+        setImageUrls(urls);
       }
-    } catch (err) {
-      console.error("Failed to fetch product:", err);
+    } catch (error) {
+      console.error("Failed to fetch product:", error);
     }
   };
 
-  useEffect(() => {
-    checkAuthorization();
-    GetProduct();
-  }, []);
-
+  // Navigation handlers
   const handlePrev = () => {
     setCurrentIndex((prev) => (prev === 0 ? imageCount - 1 : prev - 1));
   };
@@ -66,14 +73,16 @@ export default function ProductDetails() {
     setCurrentIndex((prev) => (prev === imageCount - 1 ? 0 : prev + 1));
   };
 
+  useEffect(() => {
+    checkAuthorization();
+    GetProduct();
+  }, []);
+
   if (!post) {
     return <p>Loading...</p>;
   }
 
-  const imageUrl =
-    imageCount > 0
-      ? `https://battal-shopping.onrender.com/image/${post.id}/${currentIndex}`
-      : "";
+  const imageUrl = imageUrls[currentIndex] || "";
 
   return (
     <div className="fullDetails">
@@ -86,7 +95,7 @@ export default function ProductDetails() {
         <span className="DetailsSpan">اسم المستخدم:</span>
         <p className="DetailsUsername">{post.uploader}</p>
 
-        <span className="DetailsSpan">{"رقم المستخدم (اضغط للنسخ):"}</span>
+        <span className="DetailsSpan">رقم المستخدم (اضغط للنسخ):</span>
         <p
           className="DetailsNumber"
           style={{ cursor: "pointer" }}
@@ -121,10 +130,14 @@ export default function ProductDetails() {
             }}
           >
             <img
-              ref={imageTag}
               src={imageUrl}
               alt={`product ${currentIndex}`}
-              style={{ maxWidth: "100%", cursor: "default" }}
+              style={{
+                maxWidth: "100%",
+                maxHeight: "500px",
+                objectFit: "contain",
+                cursor: "default",
+              }}
               onError={(e) => (e.target.style.display = "none")}
             />
 
