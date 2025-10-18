@@ -786,3 +786,19 @@ h5,
 h6 {
   direction: rtl;
 }
+
+.BigSave {
+  height: 60px;
+  border: none;
+  border-radius: 20px;
+  background-color: #0071e3;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.BigSave:hover {
+  scale: 1.1;
+}
+.BigSave:active {
+  opacity: 0.7;
+}

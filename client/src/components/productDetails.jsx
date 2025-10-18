@@ -268,7 +268,13 @@ export default function ProductDetails() {
         <span className="DetailsSpan">السعر:</span>
         <p className="DetailsPrice">{post.price} SYP</p>
 
-        <button className="BigSave" ref={saveBtn} onClick={handleSave(post.id)}>
+        <button
+          className="BigSave"
+          ref={saveBtn}
+          onClick={() => {
+            handleSave(post.id);
+          }}
+        >
           حفظ المنتج
         </button>
         <p className="DetailsDate">{post.date}</p>
