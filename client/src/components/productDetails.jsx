@@ -149,38 +149,6 @@ export default function ProductDetails() {
       )}
       <div className="detailDiv">
         <h3 className="DetailsName">{post.name}</h3>
-
-        <span className="DetailsSpan">الوصف:</span>
-        <p className="DetailsDisc">{post.discription}</p>
-
-        <span className="DetailsSpan">اسم المستخدم:</span>
-        <p className="DetailsUsername">{post.uploader}</p>
-
-        <span className="DetailsSpan">{"رقم المستخدم (اضغط للنسخ):"}</span>
-        <p
-          className="DetailsNumber"
-          style={{ cursor: "pointer" }}
-          onClick={() => {
-            navigator.clipboard.writeText(post.uploader_number).then(() => {
-              alert("تم نسخ الرقم");
-            });
-          }}
-        >
-          {post.uploader_number}
-        </p>
-
-        <span className="DetailsSpan">الفئة:</span>
-        <p className="DetailsType">{post.type}</p>
-
-        <span className="DetailsSpan">المدينة:</span>
-        <p className="DetailsCity">{post.city}</p>
-
-        <span className="DetailsSpan">السعر:</span>
-        <p className="DetailsPrice">{post.price} SYP</p>
-
-        <p className="DetailsDate">{post.date}</p>
-
-        {/* Image Carousel */}
         {imageCount > 0 && (
           <div
             className="image-carousel"
@@ -251,6 +219,37 @@ export default function ProductDetails() {
             )}
           </div>
         )}
+        <span className="DetailsSpan">الوصف:</span>
+        <p className="DetailsDisc">{post.discription}</p>
+
+        <span className="DetailsSpan">اسم المستخدم:</span>
+        <p className="DetailsUsername">{post.uploader}</p>
+
+        <span className="DetailsSpan">{"رقم المستخدم (اضغط للنسخ):"}</span>
+        <p
+          className="DetailsNumber"
+          style={{ cursor: "pointer" }}
+          onClick={() => {
+            navigator.clipboard.writeText(post.uploader_number).then(() => {
+              alert("تم نسخ الرقم");
+            });
+          }}
+        >
+          {post.uploader_number}
+        </p>
+
+        <span className="DetailsSpan">الفئة:</span>
+        <p className="DetailsType">{post.type}</p>
+
+        <span className="DetailsSpan">المدينة:</span>
+        <p className="DetailsCity">{post.city}</p>
+
+        <span className="DetailsSpan">السعر:</span>
+        <p className="DetailsPrice">{post.price} SYP</p>
+
+        <p className="DetailsDate">{post.date}</p>
+
+        {/* Image Carousel */}
       </div>
     </div>
   );
