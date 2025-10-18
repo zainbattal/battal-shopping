@@ -7,7 +7,8 @@ export default function ProductDetails() {
   const [post, setPost] = useState(null);
   const [imageCount, setImageCount] = useState(0);
   const [currentIndex, setCurrentIndex] = useState(0);
-
+  const [popupSrc, setPopupSrc] = useState();
+  const [popupVisible, setPopupVisible] = useState();
   const imageWrapper = useRef();
   const imageTag = useRef();
 
@@ -30,6 +31,13 @@ export default function ProductDetails() {
     } catch (error) {
       console.error("Authorization check failed:", error);
     }
+  };
+
+  const handleImageClick = () => {
+    setPopupSrc(
+      `https://battal-shopping.onrender.com/image/${post.id}/${currentIndex}`
+    );
+    setPopupVisible(true);
   };
 
   // Fetch product
@@ -77,6 +85,31 @@ export default function ProductDetails() {
 
   return (
     <div className="fullDetails">
+      {popupVisible && (
+        <div
+          onClick={() => setPopupVisible(false)}
+          className="refImageDiv"
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundColor: "rgba(0,0,0,0.8)",
+            zIndex: 1000,
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            cursor: "pointer",
+          }}
+        >
+          <img
+            src={popupSrc}
+            alt="product zoom"
+            style={{ maxWidth: "90%", maxHeight: "90%" }}
+          />
+        </div>
+      )}
       <div className="detailDiv">
         <h3 className="DetailsName">{post.name}</h3>
 
@@ -123,6 +156,9 @@ export default function ProductDetails() {
             <img
               ref={imageTag}
               src={imageUrl}
+              onClick={() => {
+                handleImageClick;
+              }}
               alt={`product ${currentIndex}`}
               style={{ maxWidth: "100%", cursor: "default" }}
               onError={(e) => (e.target.style.display = "none")}
