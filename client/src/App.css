@@ -552,6 +552,7 @@ body {
   text-transform: uppercase;
   color: #0071e3;
   letter-spacing: 0.6px;
+  direction: rtl;
 }
 
 .DetailsDisc,
@@ -587,6 +588,7 @@ body {
   margin-top: 10px;
   display: inline-block;
   box-shadow: 0 0 0 2px #fce38a inset, 0 2px 10px rgba(0, 0, 0, 0.05);
+  text-align: center;
 }
 
 /* Responsive layout for larger screens */

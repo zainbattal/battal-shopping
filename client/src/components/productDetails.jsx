@@ -10,9 +10,29 @@ export default function ProductDetails() {
   const [popupSrc, setPopupSrc] = useState();
   const [popupVisible, setPopupVisible] = useState();
   const [loadedImages, setLoadedImages] = useState(new Map()); // Changed to Map for better performance
-
+  const saveBtn = useRef();
   // Cache for preloaded Image objects
   const imageCache = useRef(new Map());
+
+  const handleSave = async (id) => {
+    saveBtn.current.innerText = "جار الحفظ";
+    const response = await fetch(
+      "https://battal-shopping.onrender.com/gets/saveOne",
+      {
+        method: "POST",
+        body: JSON.stringify({ id }),
+        headers: {
+          "content-type": "application/json",
+          token: localStorage.token, // send the JWT token here
+        },
+      }
+    );
+    if (response.ok) {
+      saveBtn.current.innerText = "تم الحفظ";
+      alert("تم حفظ المنتج");
+    }
+    console.log(response);
+  };
 
   // Preload all images and store the actual Image objects
   useEffect(() => {
@@ -248,6 +268,9 @@ export default function ProductDetails() {
         <span className="DetailsSpan">السعر:</span>
         <p className="DetailsPrice">{post.price} SYP</p>
 
+        <button className="BigSave" ref={saveBtn} onClick={handleSave(post.id)}>
+          حفظ المنتج
+        </button>
         <p className="DetailsDate">{post.date}</p>
 
         {/* Image Carousel */}
