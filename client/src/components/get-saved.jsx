@@ -85,6 +85,9 @@ export default function UserProducts() {
 
   return (
     <>
+      <h1 style={{ textAlign: "center" }} ref={textStat}>
+        جار التحميل
+      </h1>
       {
         <div className="products-list">
           {products.map((product) => (
@@ -115,9 +118,6 @@ export default function UserProducts() {
               </button>
             </div>
           ))}
-          <h1 style={{ textAlign: "center" }} ref={textStat}>
-            جار التحميل
-          </h1>
         </div>
       }
     </>
