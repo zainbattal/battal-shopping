@@ -148,11 +148,11 @@ body {
    ========================= */
 .products-list {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 1.5rem;
   padding: 2rem;
   max-width: 900px;
-  margin: 0 auto;
+  margin: 0;
 }
 
 .product-cont {
