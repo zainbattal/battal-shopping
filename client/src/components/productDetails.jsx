@@ -122,6 +122,76 @@ export default function ProductDetails() {
 
   return (
     <div className="fullDetails">
+      {imageCount > 0 && (
+        <div
+          className="image-carousel"
+          style={{
+            position: "relative",
+            textAlign: "center",
+            marginTop: "20px",
+          }}
+        >
+          <img
+            src={imageUrl}
+            onClick={handleImageClick}
+            alt={`product ${currentIndex}`}
+            style={{
+              maxWidth: "100%",
+              cursor: "pointer",
+              // Smooth transition between images
+              transition: "opacity 0.2s ease-in-out",
+              opacity: loadedImages.has(currentIndex) ? 1 : 0.7,
+            }}
+            onError={(e) => {
+              e.target.style.display = "none";
+              console.warn(`Image ${currentIndex} failed to load`);
+            }}
+          />
+
+          {imageCount > 1 && (
+            <>
+              <button
+                onClick={handlePrev}
+                style={{
+                  position: "absolute",
+                  top: "50%",
+                  left: "10px",
+                  transform: "translateY(-50%)",
+                  zIndex: 1,
+                  fontSize: "24px",
+                  background: "white",
+                  border: "1px solid #ccc",
+                  borderRadius: "50%",
+                  width: "40px",
+                  height: "40px",
+                  cursor: "pointer",
+                }}
+              >
+                &#8592;
+              </button>
+              <button
+                onClick={handleNext}
+                style={{
+                  position: "absolute",
+                  top: "50%",
+                  right: "10px",
+                  transform: "translateY(-50%)",
+                  zIndex: 1,
+                  fontSize: "24px",
+                  background: "white",
+                  border: "1px solid #ccc",
+                  borderRadius: "50%",
+                  width: "40px",
+                  height: "40px",
+                  cursor: "pointer",
+                }}
+              >
+                &#8594;
+              </button>
+            </>
+          )}
+        </div>
+      )}
       {popupVisible && (
         <div
           onClick={() => setPopupVisible(false)}
@@ -149,76 +219,7 @@ export default function ProductDetails() {
       )}
       <div className="detailDiv">
         <h3 className="DetailsName">{post.name}</h3>
-        {imageCount > 0 && (
-          <div
-            className="image-carousel"
-            style={{
-              position: "relative",
-              textAlign: "center",
-              marginTop: "20px",
-            }}
-          >
-            <img
-              src={imageUrl}
-              onClick={handleImageClick}
-              alt={`product ${currentIndex}`}
-              style={{
-                maxWidth: "100%",
-                cursor: "pointer",
-                // Smooth transition between images
-                transition: "opacity 0.2s ease-in-out",
-                opacity: loadedImages.has(currentIndex) ? 1 : 0.7,
-              }}
-              onError={(e) => {
-                e.target.style.display = "none";
-                console.warn(`Image ${currentIndex} failed to load`);
-              }}
-            />
 
-            {imageCount > 1 && (
-              <>
-                <button
-                  onClick={handlePrev}
-                  style={{
-                    position: "absolute",
-                    top: "50%",
-                    left: "10px",
-                    transform: "translateY(-50%)",
-                    zIndex: 1,
-                    fontSize: "24px",
-                    background: "white",
-                    border: "1px solid #ccc",
-                    borderRadius: "50%",
-                    width: "40px",
-                    height: "40px",
-                    cursor: "pointer",
-                  }}
-                >
-                  &#8592;
-                </button>
-                <button
-                  onClick={handleNext}
-                  style={{
-                    position: "absolute",
-                    top: "50%",
-                    right: "10px",
-                    transform: "translateY(-50%)",
-                    zIndex: 1,
-                    fontSize: "24px",
-                    background: "white",
-                    border: "1px solid #ccc",
-                    borderRadius: "50%",
-                    width: "40px",
-                    height: "40px",
-                    cursor: "pointer",
-                  }}
-                >
-                  &#8594;
-                </button>
-              </>
-            )}
-          </div>
-        )}
         <span className="DetailsSpan">الوصف:</span>
         <p className="DetailsDisc">{post.discription}</p>
 
