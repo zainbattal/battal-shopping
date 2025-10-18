@@ -19,8 +19,7 @@ import searchSvg from "./assets/search.svg";
 import bookmarksvg from "./assets/bookmark.svg";
 import profileSvg from "./assets/account.svg";
 import logoutSvg from "./assets/logout.svg";
-
-import { SVGlogo as SVGLogo } from "./assets/sooqSyria.svg";
+import SVGlogo from "./assets/sooqSyria.svg";
 import "./App.css";
 import { useEffect } from "react";
 
@@ -88,7 +87,7 @@ export function App() {
         style={{ display: isOn ? "block" : "none", position: "absolute" }}
       >
         <div style={{ display: "flex", justifyContent: "center" }}>
-          <SVGLogo style={{ width: "60%" }} />
+          <img src={SVGlogo} alt="logo" width="60%" />
         </div>
 
         <Link to={"/"} className="sidebarBtn">
