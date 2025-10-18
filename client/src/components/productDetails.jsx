@@ -12,6 +12,18 @@ export default function ProductDetails() {
   const imageWrapper = useRef();
   const imageTag = useRef();
 
+  useEffect(() => {
+    if (post && post.image) {
+      post.image.forEach((_, index) => {
+        const img = new Image();
+        img.src = `https://battal-shopping.onrender.com/image/${post.id}/${index}`;
+        img.onload = () => {
+          setLoadedImages((prev) => new Set(prev).add(index));
+        };
+      });
+    }
+  }, [post]);
+
   // Check auth
   const checkAuthorization = async () => {
     try {
@@ -157,7 +169,7 @@ export default function ProductDetails() {
               ref={imageTag}
               src={imageUrl}
               onClick={() => {
-                handleImageClick;
+                handleImageClick();
               }}
               alt={`product ${currentIndex}`}
               style={{ maxWidth: "100%", cursor: "default" }}
