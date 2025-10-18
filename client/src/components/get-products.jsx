@@ -199,57 +199,61 @@ export default function GetProducts() {
       >
         ...جارٍ التحميل
       </h1>
+      <div
+        className="centerList"
+        style={{ display: "flex", justifyContent: "center" }}
+      >
+        <div ref={list} className="products-list">
+          {products.map((product) => (
+            <div
+              key={product.id}
+              className="product-cont"
+              onClick={() => {
+                navigate(`products/${product.id}`);
+                //alert(
+                //`رقم البائع: \n +963 ${product.uploader_number}\n تاريخ التنزيل: \n ${product.date}`
 
-      <div ref={list} className="products-list">
-        {products.map((product) => (
-          <div
-            key={product.id}
-            className="product-cont"
-            onClick={() => {
-              navigate(`products/${product.id}`);
-              //alert(
-              //`رقم البائع: \n +963 ${product.uploader_number}\n تاريخ التنزيل: \n ${product.date}`
-
-              //);
-            }}
-          >
-            <img
-              className="product-image"
-              src={`https://battal-shopping.onrender.com/image/${product.id}/0`}
-              alt={product.name}
-            />
-            <div className="product-details">
-              <span className="product-name">{product.name}</span>
-              <span className="product-disc">{product.discription}</span>
-              <span className="product-type">{product.type}</span>
-              <span className="product-price">{product.price} SYP</span>
-              <span className="product-date">{product.date}</span>
-            </div>
-            <button
-              ref={saveBtn}
-              style={{
-                display: "inline-flex",
-                height: "30px",
-              }}
-              className="saveBtn"
-              onClick={(e) => {
-                e.stopPropagation(); // 🛑 prevents the parent onClick
-                handleSave(product.id); // <-- Note: you were missing () here
+                //);
               }}
             >
               <img
-                className="bokkmarkAdd
-              "
-                src={saveImages[product.id] || bookmarkAdd}
-                alt="bookmark"
-                style={{
-                  width: "30px",
-                }}
+                className="product-image"
+                src={`https://battal-shopping.onrender.com/image/${product.id}/0`}
+                alt={product.name}
               />
-            </button>
-            <span>{product.saves}</span>
-          </div>
-        ))}
+              <div className="product-details">
+                <span className="product-name">{product.name}</span>
+                <span className="product-disc">{product.discription}</span>
+                <span className="product-type">{product.type}</span>
+                <span className="product-price">{product.price} SYP</span>
+                <span className="product-date">{product.date}</span>
+              </div>
+              <button
+                ref={saveBtn}
+                style={{
+                  display: "inline-flex",
+                  height: "30px",
+                }}
+                className="saveBtn"
+                onClick={(e) => {
+                  e.stopPropagation(); // 🛑 prevents the parent onClick
+                  handleSave(product.id); // <-- Note: you were missing () here
+                }}
+              >
+                <img
+                  className="bokkmarkAdd
+              "
+                  src={saveImages[product.id] || bookmarkAdd}
+                  alt="bookmark"
+                  style={{
+                    width: "30px",
+                  }}
+                />
+              </button>
+              <span>{product.saves}</span>
+            </div>
+          ))}
+        </div>
       </div>
     </>
   );
