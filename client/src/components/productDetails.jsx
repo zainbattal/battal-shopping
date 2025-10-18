@@ -9,6 +9,8 @@ export default function ProductDetails() {
   const imageTag = useRef();
   const [popupVisible, setPopupVisible] = useState(false);
   const [popupSrc, setPopupSrc] = useState("");
+  const [arrayNum, setArrayNum] = useState(0);
+  const [imageCount, setImageCount] = useState(0);
   const checkAuthorization = async () => {
     try {
       const response = await fetch(
@@ -31,6 +33,23 @@ export default function ProductDetails() {
     }
   };
 
+  const handlePrev = () => {
+    setCurrentIndex((prev) => (prev === 0 ? imageCount - 1 : prev - 1));
+  };
+
+  const handleNext = () => {
+    setCurrentIndex((prev) => (prev === imageCount - 1 ? 0 : prev + 1));
+  };
+
+  const handleImageClick = () => {
+    setPopupSrc(
+      `https://battal-shopping.onrender.com/image/${post.id}/${currentIndex}`
+    );
+    setPopupVisible(true);
+  };
+
+  const imageUrl = `https://battal-shopping.onrender.com/image/${post.id}/${currentIndex}`;
+
   const GetProduct = async () => {
     const res = await fetch("https://battal-shopping.onrender.com/getOne", {
       method: "POST",
@@ -39,6 +58,7 @@ export default function ProductDetails() {
     });
     let jsonData = await res.json();
     setPost(jsonData);
+    setImageCount(post.image.length);
   };
   useEffect(() => {
     checkAuthorization();
@@ -103,22 +123,47 @@ export default function ProductDetails() {
           <span className="DetailsSpan">السعر:</span>
           <p className="DetailsPrice">{post.price} SYP</p>
           <p className="DetailsDate">{post.date}</p>
-          <div className="imagesDiv">
-            {[0, 1, 2].map((i) => (
-              <img
-                key={i}
-                style={{ cursor: "pointer" }}
-                onClick={() => {
-                  setPopupSrc(
-                    `https://battal-shopping.onrender.com/image/${post.id}/${i}`
-                  );
-                  setPopupVisible(true);
-                }}
-                src={`https://battal-shopping.onrender.com/image/${post.id}/${i}`}
-                alt={`product ${i}`}
-                onError={(e) => (e.target.style.display = "none")}
-              />
-            ))}
+          <div
+            className="image-carousel"
+            style={{ position: "relative", textAlign: "center" }}
+          >
+            {/* Image Display */}
+            <img
+              src={imageUrl}
+              alt={`product ${currentIndex}`}
+              style={{ maxWidth: "100%", cursor: "default" }}
+              onError={(e) => (e.target.style.display = "none")}
+            />
+
+            {/* Navigation Buttons */}
+            {imageCount > 1 && (
+              <>
+                <button
+                  onClick={handlePrev}
+                  style={{
+                    position: "absolute",
+                    top: "50%",
+                    left: "10px",
+                    transform: "translateY(-50%)",
+                    zIndex: 1,
+                  }}
+                >
+                  &#8592;
+                </button>
+                <button
+                  onClick={handleNext}
+                  style={{
+                    position: "absolute",
+                    top: "50%",
+                    right: "10px",
+                    transform: "translateY(-50%)",
+                    zIndex: 1,
+                  }}
+                >
+                  &#8594;
+                </button>
+              </>
+            )}
           </div>
         </div>
       </div>
