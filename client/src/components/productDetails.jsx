@@ -9,20 +9,49 @@ export default function ProductDetails() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [popupSrc, setPopupSrc] = useState();
   const [popupVisible, setPopupVisible] = useState();
-  const imageWrapper = useRef();
-  const imageTag = useRef();
+  const [loadedImages, setLoadedImages] = useState(new Map()); // Changed to Map for better performance
 
+  // Cache for preloaded Image objects
+  const imageCache = useRef(new Map());
+
+  // Preload all images and store the actual Image objects
   useEffect(() => {
     if (post && post.image) {
       post.image.forEach((_, index) => {
-        const img = new Image();
-        img.src = `https://battal-shopping.onrender.com/image/${post.id}/${index}`;
-        img.onload = () => {
-          setLoadedImages((prev) => new Set(prev).add(index));
-        };
+        const cacheKey = `${post.id}-${index}`;
+
+        // Only preload if not already in cache
+        if (!imageCache.current.has(cacheKey)) {
+          const img = new Image();
+          img.src = `https://battal-shopping.onrender.com/image/${post.id}/${index}`;
+
+          img.onload = () => {
+            // Store the actual Image object in cache
+            imageCache.current.set(cacheKey, img);
+            setLoadedImages((prev) => new Map(prev).set(index, true));
+          };
+
+          img.onerror = () => {
+            console.warn(`Failed to load image ${index}`);
+            setLoadedImages((prev) => new Map(prev).set(index, false));
+          };
+        }
       });
     }
   }, [post]);
+
+  // Get image URL from cache - returns the actual loaded Image object's src
+  const getCachedImageUrl = (index) => {
+    const cacheKey = `${post.id}-${index}`;
+    const cachedImg = imageCache.current.get(cacheKey);
+
+    if (cachedImg) {
+      return cachedImg.src; // Return the src from the preloaded Image object
+    }
+
+    // Fallback to direct URL if not cached yet
+    return `https://battal-shopping.onrender.com/image/${post.id}/${index}`;
+  };
 
   // Check auth
   const checkAuthorization = async () => {
@@ -46,9 +75,7 @@ export default function ProductDetails() {
   };
 
   const handleImageClick = () => {
-    setPopupSrc(
-      `https://battal-shopping.onrender.com/image/${post.id}/${currentIndex}`
-    );
+    setPopupSrc(getCachedImageUrl(currentIndex));
     setPopupVisible(true);
   };
 
@@ -90,10 +117,8 @@ export default function ProductDetails() {
     return <p>Loading...</p>;
   }
 
-  const imageUrl =
-    imageCount > 0
-      ? `https://battal-shopping.onrender.com/image/${post.id}/${currentIndex}`
-      : "";
+  // Use cached image URL
+  const imageUrl = imageCount > 0 ? getCachedImageUrl(currentIndex) : "";
 
   return (
     <div className="fullDetails">
@@ -166,14 +191,20 @@ export default function ProductDetails() {
             }}
           >
             <img
-              ref={imageTag}
               src={imageUrl}
-              onClick={() => {
-                handleImageClick();
-              }}
+              onClick={handleImageClick}
               alt={`product ${currentIndex}`}
-              style={{ maxWidth: "100%", cursor: "default" }}
-              onError={(e) => (e.target.style.display = "none")}
+              style={{
+                maxWidth: "100%",
+                cursor: "pointer",
+                // Smooth transition between images
+                transition: "opacity 0.2s ease-in-out",
+                opacity: loadedImages.has(currentIndex) ? 1 : 0.7,
+              }}
+              onError={(e) => {
+                e.target.style.display = "none";
+                console.warn(`Image ${currentIndex} failed to load`);
+              }}
             />
 
             {imageCount > 1 && (
