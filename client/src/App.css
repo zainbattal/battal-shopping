@@ -151,7 +151,6 @@ body {
   flex-direction: row;
   gap: 1.5rem;
   padding: 2rem;
-  max-width: 900px;
   margin: 0;
 }
 
