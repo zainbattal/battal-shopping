@@ -794,10 +794,13 @@ h6 {
   background-color: #0071e3;
   cursor: pointer;
   transition: all 0.3s;
+  font-size: x-large;
+  color: white;
+  box-shadow: 1px 1px 10px black;
 }
 
 .BigSave:hover {
-  scale: 1.1;
+  scale: 1.03;
 }
 .BigSave:active {
   opacity: 0.7;
