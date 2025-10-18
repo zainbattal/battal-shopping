@@ -48,8 +48,6 @@ export default function ProductDetails() {
     setPopupVisible(true);
   };
 
-  const imageUrl = `https://battal-shopping.onrender.com/image/${post.id}/${currentIndex}`;
-
   const GetProduct = async () => {
     const res = await fetch("https://battal-shopping.onrender.com/getOne", {
       method: "POST",
@@ -58,12 +56,17 @@ export default function ProductDetails() {
     });
     let jsonData = await res.json();
     setPost(jsonData);
-    setImageCount(post.image.length);
+    setImageCount(jsonData.image.length);
   };
   useEffect(() => {
     checkAuthorization();
     GetProduct();
   }, []);
+
+  let imageUrl = "";
+  if (post) {
+    imageUrl = `https://battal-shopping.onrender.com/image/${post.id}/${currentIndex}`;
+  }
 
   if (!post) {
     return <p>Loading...</p>; // Show a loading message until data is available
