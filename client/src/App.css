@@ -218,6 +218,10 @@ body {
 
 /* responsive stack */
 @media (max-width: 750px) {
+  .fullDetails img {
+    width: 0.5;
+    height: 0.5;
+  }
   .product-cont {
     flex-direction: column;
     align-items: center;
