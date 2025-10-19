@@ -189,6 +189,24 @@ app.post("/search", async (req, res) => {
   }
 });
 
+app.post("/searchSim", async (req, res) => {
+  try {
+    const { name, type } = req.body;
+
+    response = await pool.query(
+      `SELECT * FROM products 
+         WHERE (SIMILARITY(name, $1) > 0.2 OR SIMILARITY(discription, $1) > 0.2) 
+         AND type = $2`,
+      [name, type]
+    );
+
+    res.json(response.rows);
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).json({ error: "Server error" });
+  }
+});
+
 app.post("/verify-turnstile", async (req, res) => {
   const token = req.body.token;
 

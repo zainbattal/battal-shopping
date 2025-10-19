@@ -10,9 +10,37 @@ export default function ProductDetails() {
   const [popupSrc, setPopupSrc] = useState();
   const [popupVisible, setPopupVisible] = useState();
   const [loadedImages, setLoadedImages] = useState(new Map()); // Changed to Map for better performance
+  const [simProducts, setSimProducts] = useState([]);
   const saveBtn = useRef();
   // Cache for preloaded Image objects
   const imageCache = useRef(new Map());
+
+  const getProductsSim = async (e) => {
+    try {
+      if (e) {
+        e.preventDefault();
+      }
+      const formData = new FormData();
+      formData.append("input", post.name);
+      formData.append("type", post.type);
+      let response = await fetch(
+        "https://battal-shopping.onrender.com/searchSim",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: formData,
+        }
+      );
+      let jsonData = await response.json();
+      console.log(jsonData);
+
+      setSimProducts(jsonData);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   const handleSave = async (id) => {
     saveBtn.current.innerText = "جار الحفظ";
@@ -36,6 +64,8 @@ export default function ProductDetails() {
 
   // Preload all images and store the actual Image objects
   useEffect(() => {
+    getProductsSim();
+
     if (post && post.image) {
       post.image.forEach((_, index) => {
         const cacheKey = `${post.id}-${index}`;
@@ -281,6 +311,38 @@ export default function ProductDetails() {
 
         {/* Image Carousel */}
       </div>
+      {
+        <div className="products-list">
+          {simProducts.map((product) => (
+            <div key={product.id} className="product-cont">
+              <img
+                className="product-image"
+                src={`https://battal-shopping.onrender.com/image/${product.id}/0`}
+                alt={product.name}
+              />
+              <div className="product-details">
+                <span className="product-name">{product.name}</span>
+                <span className="product-disc">{product.discription}</span>
+                <span className="product-type">{product.type}</span>
+                <span className="product-price">{product.price} SYP</span>
+                <span className="product-date">{product.date}</span>
+              </div>
+              <button
+                title="إلغاء الحفظ"
+                style={{}}
+                className="unsaveBtn"
+                onClick={() => handleUnsave(product.id)}
+              >
+                <img
+                  src={bookmarkRemove}
+                  alt="unsave"
+                  style={{ width: "30px" }}
+                />
+              </button>
+            </div>
+          ))}
+        </div>
+      }
     </div>
   );
 }
