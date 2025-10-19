@@ -313,10 +313,17 @@ export default function ProductDetails() {
           {/* Image Carousel */}
         </div>
       </div>
+      <h1 style={{ textAlign: "center" }}>المنتجات المشابهة</h1>
       {
         <div className="products-list">
           {simProducts.map((product) => (
-            <div key={product.id} className="product-cont">
+            <div
+              key={product.id}
+              className="product-cont"
+              onClick={() => {
+                navigate(`products/${product.id}`);
+              }}
+            >
               <img
                 className="product-image"
                 src={`https://battal-shopping.onrender.com/image/${product.id}/0`}
