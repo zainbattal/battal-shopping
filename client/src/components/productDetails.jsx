@@ -171,145 +171,147 @@ export default function ProductDetails() {
   const imageUrl = imageCount > 0 ? getCachedImageUrl(currentIndex) : "";
 
   return (
-    <div className="fullDetails">
-      {imageCount > 0 && (
-        <div
-          className="image-carousel"
-          style={{
-            position: "relative",
-            textAlign: "center",
-            marginTop: "20px",
-          }}
-        >
-          <img
-            src={imageUrl}
-            onClick={handleImageClick}
-            alt={`product ${currentIndex}`}
+    <>
+      <div className="fullDetails">
+        {imageCount > 0 && (
+          <div
+            className="image-carousel"
             style={{
-              maxWidth: "100%",
+              position: "relative",
+              textAlign: "center",
+              marginTop: "20px",
+            }}
+          >
+            <img
+              src={imageUrl}
+              onClick={handleImageClick}
+              alt={`product ${currentIndex}`}
+              style={{
+                maxWidth: "100%",
+                cursor: "pointer",
+                // Smooth transition between images
+                transition: "opacity 0.2s ease-in-out",
+                opacity: loadedImages.has(currentIndex) ? 1 : 0.7,
+              }}
+              onError={(e) => {
+                e.target.style.display = "none";
+                console.warn(`Image ${currentIndex} failed to load`);
+              }}
+            />
+
+            {imageCount > 1 && (
+              <>
+                <button
+                  onClick={handlePrev}
+                  style={{
+                    position: "absolute",
+                    top: "50%",
+                    left: "10px",
+                    transform: "translateY(-50%)",
+                    zIndex: 1,
+                    fontSize: "24px",
+                    background: "white",
+                    border: "1px solid #ccc",
+                    borderRadius: "50%",
+                    width: "40px",
+                    height: "40px",
+                    cursor: "pointer",
+                  }}
+                >
+                  &#8592;
+                </button>
+                <button
+                  onClick={handleNext}
+                  style={{
+                    position: "absolute",
+                    top: "50%",
+                    right: "10px",
+                    transform: "translateY(-50%)",
+                    zIndex: 1,
+                    fontSize: "24px",
+                    background: "white",
+                    border: "1px solid #ccc",
+                    borderRadius: "50%",
+                    width: "40px",
+                    height: "40px",
+                    cursor: "pointer",
+                  }}
+                >
+                  &#8594;
+                </button>
+              </>
+            )}
+          </div>
+        )}
+        {popupVisible && (
+          <div
+            onClick={() => setPopupVisible(false)}
+            className="refImageDiv"
+            style={{
+              position: "fixed",
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              backgroundColor: "rgba(0,0,0,0.8)",
+              zIndex: 1000,
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
               cursor: "pointer",
-              // Smooth transition between images
-              transition: "opacity 0.2s ease-in-out",
-              opacity: loadedImages.has(currentIndex) ? 1 : 0.7,
             }}
-            onError={(e) => {
-              e.target.style.display = "none";
-              console.warn(`Image ${currentIndex} failed to load`);
+          >
+            <img
+              src={popupSrc}
+              alt="product zoom"
+              style={{ maxWidth: "90%", maxHeight: "90%" }}
+            />
+          </div>
+        )}
+        <div className="detailDiv">
+          <h3 className="DetailsName">{post.name}</h3>
+
+          <span className="DetailsSpan">الوصف:</span>
+          <p className="DetailsDisc">{post.discription}</p>
+
+          <span className="DetailsSpan">اسم المستخدم:</span>
+          <p className="DetailsUsername">{post.uploader}</p>
+
+          <span className="DetailsSpan">{"رقم المستخدم (اضغط للنسخ):"}</span>
+          <p
+            className="DetailsNumber"
+            style={{ cursor: "pointer" }}
+            onClick={() => {
+              navigator.clipboard.writeText(post.uploader_number).then(() => {
+                alert("تم نسخ الرقم");
+              });
             }}
-          />
+          >
+            {post.uploader_number}
+          </p>
 
-          {imageCount > 1 && (
-            <>
-              <button
-                onClick={handlePrev}
-                style={{
-                  position: "absolute",
-                  top: "50%",
-                  left: "10px",
-                  transform: "translateY(-50%)",
-                  zIndex: 1,
-                  fontSize: "24px",
-                  background: "white",
-                  border: "1px solid #ccc",
-                  borderRadius: "50%",
-                  width: "40px",
-                  height: "40px",
-                  cursor: "pointer",
-                }}
-              >
-                &#8592;
-              </button>
-              <button
-                onClick={handleNext}
-                style={{
-                  position: "absolute",
-                  top: "50%",
-                  right: "10px",
-                  transform: "translateY(-50%)",
-                  zIndex: 1,
-                  fontSize: "24px",
-                  background: "white",
-                  border: "1px solid #ccc",
-                  borderRadius: "50%",
-                  width: "40px",
-                  height: "40px",
-                  cursor: "pointer",
-                }}
-              >
-                &#8594;
-              </button>
-            </>
-          )}
+          <span className="DetailsSpan">الفئة:</span>
+          <p className="DetailsType">{post.type}</p>
+
+          <span className="DetailsSpan">المدينة:</span>
+          <p className="DetailsCity">{post.city}</p>
+
+          <span className="DetailsSpan">السعر:</span>
+          <p className="DetailsPrice">{post.price} SYP</p>
+
+          <button
+            className="BigSave"
+            ref={saveBtn}
+            onClick={() => {
+              handleSave(post.id);
+            }}
+          >
+            حفظ المنتج
+          </button>
+          <p className="DetailsDate">{post.date}</p>
+
+          {/* Image Carousel */}
         </div>
-      )}
-      {popupVisible && (
-        <div
-          onClick={() => setPopupVisible(false)}
-          className="refImageDiv"
-          style={{
-            position: "fixed",
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            backgroundColor: "rgba(0,0,0,0.8)",
-            zIndex: 1000,
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            cursor: "pointer",
-          }}
-        >
-          <img
-            src={popupSrc}
-            alt="product zoom"
-            style={{ maxWidth: "90%", maxHeight: "90%" }}
-          />
-        </div>
-      )}
-      <div className="detailDiv">
-        <h3 className="DetailsName">{post.name}</h3>
-
-        <span className="DetailsSpan">الوصف:</span>
-        <p className="DetailsDisc">{post.discription}</p>
-
-        <span className="DetailsSpan">اسم المستخدم:</span>
-        <p className="DetailsUsername">{post.uploader}</p>
-
-        <span className="DetailsSpan">{"رقم المستخدم (اضغط للنسخ):"}</span>
-        <p
-          className="DetailsNumber"
-          style={{ cursor: "pointer" }}
-          onClick={() => {
-            navigator.clipboard.writeText(post.uploader_number).then(() => {
-              alert("تم نسخ الرقم");
-            });
-          }}
-        >
-          {post.uploader_number}
-        </p>
-
-        <span className="DetailsSpan">الفئة:</span>
-        <p className="DetailsType">{post.type}</p>
-
-        <span className="DetailsSpan">المدينة:</span>
-        <p className="DetailsCity">{post.city}</p>
-
-        <span className="DetailsSpan">السعر:</span>
-        <p className="DetailsPrice">{post.price} SYP</p>
-
-        <button
-          className="BigSave"
-          ref={saveBtn}
-          onClick={() => {
-            handleSave(post.id);
-          }}
-        >
-          حفظ المنتج
-        </button>
-        <p className="DetailsDate">{post.date}</p>
-
-        {/* Image Carousel */}
       </div>
       {
         <div className="products-list">
@@ -331,6 +333,6 @@ export default function ProductDetails() {
           ))}
         </div>
       }
-    </div>
+    </>
   );
 }
