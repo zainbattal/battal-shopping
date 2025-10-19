@@ -323,6 +323,7 @@ export default function ProductDetails() {
               className="product-cont"
               onClick={() => {
                 navigate(`/products/${product.id}`);
+                window.location.reload();
               }}
             >
               <img
