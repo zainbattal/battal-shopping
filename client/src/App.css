@@ -755,7 +755,7 @@ body {
 
 @media (max-width: 768px) {
   .product-cont {
-    flex: 0 0 calc(40% - 0);
+    flex: none;
   }
   .imagesDiv {
     flex-direction: column !important;
