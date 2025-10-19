@@ -321,9 +321,7 @@ export default function ProductDetails() {
               key={product.id}
               className="product-cont"
               onClick={() => {
-                navigate(
-                  `https://battal-shopping.vercel.app/products/${product.id}`
-                );
+                navigate(`/products/${product.id}`);
               }}
             >
               <img
