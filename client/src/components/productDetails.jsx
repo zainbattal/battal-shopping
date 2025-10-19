@@ -62,7 +62,7 @@ export default function ProductDetails() {
 
   // Preload all images and store the actual Image objects
   useEffect(() => {
-    if (post) {
+    if (post?.name && post?.type) {
       getProductsSim();
     }
     getProductsSim();
@@ -328,18 +328,6 @@ export default function ProductDetails() {
                 <span className="product-price">{product.price} SYP</span>
                 <span className="product-date">{product.date}</span>
               </div>
-              <button
-                title="إلغاء الحفظ"
-                style={{}}
-                className="unsaveBtn"
-                onClick={() => handleUnsave(product.id)}
-              >
-                <img
-                  src={bookmarkRemove}
-                  alt="unsave"
-                  style={{ width: "30px" }}
-                />
-              </button>
             </div>
           ))}
         </div>
