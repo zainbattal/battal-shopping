@@ -17,9 +17,6 @@ export default function ProductDetails() {
 
   const getProductsSim = async (e) => {
     try {
-      if (e) {
-        e.preventDefault();
-      }
       const formData = new FormData();
       formData.append("input", post.name);
       formData.append("type", post.type);
@@ -27,9 +24,6 @@ export default function ProductDetails() {
         "https://battal-shopping.onrender.com/searchSim",
         {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
           body: formData,
         }
       );
