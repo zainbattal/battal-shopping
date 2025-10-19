@@ -27,6 +27,7 @@ export default function ProductDetails() {
           body: JSON.stringify({
             name: post.name, // ✅ must be "name", not "input"
             type: post.type,
+            id: post.id,
           }),
         }
       );

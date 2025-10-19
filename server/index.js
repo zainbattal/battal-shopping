@@ -191,13 +191,13 @@ app.post("/search", async (req, res) => {
 
 app.post("/searchSim", async (req, res) => {
   try {
-    const { name, type } = req.body;
+    const { name, type, id } = req.body;
 
     response = await pool.query(
       `SELECT * FROM products 
          WHERE (SIMILARITY(name, $1) > 0.2 OR SIMILARITY(discription, $1) > 0.2) 
-         AND type = $2`,
-      [name, type]
+         AND type = $2 AND id != $3`,
+      [name, type, id]
     );
 
     res.json(response.rows);
