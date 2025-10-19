@@ -65,7 +65,6 @@ export default function ProductDetails() {
     if (post?.name && post?.type) {
       getProductsSim();
     }
-    getProductsSim();
 
     if (post && post.image) {
       post.image.forEach((_, index) => {
