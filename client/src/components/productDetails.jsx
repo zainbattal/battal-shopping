@@ -15,24 +15,28 @@ export default function ProductDetails() {
   // Cache for preloaded Image objects
   const imageCache = useRef(new Map());
 
-  const getProductsSim = async (e) => {
+  const getProductsSim = async () => {
     try {
-      const formData = new FormData();
-      formData.append("input", post.name);
-      formData.append("type", post.type);
-      let response = await fetch(
+      const response = await fetch(
         "https://battal-shopping.onrender.com/searchSim",
         {
           method: "POST",
-          body: formData,
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name: post.name, // ✅ must be "name", not "input"
+            type: post.type,
+          }),
         }
       );
-      let jsonData = await response.json();
+
+      const jsonData = await response.json();
       console.log(jsonData);
 
-      setSimProducts(jsonData);
+      setSimProducts(Array.isArray(jsonData) ? jsonData : []);
     } catch (error) {
-      console.error(error);
+      console.error("Error fetching similar products:", error);
     }
   };
 
