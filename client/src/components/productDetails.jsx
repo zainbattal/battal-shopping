@@ -58,6 +58,9 @@ export default function ProductDetails() {
 
   // Preload all images and store the actual Image objects
   useEffect(() => {
+    if (post) {
+      getProductsSim();
+    }
     getProductsSim();
 
     if (post && post.image) {
