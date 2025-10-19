@@ -13,13 +13,14 @@ export default function GetProducts() {
 
   const [saveID, setSaveID] = useState("");
   const [saveImages, setSaveImages] = useState({});
-
+  const filters = useRef();
   const navigate = useNavigate();
   const loading = useRef();
   const list = useRef();
   const saveBtn = useRef();
   const getProducts = async () => {
     try {
+      filters.current.style.display = "none";
       loading.current.style.display = "flex";
       list.current.style.display = "none";
       let response = await fetch("https://battal-shopping.onrender.com/list", {
@@ -27,6 +28,7 @@ export default function GetProducts() {
         body: JSON.stringify({ catFilter, priceFilter, cityFilter }),
         headers: { "content-type": "application/json" },
       });
+      filters.current.style.display = "flex";
       if (response.ok) {
         let jsonData = await response.json();
         console.log(jsonData);
@@ -93,13 +95,12 @@ export default function GetProducts() {
 
   useEffect(() => {
     checkAuthorization();
-
     getProducts();
   }, [catFilter, priceFilter, cityFilter]);
 
   return (
     <>
-      <div className="filterCont">
+      <div className="filterCont" ref={filters}>
         <div className="filter">
           <span className="filterName">المدينة</span>
           <select

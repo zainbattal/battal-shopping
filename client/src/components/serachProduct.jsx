@@ -10,9 +10,11 @@ export default function SearchProducts() {
   const [catFilter, setCatFilter] = useState("all");
   const [cityFilter, setCityFilter] = useState("damascus");
   const navigate = useNavigate();
+  const filters = useRef();
   const searchStatus = useRef();
   const getProducts = async (e) => {
     try {
+      filters.current.style.display = "none";
       if (e) {
         e.preventDefault();
       }
@@ -28,6 +30,7 @@ export default function SearchProducts() {
           body: JSON.stringify(body),
         }
       );
+      filters.current.style.display = "flex";
       let jsonData = await response.json();
       console.log(jsonData);
       searchStatus.current.innerText = "إنتهت النتائج";
@@ -38,11 +41,13 @@ export default function SearchProducts() {
   };
   const getAllProducts = async () => {
     try {
+      filters.current.style.display = "none";
       let response = await fetch("https://battal-shopping.onrender.com/list", {
         method: "POST",
         body: JSON.stringify({ catFilter, priceFilter, cityFilter }),
         headers: { "content-type": "application/json" },
       });
+      filters.current.style.display = "flex";
       if (response.ok) {
         let jsonData = await response.json();
         console.log(jsonData);
@@ -103,7 +108,7 @@ export default function SearchProducts() {
 
   return (
     <>
-      <div className="filterCont">
+      <div className="filterCont" ref={filters}>
         <div className="filter">
           <span className="filterName">المدينة</span>
           <select
