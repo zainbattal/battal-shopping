@@ -214,7 +214,7 @@ export default function SearchProducts() {
               key={product.id}
               className="product-cont"
               onClick={() => {
-                navigate(`products/${product.id}`);
+                navigate(`/products/${product.id}`);
               }}
             >
               <img
