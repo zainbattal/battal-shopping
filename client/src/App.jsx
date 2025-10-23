@@ -99,8 +99,12 @@ export function App() {
           <img src={searchSvg} alt="" />
           البحث
         </Link>
-        <Link to={"/IDSearch"} className="sidebarBtn">
-          البحث بركز UUID
+        <Link
+          to={"/IDSearch"}
+          className="sidebarBtn"
+          style={{ direction: "rtl" }}
+        >
+          البحث برlز UUID
         </Link>
         <Link to={"/getSaved"} className="sidebarBtn">
           <img src={bookmarksvg} alt="" />
