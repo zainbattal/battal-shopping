@@ -104,7 +104,7 @@ export function App() {
           className="sidebarBtn"
           style={{ direction: "rtl" }}
         >
-          البحث برlز UUID
+          البحث برمز UUID
         </Link>
         <Link to={"/getSaved"} className="sidebarBtn">
           <img src={bookmarksvg} alt="" />
