@@ -477,6 +477,9 @@ body {
    ========================= */
 @media (max-width: 768px) {
   /* Navbar: stack links instead of squeezing */
+  .product-cont {
+    max-width: none;
+  }
 
   .siteNav {
     gap: 0;
