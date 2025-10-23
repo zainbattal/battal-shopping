@@ -808,3 +808,65 @@ h6 {
 .BigSave:active {
   opacity: 0.7;
 }
+
+.uuid-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f3f3f3;
+  font-family: Arial, sans-serif;
+}
+
+.uuid-form {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  width: 320px;
+  text-align: center;
+}
+
+.uuid-form h2 {
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.uuid-form input {
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 0.95rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 0.5rem;
+  outline: none;
+}
+
+.uuid-form input:focus {
+  border-color: #007bff;
+}
+
+.uuid-form input.invalid {
+  border-color: #e74c3c;
+}
+
+.error {
+  color: #e74c3c;
+  font-size: 0.85rem;
+  margin-bottom: 0.5rem;
+}
+
+.uuid-form button {
+  width: 100%;
+  padding: 0.6rem;
+  background: #007bff;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.uuid-form button:hover {
+  background: #0056b3;
+}
