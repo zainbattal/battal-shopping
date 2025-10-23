@@ -101,7 +101,13 @@ export default function GetProducts() {
   return (
     <>
       <div style={{ display: "flex", justifyContent: "center" }}>
-        <div style={{ display: "flex", justifyContent: "center" }}>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            maxWidth: "2000px",
+          }}
+        >
           <div className="filterCont" ref={filters}>
             <div className="filter">
               <span className="filterName">المدينة</span>
