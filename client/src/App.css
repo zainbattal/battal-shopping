@@ -454,13 +454,6 @@ body {
   cursor: pointer;
 }
 
-.filterCont {
-  display: flex;
-  justify-content: space-evenly;
-  border: 1px solid gray;
-  background-color: rgb(192, 192, 192);
-}
-
 .siteLinkPro {
   margin-left: 43vw;
 }
@@ -877,4 +870,166 @@ h6 {
 .centerList {
   display: flex;
   justify-content: center;
+}
+/* =========================
+   MAIN LAYOUT - SIDEBAR + CONTENT
+   ========================= */
+.main-container {
+  display: flex;
+  min-height: calc(100vh - 80px); /* Adjust based on your navbar height */
+  gap: 20px;
+  padding: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Filters Sidebar */
+.filter-sidebar {
+  width: 280px;
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  height: fit-content;
+  position: sticky;
+  top: 20px;
+}
+
+.sidebar-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #1e40af;
+  margin-bottom: 20px;
+  text-align: center;
+  border-bottom: 2px solid #e2e8f0;
+  padding-bottom: 10px;
+}
+
+.filter-group {
+  margin-bottom: 25px;
+}
+
+.filter-group .filterName {
+  display: block;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 8px;
+  font-size: 1rem;
+}
+
+.filter-group .fileterSelect {
+  width: 100%;
+  padding: 10px 12px;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  background: white;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+}
+
+.filter-group .fileterSelect:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* Products Content */
+.products-content {
+  flex: 1;
+  min-width: 0; /* Important for flexbox shrinking */
+}
+
+/* Update existing products list for better layout */
+.products-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 0;
+}
+
+.product-cont {
+  display: flex;
+  flex-direction: column;
+  background: white;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  height: fit-content;
+}
+
+.product-image {
+  width: 100%;
+  height: 200px;
+  border-radius: 8px;
+  object-fit: cover;
+  margin-bottom: 12px;
+}
+
+.product-details {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+/* =========================
+   RESPONSIVE DESIGN
+   ========================= */
+@media (max-width: 1024px) {
+  .main-container {
+    flex-direction: column;
+  }
+
+  .filter-sidebar {
+    width: 100%;
+    position: static;
+    margin-bottom: 20px;
+  }
+
+  .products-list {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .main-container {
+    padding: 15px;
+    gap: 15px;
+  }
+
+  .products-list {
+    grid-template-columns: 1fr;
+  }
+
+  .filter-sidebar {
+    padding: 15px;
+  }
+
+  .filter-group {
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-container {
+    padding: 10px;
+  }
+
+  .filter-sidebar {
+    padding: 12px;
+  }
+
+  .products-list {
+    gap: 15px;
+  }
+
+  .product-cont {
+    padding: 12px;
+  }
+}
+
+/* Remove or update the old filterCont styles */
+.filterCont {
+  display: none; /* Hide the old filter container */
 }

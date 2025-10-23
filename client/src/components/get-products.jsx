@@ -18,6 +18,7 @@ export default function GetProducts() {
   const loading = useRef();
   const list = useRef();
   const saveBtn = useRef();
+
   const getProducts = async () => {
     try {
       filters.current.style.display = "none";
@@ -54,7 +55,7 @@ export default function GetProducts() {
       );
 
       if (response.ok) {
-        console.log("ok"); // Fixed the if statement
+        console.log("ok");
       } else {
         navigate("/register");
       }
@@ -76,7 +77,7 @@ export default function GetProducts() {
         body: JSON.stringify({ id }),
         headers: {
           "content-type": "application/json",
-          token: localStorage.token, // send the JWT token here
+          token: localStorage.token,
         },
       }
     );
@@ -100,157 +101,160 @@ export default function GetProducts() {
 
   return (
     <>
-      <div className="filterCont" ref={filters}>
-        <div className="filter">
-          <span className="filterName">المدينة</span>
-          <select
-            className="fileterSelect"
-            onChange={(e) => {
-              setCityFilter(e.target.value);
-            }}
-          >
-            <option className="type-option" value="دمشق">
-              دمشق
-            </option>
-            <option className="type-option" value="اللاذقية">
-              اللاذقية
-            </option>
-            <option className="type-option" value="ادلب">
-              ادلب
-            </option>
-            <option className="type-option" value="طرطوس">
-              طرطوس
-            </option>
-            <option className="type-option" value="حماة">
-              حماة
-            </option>
-            <option className="type-option" value="درعا">
-              درعا
-            </option>
-            <option className="type-option" value="حمص">
-              حمص
-            </option>
-            <option className="type-option" value="حلب">
-              حلب
-            </option>
-            <option className="type-option" value="ريف دمشق">
-              ريف دمشق
-            </option>
-            <option className="type-option" value="الحسكة">
-              الحسكة
-            </option>
-            <option className="type-option" value="القنيطرة">
-              القنيطرة
-            </option>
-            <option className="type-option" value="دير الزور">
-              دير الزور
-            </option>
-            <option className="type-option" value="السوداء">
-              السويداء
-            </option>
-            <option className="type-option" value="الرقة">
-              الرقة
-            </option>
-          </select>
-        </div>
+      <div className="main-container">
+        {/* Filters Sidebar */}
+        <div className="filter-sidebar" ref={filters}>
+          <h3 className="sidebar-title">الفلاتر</h3>
 
-        <div className="filter">
-          <span className="filterName">الفئة</span>
-          <select
-            className="fileterSelect"
-            onChange={(e) => {
-              setCatFilter(e.target.value);
-            }}
-          >
-            <option value="all">الكل</option>
-            <option value="الكترونيات">الكترونيات</option>
-            <option value="سيارات">سيارات</option>
-            <option value="الرياضة">الرياضة</option>
-            <option value="المنزل">مستلزمات المنزل</option>
-            <option value="قطع زينة">قطع زينة</option>
-          </select>
-        </div>
-        <div className="filter">
-          <span>السعر</span>
-          <select
-            className="fileterSelect"
-            onChange={(e) => {
-              setPriceFilter(e.target.value);
-            }}
-          >
-            <option value="99999999">الكل</option>
-            <option value="1000000">تحت 1000000</option>
-            <option value="100000"> تحت 100000</option>
-            <option value="50000">تحت 50000</option>
-          </select>
-        </div>
-      </div>
-
-      <h1
-        ref={loading}
-        className="loadingText"
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          width: "100%",
-          textAlign: "center",
-          marginTop: "100px",
-        }}
-      >
-        ...جارٍ التحميل
-      </h1>
-      <div>
-        <div ref={list} className="products-list">
-          {products.map((product) => (
-            <div
-              key={product.id}
-              className="product-cont"
-              onClick={() => {
-                navigate(`products/${product.id}`);
-                //alert(
-                //`رقم البائع: \n +963 ${product.uploader_number}\n تاريخ التنزيل: \n ${product.date}`
-
-                //);
+          <div className="filter-group">
+            <span className="filterName">المدينة</span>
+            <select
+              className="fileterSelect"
+              onChange={(e) => {
+                setCityFilter(e.target.value);
               }}
             >
-              <img
-                className="product-image"
-                src={`https://battal-shopping.onrender.com/image/${product.id}/0`}
-                alt={product.name}
-              />
-              <div className="product-details">
-                <span className="product-name">{product.name}</span>
-                <span className="product-disc">{product.discription}</span>
-                <span className="product-type">{product.type}</span>
-                <span className="product-price">{product.price} SYP</span>
-                <span className="product-date">{product.date}</span>
-              </div>
-              <button
-                ref={saveBtn}
-                style={{
-                  display: "inline-flex",
-                  height: "30px",
-                }}
-                className="saveBtn"
-                onClick={(e) => {
-                  e.stopPropagation(); // 🛑 prevents the parent onClick
-                  handleSave(product.id); // <-- Note: you were missing () here
+              <option className="type-option" value="دمشق">
+                دمشق
+              </option>
+              <option className="type-option" value="اللاذقية">
+                اللاذقية
+              </option>
+              <option className="type-option" value="ادلب">
+                ادلب
+              </option>
+              <option className="type-option" value="طرطوس">
+                طرطوس
+              </option>
+              <option className="type-option" value="حماة">
+                حماة
+              </option>
+              <option className="type-option" value="درعا">
+                درعا
+              </option>
+              <option className="type-option" value="حمص">
+                حمص
+              </option>
+              <option className="type-option" value="حلب">
+                حلب
+              </option>
+              <option className="type-option" value="ريف دمشق">
+                ريف دمشق
+              </option>
+              <option className="type-option" value="الحسكة">
+                الحسكة
+              </option>
+              <option className="type-option" value="القنيطرة">
+                القنيطرة
+              </option>
+              <option className="type-option" value="دير الزور">
+                دير الزور
+              </option>
+              <option className="type-option" value="السوداء">
+                السويداء
+              </option>
+              <option className="type-option" value="الرقة">
+                الرقة
+              </option>
+            </select>
+          </div>
+
+          <div className="filter-group">
+            <span className="filterName">الفئة</span>
+            <select
+              className="fileterSelect"
+              onChange={(e) => {
+                setCatFilter(e.target.value);
+              }}
+            >
+              <option value="all">الكل</option>
+              <option value="الكترونيات">الكترونيات</option>
+              <option value="سيارات">سيارات</option>
+              <option value="الرياضة">الرياضة</option>
+              <option value="المنزل">مستلزمات المنزل</option>
+              <option value="قطع زينة">قطع زينة</option>
+            </select>
+          </div>
+
+          <div className="filter-group">
+            <span className="filterName">السعر</span>
+            <select
+              className="fileterSelect"
+              onChange={(e) => {
+                setPriceFilter(e.target.value);
+              }}
+            >
+              <option value="99999999">الكل</option>
+              <option value="1000000">تحت 1000000</option>
+              <option value="100000"> تحت 100000</option>
+              <option value="50000">تحت 50000</option>
+            </select>
+          </div>
+        </div>
+
+        {/* Products Content */}
+        <div className="products-content">
+          <h1
+            ref={loading}
+            className="loadingText"
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              width: "100%",
+              textAlign: "center",
+              marginTop: "100px",
+            }}
+          >
+            ...جارٍ التحميل
+          </h1>
+
+          <div ref={list} className="products-list">
+            {products.map((product) => (
+              <div
+                key={product.id}
+                className="product-cont"
+                onClick={() => {
+                  navigate(`products/${product.id}`);
                 }}
               >
                 <img
-                  className="bokkmarkAdd
-              "
-                  src={saveImages[product.id] || bookmarkAdd}
-                  alt="bookmark"
-                  style={{
-                    width: "30px",
-                  }}
+                  className="product-image"
+                  src={`https://battal-shopping.onrender.com/image/${product.id}/0`}
+                  alt={product.name}
                 />
-              </button>
-              <span>{product.saves}</span>
-            </div>
-          ))}
+                <div className="product-details">
+                  <span className="product-name">{product.name}</span>
+                  <span className="product-disc">{product.discription}</span>
+                  <span className="product-type">{product.type}</span>
+                  <span className="product-price">{product.price} SYP</span>
+                  <span className="product-date">{product.date}</span>
+                </div>
+                <button
+                  ref={saveBtn}
+                  style={{
+                    display: "inline-flex",
+                    height: "30px",
+                  }}
+                  className="saveBtn"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleSave(product.id);
+                  }}
+                >
+                  <img
+                    className="bokkmarkAdd"
+                    src={saveImages[product.id] || bookmarkAdd}
+                    alt="bookmark"
+                    style={{
+                      width: "30px",
+                    }}
+                  />
+                </button>
+                <span>{product.saves}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </>
