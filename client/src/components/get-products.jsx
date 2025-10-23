@@ -100,12 +100,15 @@ export default function GetProducts() {
 
   return (
     <>
-      <div style={{ display: "flex", justifyContent: "center" }}>
+      <div
+        style={{ display: "flex", justifyContent: "center", minHeight: "100%" }}
+      >
         <div
           style={{
             display: "flex",
             justifyContent: "center",
             maxWidth: "2000px",
+            minHeight: "100%",
           }}
         >
           <div className="filterCont" ref={filters}>
