@@ -11,6 +11,7 @@ import GetSaved from "./components/get-saved";
 import ProductDetails from "./components/productDetails";
 import UserProducts from "./components/userSells";
 import SearchProducts from "./components/serachProduct";
+import UuidInput from "./components/idSearch";
 
 import menu from "./assets/hamburger.svg";
 import logo from "./assets/soow.png";
@@ -98,6 +99,9 @@ export function App() {
           <img src={searchSvg} alt="" />
           البحث
         </Link>
+        <Link to={"/IDSearch"} className="sidebarBtn">
+          البحث بركز UUID
+        </Link>
         <Link to={"/getSaved"} className="sidebarBtn">
           <img src={bookmarksvg} alt="" />
           المحفوظة
@@ -128,6 +132,7 @@ export function App() {
         <Route path="/search" element={<SearchProducts />} />
         <Route path="/products/:id" element={<ProductDetails />} />
         <Route path="/getSaved" element={<GetSaved />} />
+        <Route path="/IDSearch" element={<UuidInput />} />
       </Routes>
     </>
   );
