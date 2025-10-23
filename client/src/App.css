@@ -888,7 +888,7 @@ h6 {
   align-items: flex-start;
   min-height: 100vh; /* 👈 makes the filter column full screen height */
   padding: 20px;
-  background-color: #f8f8f8; /* optional */
+  background-color: silver; /* optional */
   position: sticky; /* stays visible on scroll */
   top: 0;
 }
