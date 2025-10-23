@@ -18,7 +18,7 @@ export default function UuidInput() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (isValid && value) {
-      navigate(`/your-target-page/${value}`); // change to your page
+      navigate(`/products/${value}`); // change to your page
     } else {
       setIsValid(false);
     }
@@ -27,18 +27,20 @@ export default function UuidInput() {
   return (
     <div className="uuid-container">
       <form onSubmit={handleSubmit} className="uuid-form">
-        <h2>Enter Product UUID</h2>
+        <h2 style={{ direction: "rtl" }}>ادخل رمز UUID</h2>
         <input
           type="text"
           value={value}
           onChange={handleChange}
-          placeholder="550e8400-e29b-41d4-a716-446655440000"
+          placeholder="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
           className={isValid ? "" : "invalid"}
         />
         {!isValid && value.length > 0 && (
-          <p className="error">Invalid UUID format</p>
+          <p className="error" style={{ direction: "rtl" }}>
+            رمز غير صحيح
+          </p>
         )}
-        <button type="submit">OK</button>
+        <button type="submit">ادخال</button>
       </form>
     </div>
   );
