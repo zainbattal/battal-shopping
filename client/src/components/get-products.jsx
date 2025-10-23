@@ -200,10 +200,7 @@ export default function GetProducts() {
       >
         ...جارٍ التحميل
       </h1>
-      <div
-        className="centerList"
-        style={{ display: "flex", justifyContent: "center" }}
-      >
+      <div>
         <div ref={list} className="products-list">
           {products.map((product) => (
             <div

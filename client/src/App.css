@@ -872,3 +872,9 @@ h6 {
 .uuid-form button:hover {
   background: #0056b3;
 }
+
+/*  */
+.centerList {
+  display: flex;
+  justify-content: center;
+}
