@@ -480,6 +480,7 @@ body {
     flex-direction: column;
     align-items: center;
     text-align: center;
+    height: max-content;
   }
 
   .product-image {
