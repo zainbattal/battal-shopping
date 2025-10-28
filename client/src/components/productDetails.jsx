@@ -310,9 +310,10 @@ export default function ProductDetails() {
             حفظ المنتج
           </button>
           <button
+            className="BigSave"
             style={{
               direction: "rtl",
-              height: "100px",
+              height: "30px",
               backgroundColor: "orange",
             }}
             onClick={() => {
