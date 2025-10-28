@@ -108,6 +108,22 @@ export default function SearchProducts() {
 
   return (
     <>
+      <form
+        onSubmit={getProducts}
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          marginTop: "20px",
+        }}
+      >
+        <input
+          className="search-input"
+          placeholder="ابحث"
+          type="text"
+          onChange={(e) => setInput(e.target.value)}
+        />
+        <input className="search-submit" type="submit" value={"بحث"} />
+      </form>
       <div style={{ display: "flex", justifyContent: "center" }}>
         <div
           style={{
@@ -201,22 +217,6 @@ export default function SearchProducts() {
               </select>
             </div>
           </div>
-          <form
-            onSubmit={getProducts}
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              marginTop: "20px",
-            }}
-          >
-            <input
-              className="search-input"
-              placeholder="ابحث"
-              type="text"
-              onChange={(e) => setInput(e.target.value)}
-            />
-            <input className="search-submit" type="submit" value={"بحث"} />
-          </form>
 
           <div className="products-list">
             {products &&
