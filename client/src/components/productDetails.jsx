@@ -309,6 +309,20 @@ export default function ProductDetails() {
           >
             حفظ المنتج
           </button>
+          <button
+            style={{
+              direction: "rtl",
+              height: "100px",
+              backgroundColor: "orange",
+            }}
+            onClick={() => {
+              navigator.clipboard.writeText(post.id).then(() => {
+                alert("تم نسخ الكود");
+              });
+            }}
+          >
+            نسخ رمز uuid
+          </button>
           <p className="DetailsDate">{post.date}</p>
 
           {/* Image Carousel */}
