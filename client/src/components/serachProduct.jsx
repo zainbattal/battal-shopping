@@ -207,51 +207,49 @@ export default function SearchProducts() {
       </form>
 
       <div className="products-list">
-        {products &&
-          products.length > 0 &&
-          products.map((product) => (
-            <div
-              key={product.id}
-              className="product-cont"
-              onClick={() => {
-                navigate(`/products/${product.id}`);
+        {products.map((product) => (
+          <div
+            key={product.id}
+            className="product-cont"
+            onClick={() => {
+              navigate(`/products/${product.id}`);
+            }}
+          >
+            <img
+              className="product-image"
+              src={`https://battal-shopping.onrender.com/image/${product.id}/0`}
+              alt={product.name}
+            />
+            <div className="product-details">
+              <span className="product-name">{product.name}</span>
+              <span className="product-disc">{product.discription}</span>
+              <span className="product-type">{product.type}</span>
+              <span className="product-price">{product.price} SYP</span>
+              <span className="product-date">{product.date}</span>
+            </div>
+            <button
+              style={{
+                display: "inline-flex",
+                height: "30px",
+              }}
+              className="saveBtn"
+              onClick={(e) => {
+                e.stopPropagation(); // 🛑 prevents the parent onClick
+                handleSave(product.id); // <-- Note: you were missing () here
               }}
             >
               <img
-                className="product-image"
-                src={`https://battal-shopping.onrender.com/image/${product.id}/0`}
-                alt={product.name}
-              />
-              <div className="product-details">
-                <span className="product-name">{product.name}</span>
-                <span className="product-disc">{product.discription}</span>
-                <span className="product-type">{product.type}</span>
-                <span className="product-price">{product.price} SYP</span>
-                <span className="product-date">{product.date}</span>
-              </div>
-              <button
-                style={{
-                  display: "inline-flex",
-                  height: "30px",
-                }}
-                className="saveBtn"
-                onClick={(e) => {
-                  e.stopPropagation(); // 🛑 prevents the parent onClick
-                  handleSave(product.id); // <-- Note: you were missing () here
-                }}
-              >
-                <img
-                  className="bokkmarkAdd
+                className="bokkmarkAdd
                             "
-                  src={bookmarkAdd}
-                  alt="bookmark"
-                  style={{
-                    width: "30px",
-                  }}
-                />
-              </button>
-            </div>
-          ))}
+                src={bookmarkAdd}
+                alt="bookmark"
+                style={{
+                  width: "30px",
+                }}
+              />
+            </button>
+          </div>
+        ))}
         <h1 ref={searchStatus}>ابحث عن شيء</h1>
       </div>
     </>
