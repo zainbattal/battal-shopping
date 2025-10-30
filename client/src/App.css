@@ -623,12 +623,13 @@ body {
 @media (min-width: 768px) {
   .fullDetails {
     flex-direction: row;
-    gap: 40px;
+    gap: 100px;
+    justify-content: center;
     align-items: flex-start;
   }
 
   .fullDetails img {
-    width: 45%;
+    width: 100%;
     margin-bottom: 0;
   }
 
@@ -638,6 +639,7 @@ body {
 }
 
 .fullDetails {
+  max-width: 1500px;
   display: flex;
   flex-direction: column;
   padding: 24px 16px;
