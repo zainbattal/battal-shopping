@@ -188,6 +188,7 @@ export default function ProductDetails() {
               onClick={handleImageClick}
               alt={`product ${currentIndex}`}
               style={{
+                width: "100%",
                 maxWidth: "100%",
                 cursor: "pointer",
                 // Smooth transition between images
