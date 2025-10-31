@@ -178,6 +178,7 @@ export default function ProductDetails() {
           <div
             className="image-carousel"
             style={{
+              gap: "100px",
               position: "relative",
               textAlign: "center",
               marginTop: "20px",
