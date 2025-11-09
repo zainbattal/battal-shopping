@@ -6,6 +6,7 @@ export default function UserProducts() {
   const [products, setProducts] = useState([]);
   const [username, setUsername] = useState("");
   const textStat = useRef();
+  const sellBtn = useRef();
   const navigate = useNavigate();
   const getProducts = async () => {
     try {
@@ -61,7 +62,7 @@ export default function UserProducts() {
         window.location.reload();
       }
     } catch (error) {
-      console.error(error.message);
+      alert("حدث خطأ، الرجاء إعادة المحاولة");
     }
   };
 
@@ -77,9 +78,10 @@ export default function UserProducts() {
       );
       if (response.ok) {
         alert("سيظهر المنتج على انه مباع");
+        sellBtn.current.style.display = "none";
       }
     } catch (error) {
-      console.error(error.message);
+      alert("حدث خطأ، الرجاء إعادة المحاولة");
     }
   };
 
@@ -164,17 +166,20 @@ export default function UserProducts() {
             >
               <img src={deleteSvg} width="30px" alt="delete" />
             </button>
-            <button
-              title=""
-              className="dltBtn"
-              onClick={() => {
-                e.stopPropagation();
-                handleSell(product.id);
-              }}
-              style={{ backgroundColor: "green" }}
-            >
-              <img src={deleteSvg} width="30px" alt="delete" />
-            </button>
+            {product.state != "sold" && (
+              <button
+                ref={sellBtn}
+                title=""
+                className="dltBtn"
+                onClick={() => {
+                  e.stopPropagation();
+                  handleSell(product.id);
+                }}
+                style={{ backgroundColor: "green" }}
+              >
+                <img src={deleteSvg} width="30px" alt="delete" />
+              </button>
+            )}
           </div>
         ))}
         <h1 style={{ textAlign: "center" }} ref={textStat}>
