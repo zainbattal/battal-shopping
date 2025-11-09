@@ -178,7 +178,7 @@ export default function UserProducts() {
                 }}
                 style={{ backgroundColor: "green" }}
               >
-                <img src={deleteSvg} width="30px" alt="delete" />
+                <img src={soldSVG} width="30px" alt="delete" />
               </button>
             )}
           </div>
