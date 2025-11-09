@@ -3,6 +3,7 @@ import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import deleteSvg from "../assets/delete.svg";
 import soldSVG from "../assets/soldIcon.svg";
+import Verified from "../assets/verified.svg";
 export default function UserProducts() {
   const [products, setProducts] = useState([]);
   const [username, setUsername] = useState("");
@@ -159,6 +160,7 @@ export default function UserProducts() {
               <span className="product-date">{product.date}</span>
             </div>
             <button
+              title="حذف"
               className="dltBtn"
               onClick={() => {
                 e.stopPropagation();
@@ -170,7 +172,7 @@ export default function UserProducts() {
             {product.state != "sold" && (
               <button
                 ref={sellBtn}
-                title=""
+                title="تم البيع"
                 className="dltBtn"
                 onClick={() => {
                   e.stopPropagation();

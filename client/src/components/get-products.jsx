@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import bookmarkAdd from "../assets/bookmarkAdd.svg";
 import loadingGif from "../assets/loadingGif.gif";
+import soldSVG from "../assets/verified.svg";
 
 export default function GetProducts() {
   const [products, setProducts] = useState([]);
@@ -236,6 +237,12 @@ export default function GetProducts() {
                     <span className="product-type">{product.type}</span>
                     <span className="product-price">{product.price} SYP</span>
                     <span className="product-date">{product.date}</span>
+                    {product.state != "sold" && (
+                      <div>
+                        <p>تم البيع</p>
+                        <img src={soldSVG} alt="sold" />
+                      </div>
+                    )}
                   </div>
                   <button
                     ref={saveBtn}

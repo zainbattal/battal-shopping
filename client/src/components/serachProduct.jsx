@@ -3,6 +3,8 @@ import { useEffect } from "react";
 import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import bookmarkAdd from "../assets/bookmarkAdd.svg";
+import soldSVG from "../assets/verified.svg";
+
 export default function SearchProducts() {
   const [products, setProducts] = useState([]);
   const [input, setInput] = useState("");
@@ -240,6 +242,12 @@ export default function SearchProducts() {
                     <span className="product-type">{product.type}</span>
                     <span className="product-price">{product.price} SYP</span>
                     <span className="product-date">{product.date}</span>
+                    {product.state != "sold" && (
+                      <div>
+                        <p>تم البيع</p>
+                        <img src={soldSVG} alt="sold" />
+                      </div>
+                    )}
                   </div>
                   <button
                     style={{
