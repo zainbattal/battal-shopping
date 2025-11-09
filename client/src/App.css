@@ -40,6 +40,8 @@ body {
   border-radius: 999px;
   transition: all 0.3s ease;
   font-size: small;
+  text-decoration: none;
+  line-height: 4;
 }
 
 .siteLinkOut {
