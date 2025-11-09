@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import deleteSvg from "../assets/delete.svg";
+import soldSVG from "../assets/soldIcon.svg";
 export default function UserProducts() {
   const [products, setProducts] = useState([]);
   const [username, setUsername] = useState("");
