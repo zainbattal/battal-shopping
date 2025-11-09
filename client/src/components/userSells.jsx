@@ -162,7 +162,7 @@ export default function UserProducts() {
             <button
               title="حذف"
               className="dltBtn"
-              onClick={() => {
+              onClick={(e) => {
                 e.stopPropagation();
                 handleDelete(product.id);
               }}
@@ -174,7 +174,7 @@ export default function UserProducts() {
                 ref={sellBtn}
                 title="تم البيع"
                 className="dltBtn"
-                onClick={() => {
+                onClick={(e) => {
                   e.stopPropagation();
                   handleSell(product.id);
                 }}
