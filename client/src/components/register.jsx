@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useRef } from "react";
 import Turnstile from "react-turnstile";
-import blueLogo from "../assets/soowblue.png";
+import blueLogo from "../assets/busta logo/bustaBlue.svg";
 export default function Register() {
   const [name, setName] = useState("");
   const [number, setNumber] = useState("");

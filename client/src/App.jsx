@@ -20,7 +20,7 @@ import searchSvg from "./assets/search.svg";
 import bookmarksvg from "./assets/bookmark.svg";
 import profileSvg from "./assets/account.svg";
 import logoutSvg from "./assets/logout.svg";
-import SVGlogo from "./assets/sooqSyria.svg";
+import SVGlogo from "./assets/busta logo/bustaWhite.svg";
 import "./App.css";
 import { useEffect } from "react";
 

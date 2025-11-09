@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import Register from "./register";
 import logo from "../assets/soow.png";
-import blueLogo from "../assets/soowblue.png";
+import blueLogo from "../assets/busta logo/bustaBlue.svg";
 export default function Login() {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
