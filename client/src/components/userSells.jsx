@@ -155,13 +155,22 @@ export default function UserProducts() {
               <span className="product-price">{product.price} SYP</span>
               <span className="product-date">{product.date}</span>
             </div>
-            <button className="dltBtn" onClick={() => handleDelete(product.id)}>
+            <button
+              className="dltBtn"
+              onClick={() => {
+                e.stopPropagation();
+                handleDelete(product.id);
+              }}
+            >
               <img src={deleteSvg} width="30px" alt="delete" />
             </button>
             <button
               title=""
               className="dltBtn"
-              onClick={() => handleSell(product.id)}
+              onClick={() => {
+                e.stopPropagation();
+                handleSell(product.id);
+              }}
               style={{ backgroundColor: "green" }}
             >
               <img src={deleteSvg} width="30px" alt="delete" />
