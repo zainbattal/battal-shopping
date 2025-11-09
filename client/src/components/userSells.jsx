@@ -65,6 +65,24 @@ export default function UserProducts() {
     }
   };
 
+  const handleSell = async (key) => {
+    try {
+      console.log(key);
+      const response = await fetch(
+        `https://battal-shopping.onrender.com/setSold/${key}`,
+        {
+          method: "DELETE",
+          headers: { token: localStorage.token },
+        }
+      );
+      if (response.ok) {
+        alert("سيظهر المنتج على انه مباع");
+      }
+    } catch (error) {
+      console.error(error.message);
+    }
+  };
+
   const checkAuthorization = async () => {
     try {
       const response = await fetch(
@@ -138,6 +156,14 @@ export default function UserProducts() {
               <span className="product-date">{product.date}</span>
             </div>
             <button className="dltBtn" onClick={() => handleDelete(product.id)}>
+              <img src={deleteSvg} width="30px" alt="delete" />
+            </button>
+            <button
+              title=""
+              className="dltBtn"
+              onClick={() => handleSell(product.id)}
+              style={{ backgroundColor: "green" }}
+            >
               <img src={deleteSvg} width="30px" alt="delete" />
             </button>
           </div>

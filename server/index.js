@@ -73,6 +73,41 @@ app.delete("/delete/:id", async (req, res) => {
   }
 });
 
+app.delete("/setSold/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const token = req.header("token");
+    const decoded = jwt.verify(token, process.env.jwtSecret);
+
+    const userRow = await pool.query("select * from users where user_id = $1", [
+      decoded.user,
+    ]);
+    const user = userRow.rows[0].user_name;
+
+    const product = await pool.query("SELECT * FROM products WHERE id = $1", [
+      id,
+    ]);
+    const productUser = await product.rows[0].uploader;
+
+    if (user !== productUser) {
+      return res
+        .status(403)
+        .json("you do not have the ability to delete this product");
+    }
+
+    const response = await pool.query(
+      `UPDATE products 
+SET state = 'sold' 
+WHERE id = $1;`,
+      [id]
+    );
+    res.json("new product state (sold)");
+  } catch (error) {
+    console.error(error.message);
+    res.json("couldn't delete product");
+  }
+});
+
 app.get("/profile", async (req, res) => {
   try {
     const token = req.header("token");
