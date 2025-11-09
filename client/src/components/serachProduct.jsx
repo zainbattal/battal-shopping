@@ -243,7 +243,7 @@ export default function SearchProducts() {
                     <span className="product-price">{product.price} SYP</span>
                     <span className="product-date">{product.date}</span>
                     {product.state != "sold" && (
-                      <div>
+                      <div className="soldState">
                         <p>تم البيع</p>
                         <img src={soldSVG} alt="sold" />
                       </div>

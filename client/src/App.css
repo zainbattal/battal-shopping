@@ -177,7 +177,6 @@ body {
 /* square image */
 .product-image {
   width: 180px;
-  height: 180px;
   border-radius: 12px;
   object-fit: cover;
   flex-shrink: 0;
@@ -656,7 +655,7 @@ body {
 
 @media (min-width: 768px) {
   .product-cont {
-    max-height: 225px;
+    max-height: 250px;
   }
 
   .fullDetails {
@@ -925,4 +924,7 @@ h6 {
   background-color: silver; /* optional */
   position: sticky; /* stays visible on scroll */
   top: 0;
+}
+.soldState {
+  display: inline-flex;
 }
