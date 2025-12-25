@@ -35,8 +35,8 @@ export default function SearchProducts() {
       filters.current.style.display = "flex";
       let jsonData = await response.json();
       console.log(jsonData);
-      searchStatus.current.innerText = "إنتهت النتائج";
       setProducts(jsonData);
+      searchStatus.current.innerText = "إنتهت النتائج";
     } catch (error) {
       console.error(error);
     }
