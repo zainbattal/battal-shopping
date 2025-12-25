@@ -204,7 +204,7 @@ app.post("/search", async (req, res) => {
     if (!input) {
       response = await pool.query(
         `SELECT * FROM products 
-         WHERE price < $2 AND city = $3`,
+         WHERE price < $1 AND city = $2`,
         [priceFilter, cityFilter]
       );
       return;
