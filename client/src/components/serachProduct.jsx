@@ -35,10 +35,11 @@ export default function SearchProducts() {
         }
       );
       filters.current.style.display = "flex";
-      list.current.style.display = "flex";
+
       let jsonData = await response.json();
       console.log(jsonData);
       setProducts(jsonData);
+      list.current.style.display = "flex";
       searchStatus.current.innerText = "إنتهت النتائج";
     } catch (error) {
       console.error(error);
@@ -275,8 +276,8 @@ export default function SearchProducts() {
                   </button>
                 </div>
               ))}
-            <h1 ref={searchStatus}>ابحث عن شيء</h1>
           </div>
+          <h1 ref={searchStatus}>ابحث عن شيء</h1>
         </div>
       </div>
     </>
