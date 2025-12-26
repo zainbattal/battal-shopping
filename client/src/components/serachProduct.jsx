@@ -35,7 +35,7 @@ export default function SearchProducts() {
         }
       );
       filters.current.style.display = "flex";
-      list.current.style.display = "none";
+      list.current.style.display = "flex";
       let jsonData = await response.json();
       console.log(jsonData);
       setProducts(jsonData);
