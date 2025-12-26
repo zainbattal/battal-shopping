@@ -207,6 +207,7 @@ app.post("/search", async (req, res) => {
          WHERE price < $1 AND city = $2`,
         [priceFilter, cityFilter]
       );
+      res.json(response.rows);
       return;
     }
 
