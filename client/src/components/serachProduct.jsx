@@ -13,9 +13,11 @@ export default function SearchProducts() {
   const [cityFilter, setCityFilter] = useState("damascus");
   const navigate = useNavigate();
   const filters = useRef();
+  const list = useRef();
   const searchStatus = useRef();
   const getProducts = async (e) => {
     try {
+      list.current.style.display = "none";
       filters.current.style.display = "none";
       if (e) {
         e.preventDefault();
@@ -33,6 +35,7 @@ export default function SearchProducts() {
         }
       );
       filters.current.style.display = "flex";
+      list.current.style.display = "none";
       let jsonData = await response.json();
       console.log(jsonData);
       setProducts(jsonData);
@@ -220,7 +223,7 @@ export default function SearchProducts() {
             </div>
           </div>
 
-          <div className="products-list">
+          <div className="products-list" ref={list}>
             {products &&
               products.length > 0 &&
               products.map((product) => (
