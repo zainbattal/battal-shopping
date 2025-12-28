@@ -332,7 +332,7 @@ export default function ProductDetails() {
 
           <div>
             <QRCodeSVG
-              value={`https://battal-shopping.onrender.com/products/${product.id}`}
+              value={`https://battal-shopping.onrender.com/products/${post.id}`}
               size={300}
               level="H"
               imageSettings={{
