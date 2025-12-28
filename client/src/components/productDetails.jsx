@@ -356,7 +356,7 @@ export default function ProductDetails() {
               {" "}
               {/* Important: This ref allows the function to find the canvas */}
               <QRCodeCanvas
-                value={`https://battal-shopping.onrender.com/products/${post.id}`}
+                value={`https://battal-shopping.vercel.app/products/${post.id}`}
                 size={300}
                 level="H"
                 imageSettings={{
