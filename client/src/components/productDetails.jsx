@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { QRCodeSVG } from "qrcode.react";
+import { QRCodeCanvas } from "qrcode.react";
 import SVGlogo from "../assets/busta logo/bustaBlue.svg";
 
 export default function ProductDetails() {
@@ -16,6 +16,8 @@ export default function ProductDetails() {
   const saveBtn = useRef();
   // Cache for preloaded Image objects
   const imageCache = useRef(new Map());
+
+  const qrRef = useRef(null); // Add this near your other useRefs
 
   const getProductsSim = async () => {
     try {
@@ -172,6 +174,25 @@ export default function ProductDetails() {
 
   // Use cached image URL
   const imageUrl = imageCount > 0 ? getCachedImageUrl(currentIndex) : "";
+
+  // ... existing refs
+
+  const downloadQRCode = () => {
+    // Find the canvas element inside our qrRef container
+    const canvas = qrRef.current.querySelector("canvas");
+    if (canvas) {
+      const pngUrl = canvas
+        .toDataURL("image/png")
+        .replace("image/png", "image/octet-stream");
+
+      let downloadLink = document.createElement("a");
+      downloadLink.href = pngUrl;
+      downloadLink.download = `qr-${post.name}.png`; // Dynamic name based on product
+      document.body.appendChild(downloadLink);
+      downloadLink.click();
+      document.body.removeChild(downloadLink);
+    }
+  };
 
   return (
     <>
@@ -330,20 +351,37 @@ export default function ProductDetails() {
           </button>
           <p className="DetailsDate">{post.date}</p>
 
-          <div>
-            <QRCodeSVG
-              value={`https://battal-shopping.onrender.com/products/${post.id}`}
-              size={300}
-              level="H"
-              imageSettings={{
-                src: SVGlogo,
-                x: undefined,
-                y: undefined,
-                height: 80,
-                width: 80,
-                excavate: true, // This cuts out the pixels behind the logo
+          <div style={{ marginTop: "20px", textAlign: "center" }}>
+            <div ref={qrRef}>
+              {" "}
+              {/* Important: This ref allows the function to find the canvas */}
+              <QRCodeCanvas
+                value={`https://battal-shopping.onrender.com/products/${post.id}`}
+                size={300}
+                level="H"
+                imageSettings={{
+                  src: SVGlogo,
+                  x: undefined,
+                  y: undefined,
+                  height: 80,
+                  width: 80,
+                  excavate: true,
+                }}
+              />
+            </div>
+
+            <button
+              onClick={downloadQRCode}
+              className="BigSave" // Using your existing button class
+              style={{
+                marginTop: "10px",
+                backgroundColor: "#28a745", // Green color for download
+                height: "auto",
+                padding: "10px",
               }}
-            />
+            >
+              تحميل كود QR
+            </button>
           </div>
           {/* Image Carousel */}
         </div>
