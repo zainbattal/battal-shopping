@@ -341,7 +341,7 @@ export default function ProductDetails() {
                 y: undefined,
                 height: 80,
                 width: 80,
-                //excavate: true, // This cuts out the pixels behind the logo
+                excavate: true, // This cuts out the pixels behind the logo
               }}
             />
           </div>
