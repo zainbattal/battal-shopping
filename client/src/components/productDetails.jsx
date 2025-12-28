@@ -339,8 +339,8 @@ export default function ProductDetails() {
                 src: SVGlogo,
                 x: undefined,
                 y: undefined,
-                height: 40,
-                width: 40,
+                height: 80,
+                width: 80,
                 excavate: true, // This cuts out the pixels behind the logo
               }}
             />
