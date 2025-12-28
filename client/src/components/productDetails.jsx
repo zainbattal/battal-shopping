@@ -353,7 +353,6 @@ export default function ProductDetails() {
 
           <div style={{ marginTop: "20px", textAlign: "center" }}>
             <div ref={qrRef}>
-              {" "}
               {/* Important: This ref allows the function to find the canvas */}
               <QRCodeCanvas
                 value={`https://battal-shopping.vercel.app/products/${post.id}`}

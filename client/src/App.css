@@ -790,6 +790,15 @@ body {
 }
 
 @media (max-width: 768px) {
+  .siteLink {
+    line-height: normal;
+  }
+  .siteLinkPro {
+    line-height: normal;
+  }
+  .siteNav {
+    width: max-content;
+  }
   .product-cont {
     flex: none;
   }
