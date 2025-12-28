@@ -1,5 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import { QRCodeSVG } from "qrcode.react";
+import SVGlogo from "./assets/busta logo/bustaBlue.svg";
 
 export default function ProductDetails() {
   const { id } = useParams();
@@ -354,6 +356,21 @@ export default function ProductDetails() {
                 <span className="product-type">{product.type}</span>
                 <span className="product-price">{product.price} SYP</span>
                 <span className="product-date">{product.date}</span>
+              </div>
+              <div>
+                <QRCodeSVG
+                  value={`https://battal-shopping.onrender.com/products/${product.id}`}
+                  size={300}
+                  level="H"
+                  imageSettings={{
+                    src: { SVGlogo },
+                    x: undefined,
+                    y: undefined,
+                    height: 40,
+                    width: 40,
+                    excavate: true, // This cuts out the pixels behind the logo
+                  }}
+                />
               </div>
             </div>
           ))}
