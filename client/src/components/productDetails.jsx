@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { QRCodeSVG } from "qrcode.react";
-import SVGlogo from "../assets/busta logo/busta.png";
+import SVGlogo from "../assets/busta logo/bustaBlue.svg";
 
 export default function ProductDetails() {
   const { id } = useParams();
@@ -336,7 +336,7 @@ export default function ProductDetails() {
               size={300}
               level="H"
               imageSettings={{
-                src: { SVGlogo },
+                src: SVGlogo,
                 x: undefined,
                 y: undefined,
                 height: 40,
