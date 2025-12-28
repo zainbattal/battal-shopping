@@ -277,9 +277,9 @@ export default function SearchProducts() {
                 </div>
               ))}
           </div>
-          <br />
-          <h1 ref={searchStatus}>ابحث عن شيء</h1>
         </div>
+        <br />
+        <h1 ref={searchStatus}>ابحث عن شيء</h1>
       </div>
     </>
   );
