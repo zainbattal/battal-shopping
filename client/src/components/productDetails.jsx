@@ -330,6 +330,21 @@ export default function ProductDetails() {
           </button>
           <p className="DetailsDate">{post.date}</p>
 
+          <div>
+            <QRCodeSVG
+              value={`https://battal-shopping.onrender.com/products/${product.id}`}
+              size={300}
+              level="H"
+              imageSettings={{
+                src: { SVGlogo },
+                x: undefined,
+                y: undefined,
+                height: 40,
+                width: 40,
+                excavate: true, // This cuts out the pixels behind the logo
+              }}
+            />
+          </div>
           {/* Image Carousel */}
         </div>
       </div>
@@ -356,21 +371,6 @@ export default function ProductDetails() {
                 <span className="product-type">{product.type}</span>
                 <span className="product-price">{product.price} SYP</span>
                 <span className="product-date">{product.date}</span>
-              </div>
-              <div>
-                <QRCodeSVG
-                  value={`https://battal-shopping.onrender.com/products/${product.id}`}
-                  size={300}
-                  level="H"
-                  imageSettings={{
-                    src: { SVGlogo },
-                    x: undefined,
-                    y: undefined,
-                    height: 40,
-                    width: 40,
-                    excavate: true, // This cuts out the pixels behind the logo
-                  }}
-                />
               </div>
             </div>
           ))}
