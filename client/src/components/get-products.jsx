@@ -99,6 +99,11 @@ export default function GetProducts() {
     getProducts();
   }, [catFilter, priceFilter, cityFilter]);
 
+  useEffect(() => {
+    checkAuthorization();
+    getProducts();
+  }, []); // Empty dependency array = run only on mount
+
   return (
     <>
       <div style={{ display: "flex", justifyContent: "center" }}>
