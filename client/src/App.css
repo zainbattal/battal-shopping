@@ -439,7 +439,7 @@ h6 {
 
 .products-list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  grid-template-columns: repeat(3, 1fr); /* Exactly 3 items per row */
   gap: 2rem;
   padding: 2rem;
   max-width: 1400px;
@@ -458,7 +458,6 @@ h6 {
   align-items: flex-start;
   position: relative;
   overflow: hidden;
-  flex: 0 0 calc(33.333% - 10px); /* 3 items per row */
 }
 
 .product-cont:hover {
