@@ -10,7 +10,7 @@ require("dotenv").config();
 
 app.use(
   cors({
-    origin: "https://battal-shopping.vercel.app",
+    origin: ["https://battal-shopping.vercel.app", "http://localhost:5173"],
     methods: ["GET", "POST", "DELETE", "PUT", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization", "token"],
     credentials: true,
