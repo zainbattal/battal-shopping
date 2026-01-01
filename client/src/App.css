@@ -970,11 +970,15 @@ form[style*="center"] {
   }
 
   .siteLink,
-  .siteLinkPro,
-  .siteLinkOut {
+  .siteLinkPro {
     padding: 0.5rem 1rem;
     font-size: 0.85rem;
     display: none;
+  }
+
+  .siteLinkOut {
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
   }
 
   .sidebar {
