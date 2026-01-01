@@ -438,8 +438,9 @@ h6 {
 }
 
 .products-list {
+  box-sizing: border-box;
   display: grid;
-  grid-template-rows: repeat(3, 1fr); /* Exactly 3 items per row */
+  grid-template-columns: repeat(3, 1fr); /* Exactly 3 items per row */
   gap: 2rem;
   padding: 2rem;
   max-width: 1400px;
