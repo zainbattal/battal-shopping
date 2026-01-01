@@ -12,7 +12,7 @@ export default function UserProducts() {
   const getProducts = async () => {
     try {
       let response = await fetch(
-        "https://battal-shopping.onrender.com/gets/getSaved",
+        `${import.meta.env.VITE_API_URL}/gets/getSaved`,
         {
           method: "GET",
           headers: { token: localStorage.token },
@@ -23,7 +23,7 @@ export default function UserProducts() {
       console.log(data.saved_products);
 
       let response2 = await fetch(
-        "https://battal-shopping.onrender.com/gets/getProductsSaved",
+        `${import.meta.env.VITE_API_URL}/gets/getProductsSaved`,
         {
           body: JSON.stringify({ data2: data.saved_products }),
           method: "POST",
@@ -43,7 +43,7 @@ export default function UserProducts() {
     try {
       console.log(key);
       const response = await fetch(
-        `https://battal-shopping.onrender.com/gets/unsave/${key}`,
+        `${import.meta.env.VITE_API_URL}/gets/unsave/${key}`,
         {
           method: "DELETE",
           headers: { token: localStorage.token },
@@ -60,7 +60,7 @@ export default function UserProducts() {
   const checkAuthorization = async () => {
     try {
       const response = await fetch(
-        "https://battal-shopping.onrender.com/auth/is-authorized",
+        `${import.meta.env.VITE_API_URL}/auth/is-authorized`,
         {
           method: "GET",
           headers: {
@@ -95,7 +95,7 @@ export default function UserProducts() {
             <div key={product.id} className="product-cont">
               <img
                 className="product-image"
-                src={`https://battal-shopping.onrender.com/image/${product.id}/0`}
+                src={`${import.meta.env.VITE_API_URL}/image/${product.id}/0`}
                 alt={product.name}
               />
               <div className="product-details">

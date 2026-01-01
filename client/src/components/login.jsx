@@ -13,7 +13,7 @@ export default function Login() {
   const checkAuthorization = async () => {
     try {
       const response = await fetch(
-        "https://battal-shopping.onrender.com/auth/is-authorized",
+        `${import.meta.env.VITE_API_URL}/auth/is-authorized`,
         {
           method: "GET",
           headers: {
@@ -40,7 +40,7 @@ export default function Login() {
       const body = { name, password };
       //fetch register api
       const response = await fetch(
-        "https://battal-shopping.onrender.com/auth/login",
+        `${import.meta.env.VITE_API_URL}/auth/login`,
         {
           method: "POST",
           headers: { "content-type": "application/json" },

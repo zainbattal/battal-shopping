@@ -24,7 +24,7 @@ export default function GetProducts() {
       filters.current.style.display = "none";
       loading.current.style.display = "flex";
       list.current.style.display = "none";
-      let response = await fetch("https://battal-shopping.onrender.com/list", {
+      let response = await fetch(`${import.meta.env.VITE_API_URL}/list`, {
         method: "POST",
         body: JSON.stringify({ catFilter, priceFilter, cityFilter }),
         headers: { "content-type": "application/json" },
@@ -45,7 +45,7 @@ export default function GetProducts() {
   const checkAuthorization = async () => {
     try {
       const response = await fetch(
-        "https://battal-shopping.onrender.com/auth/is-authorized",
+        `${import.meta.env.VITE_API_URL}/auth/is-authorized`,
         {
           method: "GET",
           headers: {
@@ -71,7 +71,7 @@ export default function GetProducts() {
       [id]: loadingGif,
     }));
     const response = await fetch(
-      "https://battal-shopping.onrender.com/gets/saveOne",
+      `${import.meta.env.VITE_API_URL}/gets/saveOne`,
       {
         method: "POST",
         body: JSON.stringify({ id }),
@@ -228,7 +228,9 @@ export default function GetProducts() {
                 >
                   <img
                     className="product-image"
-                    src={`https://battal-shopping.onrender.com/image/${product.id}/0`}
+                    src={`${import.meta.env.VITE_API_URL}/image/${
+                      product.id
+                    }/0`}
                     alt={product.name}
                   />
                   <div className="product-details">

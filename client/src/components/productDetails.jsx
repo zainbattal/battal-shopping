@@ -22,7 +22,7 @@ export default function ProductDetails() {
   const getProductsSim = async () => {
     try {
       const response = await fetch(
-        "https://battal-shopping.onrender.com/searchSim",
+        `${import.meta.env.VITE_API_URL}/searchSim`,
         {
           method: "POST",
           headers: {
@@ -48,7 +48,7 @@ export default function ProductDetails() {
   const handleSave = async (id) => {
     saveBtn.current.innerText = "جار الحفظ";
     const response = await fetch(
-      "https://battal-shopping.onrender.com/gets/saveOne",
+      `${import.meta.env.VITE_API_URL}/gets/saveOne`,
       {
         method: "POST",
         body: JSON.stringify({ id }),
@@ -78,7 +78,7 @@ export default function ProductDetails() {
         // Only preload if not already in cache
         if (!imageCache.current.has(cacheKey)) {
           const img = new Image();
-          img.src = `https://battal-shopping.onrender.com/image/${post.id}/${index}`;
+          img.src = `${import.meta.env.VITE_API_URL}/image/${post.id}/${index}`;
 
           img.onload = () => {
             // Store the actual Image object in cache
@@ -105,14 +105,14 @@ export default function ProductDetails() {
     }
 
     // Fallback to direct URL if not cached yet
-    return `https://battal-shopping.onrender.com/image/${post.id}/${index}`;
+    return `${import.meta.env.VITE_API_URL}/image/${post.id}/${index}`;
   };
 
   // Check auth
   const checkAuthorization = async () => {
     try {
       const response = await fetch(
-        "https://battal-shopping.onrender.com/auth/is-authorized",
+        `${import.meta.env.VITE_API_URL}/auth/is-authorized`,
         {
           method: "GET",
           headers: {
@@ -137,7 +137,7 @@ export default function ProductDetails() {
   // Fetch product
   const GetProduct = async () => {
     try {
-      const res = await fetch("https://battal-shopping.onrender.com/getOne", {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/getOne`, {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify({ id }),
@@ -399,7 +399,7 @@ export default function ProductDetails() {
             >
               <img
                 className="product-image"
-                src={`https://battal-shopping.onrender.com/image/${product.id}/0`}
+                src={`${import.meta.env.VITE_API_URL}/image/${product.id}/0`}
                 alt={product.name}
               />
               <div className="product-details">

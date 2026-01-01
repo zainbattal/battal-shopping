@@ -19,7 +19,7 @@ export default function Register() {
   const checkAuthorization = async () => {
     try {
       const response = await fetch(
-        "https://battal-shopping.onrender.com/auth/is-authorized",
+        `${import.meta.env.VITE_API_URL}/auth/is-authorized`,
         {
           method: "GET",
           headers: {
@@ -63,7 +63,7 @@ export default function Register() {
     const body = { name, number, password, hCaptchaToken };
 
     const response = await fetch(
-      "https://battal-shopping.onrender.com/auth/register",
+      `${import.meta.env.VITE_API_URL}/auth/register`,
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },

@@ -19,7 +19,7 @@ export default function Uploud(params) {
   const checkAuthorization = async () => {
     try {
       const response = await fetch(
-        "https://battal-shopping.onrender.com/auth/is-authorized",
+        `${import.meta.env.VITE_API_URL}/auth/is-authorized`,
         {
           method: "GET",
           headers: {
@@ -59,14 +59,11 @@ export default function Uploud(params) {
         formData.append("images", img); // Same name as in multer: "images"
       });
       formData.append("city", city);
-      const response = await fetch(
-        "https://battal-shopping.onrender.com/post",
-        {
-          method: "POST",
-          headers: { token: localStorage.token },
-          body: formData,
-        }
-      );
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/post`, {
+        method: "POST",
+        headers: { token: localStorage.token },
+        body: formData,
+      });
       if (response.ok) {
         setStatus("تم نشر المنتج بنجاح");
         stat.current.style.color = "GREEN";

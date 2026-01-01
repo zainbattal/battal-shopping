@@ -12,13 +12,10 @@ export default function UserProducts() {
   const navigate = useNavigate();
   const getProducts = async () => {
     try {
-      let response = await fetch(
-        "https://battal-shopping.onrender.com/profile",
-        {
-          method: "GET",
-          headers: { token: localStorage.token },
-        }
-      );
+      let response = await fetch(`${import.meta.env.VITE_API_URL}/profile`, {
+        method: "GET",
+        headers: { token: localStorage.token },
+      });
       let jsonData = await response.json();
       console.log(jsonData);
       setProducts(jsonData);
@@ -33,7 +30,7 @@ export default function UserProducts() {
   const getUsername = async () => {
     try {
       const response = await fetch(
-        "https://battal-shopping.onrender.com/gets/username",
+        `${import.meta.env.VITE_API_URL}/gets/username`,
         {
           method: "POST",
           headers: {
@@ -54,7 +51,7 @@ export default function UserProducts() {
     try {
       console.log(key);
       const response = await fetch(
-        `https://battal-shopping.onrender.com/delete/${key}`,
+        `${import.meta.env.VITE_API_URL}/delete/${key}`,
         {
           method: "DELETE",
           headers: { token: localStorage.token },
@@ -72,7 +69,7 @@ export default function UserProducts() {
     try {
       console.log(key);
       const response = await fetch(
-        `https://battal-shopping.onrender.com/setSold/${key}`,
+        `${import.meta.env.VITE_API_URL}/setSold/${key}`,
         {
           method: "DELETE",
           headers: { token: localStorage.token },
@@ -90,7 +87,7 @@ export default function UserProducts() {
   const checkAuthorization = async () => {
     try {
       const response = await fetch(
-        "https://battal-shopping.onrender.com/auth/is-authorized",
+        `${import.meta.env.VITE_API_URL}/auth/is-authorized`,
         {
           method: "GET",
           headers: {
@@ -149,7 +146,7 @@ export default function UserProducts() {
           >
             <img
               className="product-image"
-              src={`https://battal-shopping.onrender.com/image/${product.id}/0`}
+              src={`${import.meta.env.VITE_API_URL}/image/${product.id}/0`}
               alt={product.name}
             />
             <div className="product-details">

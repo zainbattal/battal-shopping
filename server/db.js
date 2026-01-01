@@ -1,17 +1,21 @@
 const { Pool } = require("pg");
 
-const pool = new Pool({
-  // user: "postgres",
-  // database: "test",
-  // port: " 5432",
-  // host: "localhost",
-  // password: "",
+const poolConfig = process.env.DATABASE_URL
+  ? {
+      connectionString: process.env.DATABASE_URL,
+      ssl: {
+        rejectUnauthorized: false, // Required for Neon's free tier
+      },
+    }
+  : {
+      user: "postgres",
+      database: "test",
+      port: 5432,
+      host: "localhost",
+      password: "zezo2009zezo",
+    };
 
-  connectionString: process.env.DATABASE_URL,
-  ssl: {
-    rejectUnauthorized: false, // Required for Neon's free tier
-  },
-});
+const pool = new Pool(poolConfig);
 
 module.exports = {
   query: (text, params) => pool.query(text, params),

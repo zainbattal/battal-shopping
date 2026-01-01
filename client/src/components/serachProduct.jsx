@@ -24,16 +24,13 @@ export default function SearchProducts() {
       }
       searchStatus.current.innerText = "جار التحميل";
       const body = { input, cityFilter, priceFilter, catFilter };
-      let response = await fetch(
-        "https://battal-shopping.onrender.com/search",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(body),
-        }
-      );
+      let response = await fetch(`${import.meta.env.VITE_API_URL}/search`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(body),
+      });
       filters.current.style.display = "flex";
 
       let jsonData = await response.json();
@@ -48,7 +45,7 @@ export default function SearchProducts() {
   const getAllProducts = async () => {
     try {
       filters.current.style.display = "none";
-      let response = await fetch("https://battal-shopping.onrender.com/list", {
+      let response = await fetch(`${import.meta.env.VITE_API_URL}/list`, {
         method: "POST",
         body: JSON.stringify({ catFilter, priceFilter, cityFilter }),
         headers: { "content-type": "application/json" },
@@ -66,7 +63,7 @@ export default function SearchProducts() {
   const checkAuthorization = async () => {
     try {
       const response = await fetch(
-        "https://battal-shopping.onrender.com/auth/is-authorized",
+        `${import.meta.env.VITE_API_URL}/auth/is-authorized`,
         {
           method: "GET",
           headers: {
@@ -87,7 +84,7 @@ export default function SearchProducts() {
 
   const handleSave = async (id) => {
     const response = await fetch(
-      "https://battal-shopping.onrender.com/gets/saveOne",
+      `${import.meta.env.VITE_API_URL}/gets/saveOne`,
       {
         method: "POST",
         body: JSON.stringify({ id }),
@@ -237,7 +234,9 @@ export default function SearchProducts() {
                 >
                   <img
                     className="product-image"
-                    src={`https://battal-shopping.onrender.com/image/${product.id}/0`}
+                    src={`${import.meta.env.VITE_API_URL}/image/${
+                      product.id
+                    }/0`}
                     alt={product.name}
                   />
                   <div className="product-details">
