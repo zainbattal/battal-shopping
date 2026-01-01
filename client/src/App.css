@@ -458,6 +458,7 @@ h6 {
   align-items: flex-start;
   position: relative;
   overflow: hidden;
+  flex: 0 0 calc(33.333% - 10px); /* 3 items per row */
 }
 
 .product-cont:hover {
