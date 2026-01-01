@@ -439,13 +439,11 @@ h6 {
 
 .products-list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
   gap: 2rem;
   padding: 2rem;
   max-width: 1400px;
   width: 100%;
-  margin: 0 auto;
-  box-sizing: border-box;
 }
 
 .product-cont {
@@ -460,9 +458,11 @@ h6 {
   align-items: flex-start;
   position: relative;
   overflow: hidden;
-  min-width: 0; /* This fixes it */
-  box-sizing: border-box; /* This too */
+  flex: 1;
+  min-width: 300px; /* Minimum width before wrapping */
+  max-width: calc(33.333% - 1.34rem); /* Maximum 3 per row */
 }
+
 .product-cont:hover {
   transform: translateY(-8px);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
