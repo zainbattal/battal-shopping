@@ -438,7 +438,7 @@ h6 {
 }
 
 .products-list {
-  display: grid;
+  display: grid !important;
   grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
   gap: 2rem;
   padding: 2rem;
