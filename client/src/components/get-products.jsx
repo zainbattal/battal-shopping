@@ -104,6 +104,7 @@ export default function GetProducts() {
     // Skip the first run (initial mount is handled by the useEffect above)
     getProducts();
   }, [catFilter, priceFilter, cityFilter]);
+
   return (
     <>
       <div style={{ display: "flex", justifyContent: "center" }}>
