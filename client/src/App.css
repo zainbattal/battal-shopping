@@ -432,13 +432,12 @@ h6 {
    PRODUCTS LIST
    ========================= */
 .centerList {
-  display: flex;
   justify-content: center;
   width: 100%;
 }
 
 .products-list {
-  display: grid !important;
+  display: grid;
   grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
   gap: 2rem;
   padding: 2rem;
