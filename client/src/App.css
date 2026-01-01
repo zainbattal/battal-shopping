@@ -432,13 +432,14 @@ h6 {
    PRODUCTS LIST
    ========================= */
 .centerList {
+  display: flex;
   justify-content: center;
   width: 100%;
 }
 
 .products-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
   gap: 2rem;
   padding: 2rem;
   max-width: 1400px;
@@ -457,9 +458,9 @@ h6 {
   align-items: flex-start;
   position: relative;
   overflow: hidden;
-  flex: 1;
-  min-width: 300px; /* Minimum width before wrapping */
-  max-width: calc(33.333% - 1.34rem); /* Maximum 3 per row */
+  flex: 1 0 calc(33.333% - 1.34rem); /* Adjust for gap */
+  /* Calculation: 100% / 3 items = 33.333% minus (gap * (items-1) / items) */
+  /* For 2rem gap: 33.333% - (2rem * 2 / 3) = 33.333% - 1.34rem */
 }
 
 .product-cont:hover {
