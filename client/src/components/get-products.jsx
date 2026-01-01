@@ -10,7 +10,7 @@ export default function GetProducts() {
   const [products, setProducts] = useState([]);
   const [priceFilter, setPriceFilter] = useState(99999999);
   const [catFilter, setCatFilter] = useState("all");
-  const [cityFilter, setCityFilter] = useState("damascus");
+  const [cityFilter, setCityFilter] = useState("دمشق");
 
   const [saveID, setSaveID] = useState("");
   const [saveImages, setSaveImages] = useState({});
@@ -105,8 +105,10 @@ export default function GetProducts() {
         <div
           style={{
             display: "flex",
-            justifyContent: "center",
+            flexDirection: "column",
+            alignItems: "center",
             maxWidth: "2000px",
+            width: "100%",
           }}
         >
           <div className="filterCont" ref={filters}>
@@ -239,7 +241,7 @@ export default function GetProducts() {
                     <span className="product-type">{product.type}</span>
                     <span className="product-price">{product.price} SYP</span>
                     <span className="product-date">{product.date}</span>
-                    {product.state != "sold" && (
+                    {product.state == "sold" && (
                       <div className="soldState">
                         <p>تم البيع</p>
                         <img src={soldSVG} alt="sold" />

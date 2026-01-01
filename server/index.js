@@ -301,6 +301,25 @@ app.post("/getOne", async (req, res) => {
 app.use("/auth", require("./routes/jwtAuth"));
 app.use("/gets", require("./routes/gets"));
 
+app.get("/test-db", async (req, res) => {
+  try {
+    const result = await pool.query("SELECT 1 as test");
+    res.json({ success: true, result: result.rows });
+  } catch (error) {
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
+
+app.get("/check-tables", async (req, res) => {
+  try {
+    await pool.query("SELECT 1 FROM users LIMIT 1");
+    await pool.query("SELECT 1 FROM products LIMIT 1");
+    res.json({ success: true, message: "Tables exist" });
+  } catch (error) {
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
+
 app.listen(3000, () => {
   console.log("server started at port 3000");
 });

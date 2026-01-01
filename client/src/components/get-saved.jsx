@@ -104,7 +104,7 @@ export default function UserProducts() {
                 <span className="product-type">{product.type}</span>
                 <span className="product-price">{product.price} SYP</span>
                 <span className="product-date">{product.date}</span>
-                {product.state != "sold" && (
+                {product.state == "sold" && (
                   <div className="soldState">
                     <p>تم البيع</p>
                     <img src={soldSVG} alt="sold" />

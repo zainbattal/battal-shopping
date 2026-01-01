@@ -20,7 +20,7 @@ import searchSvg from "./assets/search.svg";
 import bookmarksvg from "./assets/bookmark.svg";
 import profileSvg from "./assets/account.svg";
 import logoutSvg from "./assets/logout.svg";
-import SVGlogo from "./assets/busta logo/bustaWhite.svg";
+import SVGlogo from "./assets/busta logo/bustaBlue.svg";
 import "./App.css";
 import { useEffect } from "react";
 
@@ -83,19 +83,20 @@ export function App() {
         )}
       </div>
 
-      <div
-        className="sidebar"
-        style={{ display: isOn ? "block" : "none", position: "absolute" }}
-      >
+      <div className={`sidebar ${isOn ? "sidebar-open" : "sidebar-closed"}`}>
         <div style={{ display: "flex", justifyContent: "center" }}>
           <img src={SVGlogo} alt="logo" width="60%" />
         </div>
 
-        <Link to={"/"} className="sidebarBtn">
+        <Link to={"/"} className="sidebarBtn" onClick={() => setIsOn(false)}>
           <img src={home} alt="" />
           الصفحة الرئيسية
         </Link>
-        <Link to={"/search"} className="sidebarBtn">
+        <Link
+          to={"/search"}
+          className="sidebarBtn"
+          onClick={() => setIsOn(false)}
+        >
           <img src={searchSvg} alt="" />
           البحث
         </Link>
@@ -103,14 +104,23 @@ export function App() {
           to={"/IDSearch"}
           className="sidebarBtn"
           style={{ direction: "rtl" }}
+          onClick={() => setIsOn(false)}
         >
           البحث برمز UUID
         </Link>
-        <Link to={"/getSaved"} className="sidebarBtn">
+        <Link
+          to={"/getSaved"}
+          className="sidebarBtn"
+          onClick={() => setIsOn(false)}
+        >
           <img src={bookmarksvg} alt="" />
           المحفوظة
         </Link>
-        <Link to={"/profile"} className="sidebarBtn">
+        <Link
+          to={"/profile"}
+          className="sidebarBtn"
+          onClick={() => setIsOn(false)}
+        >
           <img src={profileSvg} alt="" />
           الملف الشخصي
         </Link>
