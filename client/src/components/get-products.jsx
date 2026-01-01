@@ -97,13 +97,13 @@ export default function GetProducts() {
   useEffect(() => {
     checkAuthorization();
     getProducts();
-  }, [catFilter, priceFilter, cityFilter]);
+  }, []); // Only run once on mount
 
+  // Add this separate useEffect for filter changes
   useEffect(() => {
-    checkAuthorization();
+    // Skip the first run (initial mount is handled by the useEffect above)
     getProducts();
-  }, []); // Empty dependency array = run only on mount
-
+  }, [catFilter, priceFilter, cityFilter]);
   return (
     <>
       <div style={{ display: "flex", justifyContent: "center" }}>
