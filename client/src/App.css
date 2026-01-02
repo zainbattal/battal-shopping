@@ -962,6 +962,14 @@ form[style*="center"] {
 /* =========================
    RESPONSIVE DESIGN
    ========================= */
+
+@media (max-width: 1185px) {
+  /* make it only to on tablet like screens*/
+  .product-cont {
+    flex: 1 0 calc(50% - 1rem);
+  }
+}
+
 @media (max-width: 768px) {
   .siteNav {
     padding: 1rem;

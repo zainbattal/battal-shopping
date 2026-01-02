@@ -10,7 +10,7 @@ export default function SearchProducts() {
   const [input, setInput] = useState("");
   const [priceFilter, setPriceFilter] = useState(99999999);
   const [catFilter, setCatFilter] = useState("all");
-  const [cityFilter, setCityFilter] = useState("damascus");
+  const [cityFilter, setCityFilter] = useState("دمشق");
   const navigate = useNavigate();
   const filters = useRef();
   const list = useRef();
